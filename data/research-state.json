@@ -1,10 +1,13 @@
 {
   "schemaVersion": 1,
-  "mode": "first-run",
+  "mode": "subsequent-run",
   "status": "complete",
   "lastSuccessfulRun": "2026-11-02",
-  "previousSuccessfulCutoff": null,
+  "previousSuccessfulCutoff": "2026-11-02",
   "researchCutoff": "2026-11-02",
-  "nextRunInstructions": "Use researchCutoff as the since-date. Recheck pricing and changing technical claims, update only affected records and pages, run validation/build, and advance this state only after all checks pass.",
-  "unresolvedUncertainty": ["Provider-specific contract rates and discounts are not represented in the site.", "OpenTelemetry GenAI convention stability must be checked against the latest specification on each run."]
+  "nextRunInstructions": "Use researchCutoff as the since-date. Recheck pricing changes across providers, inspect benchmark rankings, validate changing OTel gen_ai semantic conventions, update affected records, run validation/build, and advance this state only after all checks pass.",
+  "unresolvedUncertainty": [
+    "Enterprise private discount tiers, volume commitments, and negotiated custom rate cards are excluded from public snapshots.",
+    "OpenTelemetry GenAI convention attribute stability must be validated continuously against upstream specification releases."
+  ]
 }

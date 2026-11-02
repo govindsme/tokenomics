@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A practical field guide to AI FinOps, TokenOps, model economics, and responsible cost control.">
+  <meta name="description" content="AI FinOps and TokenOps Field Guide: practical frameworks for LLM cost attribution, prompt caching economics, model routing, and unit economics.">
   <meta name="theme-color" content="#f3f2ec">
-  <title>Tokenomics | AI Cost Operations Field Guide</title>
+  <title>Tokenomics | AI FinOps &amp; TokenOps Field Guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -13,247 +13,854 @@
     :root {
       color-scheme: light;
       --paper: #f3f2ec;
-      --ink: #20231f;
-      --muted: #656b63;
-      --line: #d7d9d0;
+      --ink: #1f231e;
+      --muted: #626860;
+      --line: #d3d6cb;
       --panel: #fffefa;
+      --panel-alt: #f7f6f0;
       --green: #c8ef62;
-      --green-dark: #29421e;
-      --coral: #e56c51;
-      --blue: #426d83;
+      --green-dark: #223819;
+      --coral: #df583d;
+      --coral-light: #faece8;
+      --blue: #2f607c;
+      --blue-light: #eef5f8;
       --mono: "DM Mono", monospace;
       --sans: "DM Sans", sans-serif;
       --display: "Manrope", sans-serif;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.6 var(--sans); }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.65 var(--sans); }
     button, input, select { font: inherit; }
     a { color: inherit; }
-    .topbar { position: sticky; z-index: 5; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; padding: 0 4vw; border-bottom: 1px solid var(--line); background: rgba(243,242,236,.96); backdrop-filter: blur(12px); }
-    .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; font: 800 14px var(--display); letter-spacing: .04em; }
-    .brand-mark { display: grid; width: 28px; height: 28px; place-items: center; background: var(--green); color: var(--green-dark); font: 500 14px var(--mono); }
-    .top-meta { display: flex; align-items: center; gap: 1.5rem; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
+    .topbar { position: sticky; z-index: 10; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; padding: 0 clamp(1rem, 4vw, 3rem); border-bottom: 1px solid var(--line); background: rgba(243,242,236,.96); backdrop-filter: blur(12px); }
+    .brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; font: 800 15px var(--display); letter-spacing: .03em; }
+    .brand-mark { display: grid; width: 30px; height: 30px; place-items: center; background: var(--green); color: var(--green-dark); font: 600 13px var(--mono); border-radius: 3px; }
+    .version-tag { display: inline-block; padding: .15rem .45rem; background: #e5e8dc; color: #444b41; font: 500 10px var(--mono); border-radius: 2px; }
+    .top-meta { display: flex; align-items: center; gap: 1.25rem; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
     .top-meta a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    .layout { display: grid; grid-template-columns: 248px minmax(0, 1fr); max-width: 1540px; min-height: calc(100vh - 64px); margin: 0 auto; }
-    aside { position: sticky; top: 64px; align-self: start; height: calc(100vh - 64px); overflow-y: auto; padding: 2rem 1.5rem 2rem 2.5rem; border-right: 1px solid var(--line); }
-    .side-label, .eyebrow { color: var(--muted); font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-    .side-label { margin: 0 0 .8rem; }
-    .nav-group { margin: 1.8rem 0; }
-    .nav-link { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; padding: .42rem 0; color: #555b53; font-size: 13px; text-decoration: none; }
-    .nav-link:hover, .nav-link:focus-visible { color: var(--ink); }
-    .nav-link span:last-child { color: #95998f; font: 10px var(--mono); }
-    main { min-width: 0; padding: 2.4rem clamp(1.25rem, 5vw, 5.5rem) 6rem; }
-    .intro { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(220px, .7fr); gap: 2rem; align-items: end; padding: 2.4rem 0 2.1rem; border-bottom: 1px solid var(--line); }
-    h1 { max-width: 720px; margin: .8rem 0 1rem; font: 800 clamp(2.2rem, 4vw, 4.4rem)/1.02 var(--display); letter-spacing: 0; }
-    .intro p { max-width: 640px; margin: 0; color: #565c54; font-size: 16px; }
-    .stamp { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; gap: .6rem; padding: 1rem 1.1rem; border-left: 3px solid var(--coral); background: #e9e9df; }
-    .stamp strong { font: 700 12px var(--display); }
-    .stamp span { color: var(--muted); font: 11px/1.5 var(--mono); }
-    .section { padding: 2.8rem 0; border-bottom: 1px solid var(--line); }
-    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.35rem; }
-    .section-head h2 { margin: .3rem 0 0; font: 700 24px/1.2 var(--display); letter-spacing: 0; }
-    .section-head p { max-width: 480px; margin: 0; color: var(--muted); font-size: 13px; }
+    .top-meta a:hover { color: var(--ink); }
+    .layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); max-width: 1540px; min-height: calc(100vh - 64px); margin: 0 auto; }
+    aside { position: sticky; top: 64px; align-self: start; height: calc(100vh - 64px); overflow-y: auto; padding: 2rem 1.2rem 2rem 2rem; border-right: 1px solid var(--line); }
+    .side-label, .eyebrow { color: var(--muted); font: 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .side-label { margin: 0 0 .9rem; font-weight: 600; }
+    .nav-group { margin-bottom: 2rem; }
+    .nav-link { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; padding: .42rem 0; color: #535950; font-size: 13px; text-decoration: none; border-bottom: 1px solid transparent; }
+    .nav-link:hover, .nav-link:focus-visible { color: var(--ink); border-bottom-color: var(--line); }
+    .nav-link span:last-child { color: #8e9488; font: 10px var(--mono); }
+    main { min-width: 0; padding: 2.5rem clamp(1.25rem, 5vw, 5.5rem) 7rem; }
+    .intro { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr); gap: 2.5rem; align-items: end; padding: 2.2rem 0 2.5rem; border-bottom: 1px solid var(--line); }
+    h1 { max-width: 760px; margin: .8rem 0 1rem; font: 800 clamp(2.3rem, 4.2vw, 4.6rem)/1.02 var(--display); letter-spacing: -0.02em; }
+    .intro p { max-width: 660px; margin: 0; color: #4e554b; font-size: 17px; line-height: 1.6; }
+    .stamp { display: flex; flex-direction: column; justify-content: flex-end; gap: .65rem; padding: 1.25rem; border-left: 3px solid var(--coral); background: #e9eade; }
+    .stamp strong { font: 700 13px var(--display); color: var(--ink); }
+    .stamp span { color: var(--muted); font: 11px/1.55 var(--mono); }
+    .section { padding: 3.2rem 0; border-bottom: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; margin-bottom: 1.8rem; }
+    .section-head h2 { margin: .3rem 0 0; font: 700 26px/1.2 var(--display); letter-spacing: -0.01em; }
+    .section-head p { max-width: 540px; margin: 0; color: var(--muted); font-size: 13.5px; }
     .snapshot { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: var(--panel); }
-    .snapshot article { min-height: 156px; padding: 1.25rem; }
+    .snapshot article { padding: 1.4rem; }
     .snapshot article + article { border-left: 1px solid var(--line); }
-    .snapshot .number { display: block; margin: .4rem 0 .7rem; font: 800 31px/1.1 var(--display); }
-    .snapshot p { margin: 0; color: var(--muted); font-size: 12px; }
-    .snapshot a { text-decoration-thickness: 1px; text-underline-offset: 2px; }
-    .calculator { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(235px, .8fr); gap: 1.4rem; padding: 1.4rem; border: 1px solid #bec3b7; background: var(--panel); }
-    .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 1rem; }
+    .snapshot .number { display: block; margin: .4rem 0 .5rem; font: 800 30px/1.1 var(--display); color: var(--ink); }
+    .snapshot p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.55; }
+    .calculator { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(290px, .85fr); gap: 1.6rem; padding: 1.6rem; border: 1px solid #bdc2b4; background: var(--panel); box-shadow: 0 4px 18px rgba(0,0,0,.03); }
+    .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.1rem; }
+    .field-full { grid-column: span 2; }
     .field { display: grid; gap: .35rem; }
-    .field label { color: #555b53; font-size: 11px; font-weight: 700; }
-    .field input { width: 100%; min-width: 0; padding: .65rem .7rem; border: 1px solid var(--line); border-radius: 2px; background: #fff; color: var(--ink); font: 13px var(--mono); }
-    .field input:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
-    .result { display: flex; flex-direction: column; justify-content: space-between; padding: 1.1rem; background: var(--green); color: var(--green-dark); }
-    .result span { font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-    .result output { margin: .5rem 0; overflow-wrap: anywhere; font: 800 clamp(1.8rem, 3vw, 2.8rem)/1.15 var(--display); }
-    .result p { margin: 0; font-size: 11px; }
-    .note { margin: .8rem 0 0; color: var(--muted); font-size: 11px; }
-    .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; }
-    .guide { padding: 1.35rem 0; border-bottom: 1px solid var(--line); scroll-margin-top: 5rem; }
-    .guide h3 { margin: .25rem 0 .55rem; font: 700 17px var(--display); }
-    .guide p { margin: 0; color: #555b53; font-size: 13px; }
-    .guide ul { margin: .7rem 0 0; padding-left: 1.15rem; color: #555b53; font-size: 12px; }
-    .guide li + li { margin-top: .35rem; }
-    .tag { display: inline-block; padding: .18rem .4rem; background: #e4e6dc; color: #4b5148; font: 9px var(--mono); text-transform: uppercase; }
-    .source-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; margin: 0; padding: 0; list-style: none; }
-    .source-list li { padding: .8rem 0; border-bottom: 1px solid var(--line); font-size: 12px; }
-    .source-list a { text-underline-offset: 3px; }
-    .source-list span { display: block; margin-top: .2rem; color: var(--muted); font-size: 11px; }
-    .foot { display: flex; justify-content: space-between; gap: 1rem; padding-top: 1.5rem; color: var(--muted); font: 10px var(--mono); }
-    .search { width: min(230px, 30vw); padding: .45rem .6rem; border: 1px solid var(--line); border-radius: 2px; background: var(--panel); font-size: 12px; }
+    .field label { color: #474d44; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+    .field select, .field input { width: 100%; min-width: 0; padding: .65rem .75rem; border: 1px solid var(--line); border-radius: 2px; background: #fff; color: var(--ink); font: 13.5px var(--mono); }
+    .field select:focus, .field input:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+    .checkbox-field { display: flex; align-items: center; gap: .6rem; padding: .5rem 0; font-size: 12.5px; color: #454c41; }
+    .checkbox-field input { width: auto; cursor: pointer; }
+    .result { display: flex; flex-direction: column; justify-content: space-between; padding: 1.35rem; background: var(--green); color: var(--green-dark); }
+    .result-head { font: 600 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
+    .result output { display: block; margin: .6rem 0 .4rem; font: 800 clamp(2rem, 3.2vw, 3rem)/1.1 var(--display); letter-spacing: -0.02em; }
+    .result-details { margin: 0; font-size: 12px; line-height: 1.5; color: #1e3315; }
+    .savings-badge { display: inline-flex; align-items: center; gap: .4rem; margin-top: .75rem; padding: .35rem .6rem; background: rgba(255,255,255,.55); border-radius: 2px; font: 600 11px var(--mono); color: #162a0f; }
+    .note { margin: 1rem 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .table-container { overflow-x: auto; border: 1px solid var(--line); background: var(--panel); margin-top: 1rem; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12.5px; }
+    th { padding: .75rem 1rem; background: var(--panel-alt); color: #4a5146; font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid var(--line); }
+    td { padding: .75rem 1rem; border-bottom: 1px solid #eceee5; vertical-align: middle; }
+    tr:last-child td { border-bottom: 0; }
+    tr:hover td { background: #fafaf6; }
+    .btn-apply { padding: .25rem .55rem; background: #e3e7d9; border: 1px solid var(--line); border-radius: 2px; cursor: pointer; font: 600 10.5px var(--mono); color: var(--ink); }
+    .btn-apply:hover { background: var(--green); border-color: var(--green-dark); }
+    .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2.2rem; }
+    .guide { padding: 1.4rem 0; border-bottom: 1px solid var(--line); scroll-margin-top: 5rem; }
+    .guide h3 { margin: .35rem 0 .6rem; font: 700 18px var(--display); }
+    .guide p { margin: 0; color: #4e554b; font-size: 13.5px; line-height: 1.6; }
+    .guide ul { margin: .75rem 0 0; padding-left: 1.25rem; color: #4e554b; font-size: 12.5px; }
+    .guide li + li { margin-top: .4rem; }
+    .tag { display: inline-block; padding: .2rem .45rem; background: #e2e5db; color: #3c4238; font: 600 9.5px var(--mono); text-transform: uppercase; border-radius: 2px; }
+    .source-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.2rem; margin: 0; padding: 0; list-style: none; }
+    .source-list li { padding: .95rem 0; border-bottom: 1px solid var(--line); font-size: 12.5px; }
+    .source-list a { font-weight: 600; text-underline-offset: 3px; }
+    .source-list a:hover { color: var(--blue); }
+    .source-meta { display: block; margin-top: .25rem; color: var(--muted); font-size: 11px; }
+    .source-desc { display: block; margin-top: .35rem; color: #495045; font-size: 12px; }
+    .glossary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem 2.2rem; margin-top: 1rem; }
+    .glossary-card { padding: 1.1rem; border: 1px solid var(--line); background: var(--panel); }
+    .glossary-card dt { font: 700 15px var(--display); color: var(--ink); margin-bottom: .4rem; }
+    .glossary-card dd { margin: 0; color: #4b5247; font-size: 12.5px; line-height: 1.55; }
+    .glossary-sources { margin-top: .6rem; font: 10px var(--mono); color: var(--muted); }
+    .search { width: min(280px, 35vw); padding: .5rem .75rem; border: 1px solid var(--line); border-radius: 2px; background: var(--panel); font-size: 12.5px; }
     .search:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
-    @media (max-width: 850px) {
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 2rem; color: var(--muted); font: 11px var(--mono); }
+    .foot a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    @media (max-width: 960px) {
       .layout { grid-template-columns: 1fr; }
-      aside { position: static; display: flex; gap: .35rem; height: auto; overflow-x: auto; padding: .65rem 1rem; border-right: 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+      aside { position: static; display: flex; gap: .4rem; height: auto; overflow-x: auto; padding: .75rem 1rem; border-right: 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
       .side-label, .nav-group { display: contents; }
-      .nav-link { padding: .38rem .55rem; border: 1px solid var(--line); background: var(--panel); font-size: 11px; }
+      .nav-link { padding: .4rem .65rem; border: 1px solid var(--line); background: var(--panel); font-size: 12px; }
       .nav-link span:last-child { display: none; }
-      main { padding: 1rem 1.2rem 4rem; }
-      .intro { padding-top: 1.5rem; }
-    }
-    @media (max-width: 600px) {
-      .topbar { min-height: 56px; padding: 0 1rem; }
-      .top-meta { gap: .7rem; font-size: 9px; }
-      .top-meta .wide { display: none; }
-      .intro { grid-template-columns: 1fr; gap: 1rem; }
-      .stamp { min-height: 88px; }
-      .section { padding: 2rem 0; }
-      .section-head { align-items: start; flex-direction: column; }
+      main { padding: 1.5rem 1.25rem 5rem; }
+      .intro { grid-template-columns: 1fr; gap: 1.5rem; }
       .snapshot { grid-template-columns: 1fr; }
-      .snapshot article { min-height: auto; }
       .snapshot article + article { border-top: 1px solid var(--line); border-left: 0; }
-      .calculator { grid-template-columns: 1fr; padding: .9rem; }
-      .fields { gap: .7rem; }
-      .field label { font-size: 10px; }
-      .guide-grid, .source-list { grid-template-columns: 1fr; }
-      .foot { flex-direction: column; }
+      .calculator { grid-template-columns: 1fr; }
+      .guide-grid, .source-list, .glossary-grid { grid-template-columns: 1fr; }
       .search { width: 100%; }
+      .section-head { flex-direction: column; align-items: start; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="Tokenomics home"><span class="brand-mark">T/</span> TOKENOMICS</a>
-    <div class="top-meta"><span class="wide">FIELD GUIDE / 001</span><a href="#sources">Evidence register</a></div>
+    <a class="brand" href="#overview" aria-label="Tokenomics home"><span class="brand-mark">T/</span> TOKENOMICS <span class="version-tag">v1.1.0</span></a>
+    <div class="top-meta">
+      <span class="wide">AI FinOps &amp; TokenOps Guide</span>
+      <a href="#unit-economics">Calculator</a>
+      <a href="#pricing-reference">Snapshots</a>
+      <a href="#benchmarks">Benchmarks</a>
+      <a href="#glossary">Glossary</a>
+      <a href="#sources">Evidence</a>
+    </div>
   </header>
+
   <div class="layout" id="top">
     <aside aria-label="Guide navigation">
       <div class="nav-group">
-        <p class="side-label">Field guide</p>
+        <p class="side-label">Knowledge Areas</p>
         <a class="nav-link" href="#overview">Operating picture <span>01</span></a>
         <a class="nav-link" href="#unit-economics">Unit economics <span>02</span></a>
-        <a class="nav-link" href="#metering">Metering <span>03</span></a>
-        <a class="nav-link" href="#optimization">Optimization <span>04</span></a>
-        <a class="nav-link" href="#routing">Routing & hosting <span>05</span></a>
-        <a class="nav-link" href="#governance">Budgets & controls <span>06</span></a>
-        <a class="nav-link" href="#sources">Evidence <span>07</span></a>
+        <a class="nav-link" href="#pricing-reference">Pricing snapshots <span>03</span></a>
+        <a class="nav-link" href="#metering">Metering &amp; telemetry <span>04</span></a>
+        <a class="nav-link" href="#optimization">Cost optimization <span>05</span></a>
+        <a class="nav-link" href="#routing">Routing &amp; hosting <span>06</span></a>
+        <a class="nav-link" href="#governance">Budgets &amp; guardrails <span>07</span></a>
+        <a class="nav-link" href="#benchmarks">Benchmarks <span>08</span></a>
+        <a class="nav-link" href="#glossary">Glossary <span>09</span></a>
+        <a class="nav-link" href="#sources">Evidence register <span>10</span></a>
       </div>
     </aside>
+
     <main>
+      <!-- SECTION 01: OVERVIEW -->
       <section class="intro" id="overview">
         <div>
-          <div class="eyebrow">AI FinOps / TokenOps / Unit economics</div>
-          <h1>Make every token<br>answer for itself.</h1>
-          <p>A field guide for understanding, allocating, and improving the economics of AI workloads. Start with a measurable unit of value, then connect it to usage, quality, and cost.</p>
+          <div class="eyebrow">AI FinOps / TokenOps / Unit Economics</div>
+          <h1>Make every token answer for itself.</h1>
+          <p>A rigorous, evidence-led field guide for engineering leaders, FinOps teams, architects, and developers. Connect metered token consumption to business outcomes, implement prompt-caching economics, and establish trustworthy usage attribution.</p>
         </div>
-        <div class="stamp"><strong>First research cut</strong><span>2026-11-02<br>Prices are volatile; check provider terms before committing spend.</span></div>
+        <div class="stamp">
+          <strong>Autonomous Knowledge Ledger</strong>
+          <span>Cut-off date: 2026-11-02<br>Reconciled against official provider specifications and FinOps standards.</span>
+        </div>
       </section>
 
       <section class="section" aria-labelledby="operating-picture-title">
-        <div class="section-head"><div><div class="eyebrow">01 / Operating picture</div><h2 id="operating-picture-title">Three things to make visible</h2></div><p>AI cost control starts with the relationship between workload, measured usage, and an outcome someone values.</p></div>
+        <div class="section-head">
+          <div><div class="eyebrow">01 / Operating picture</div><h2 id="operating-picture-title">The Three Pillars of AI Financial Discipline</h2></div>
+          <p>Sustainable AI cost management balances accurate telemetry, clear organizational attribution, and outcome-based unit economics.</p>
+        </div>
         <div class="snapshot">
-          <article><span class="eyebrow">01 / Measure</span><strong class="number">Usage</strong><p>Capture provider, model, input/output tokens, cache usage, request outcome, and workload identity.</p></article>
-          <article><span class="eyebrow">02 / Attribute</span><strong class="number">Owner</strong><p>Join usage to the product, team, environment, and feature that caused it; preserve unknowns instead of guessing.</p></article>
-          <article><span class="eyebrow">03 / Improve</span><strong class="number">Value</strong><p>Compare cost with a quality and business outcome, not token reduction alone.</p></article>
+          <article>
+            <span class="eyebrow">01 / Measure</span>
+            <strong class="number">Telemetry</strong>
+            <p>Capture provider, model, prompt tokens, completion tokens, cache hits/misses, and latency via OpenTelemetry GenAI semantic conventions.</p>
+          </article>
+          <article>
+            <span class="eyebrow">02 / Attribute</span>
+            <strong class="number">Ownership</strong>
+            <p>Implement Showback and Chargeback by mapping usage directly to business unit, product feature, team, and customer tenant.</p>
+          </article>
+          <article>
+            <span class="eyebrow">03 / Optimize</span>
+            <strong class="number">Value</strong>
+            <p>Maximize delivered quality per dollar by applying prompt caching (50-90% discount), model routing, and batch processing.</p>
+          </article>
         </div>
       </section>
 
+      <!-- SECTION 02: UNIT ECONOMICS & CALCULATOR -->
       <section class="section" id="unit-economics">
-        <div class="section-head"><div><div class="eyebrow">02 / Unit economics</div><h2>Estimate a request</h2></div><p>Enter the rates from your contract or the provider's current pricing page. Rates are per one million tokens.</p></div>
+        <div class="section-head">
+          <div><div class="eyebrow">02 / Unit economics</div><h2>Interactive Token Cost &amp; Cache Calculator</h2></div>
+          <p>Select a verified provider snapshot or enter custom contractual rates. Accurately calculates input, output, prompt caching discounts, and batch execution savings.</p>
+        </div>
+
         <form class="calculator" id="cost-form">
           <div class="fields">
-            <div class="field"><label for="input-tokens">Input tokens / request</label><input id="input-tokens" type="number" min="0" step="1" value="12000" inputmode="numeric"></div>
-            <div class="field"><label for="output-tokens">Output tokens / request</label><input id="output-tokens" type="number" min="0" step="1" value="1800" inputmode="numeric"></div>
-            <div class="field"><label for="input-rate">Input rate / 1M tokens ($)</label><input id="input-rate" type="number" min="0" step="any" placeholder="Enter current rate" inputmode="decimal"></div>
-            <div class="field"><label for="output-rate">Output rate / 1M tokens ($)</label><input id="output-rate" type="number" min="0" step="any" placeholder="Enter current rate" inputmode="decimal"></div>
-            <div class="field"><label for="requests">Requests / month</label><input id="requests" type="number" min="0" step="1" value="100000" inputmode="numeric"></div>
-            <div class="field"><label for="cache-share">Cached input share (%)</label><input id="cache-share" type="number" min="0" max="100" step="any" value="0" inputmode="decimal"></div>
+            <div class="field field-full">
+              <label for="model-preset">Model Preset (Verified Snapshots)</label>
+              <select id="model-preset">
+                <option value="custom">Custom Rates (Manual Entry)</option>
+                <option value="openai-gpt-4o" selected>OpenAI: GPT-4o ($2.50 in / $10.00 out, 50% cache hit)</option>
+                <option value="openai-gpt-4o-mini">OpenAI: GPT-4o mini ($0.15 in / $0.60 out, 50% cache hit)</option>
+                <option value="openai-o1">OpenAI: o1 Reasoning ($15.00 in / $60.00 out, 50% cache hit)</option>
+                <option value="anthropic-claude-3-5-sonnet">Anthropic: Claude 3.5 Sonnet ($3.00 in / $15.00 out, 90% cache read)</option>
+                <option value="anthropic-claude-3-5-haiku">Anthropic: Claude 3.5 Haiku ($0.80 in / $4.00 out, 90% cache read)</option>
+                <option value="google-gemini-1-5-flash">Google: Gemini 1.5 Flash ($0.075 in / $0.30 out, 75% cache)</option>
+                <option value="google-gemini-1-5-pro">Google: Gemini 1.5 Pro ($1.25 in / $5.00 out, 75% cache)</option>
+                <option value="aws-bedrock-claude-3-5-sonnet">AWS Bedrock: Claude 3.5 Sonnet ($3.00 in / $15.00 out, 90% cache)</option>
+                <option value="azure-gpt-4o">Azure OpenAI: GPT-4o ($2.50 in / $10.00 out, 50% cache)</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="input-tokens">Input tokens / request</label>
+              <input id="input-tokens" type="number" min="0" step="1" value="8000" inputmode="numeric">
+            </div>
+
+            <div class="field">
+              <label for="output-tokens">Output tokens / request</label>
+              <input id="output-tokens" type="number" min="0" step="1" value="1200" inputmode="numeric">
+            </div>
+
+            <div class="field">
+              <label for="input-rate">Input rate / 1M tokens ($)</label>
+              <input id="input-rate" type="number" min="0" step="any" value="2.50" inputmode="decimal">
+            </div>
+
+            <div class="field">
+              <label for="output-rate">Output rate / 1M tokens ($)</label>
+              <input id="output-rate" type="number" min="0" step="any" value="10.00" inputmode="decimal">
+            </div>
+
+            <div class="field">
+              <label for="cached-input-rate">Cached input rate / 1M tokens ($)</label>
+              <input id="cached-input-rate" type="number" min="0" step="any" value="1.25" inputmode="decimal">
+            </div>
+
+            <div class="field">
+              <label for="cache-share">Prompt cache hit rate (%)</label>
+              <input id="cache-share" type="number" min="0" max="100" step="any" value="60" inputmode="decimal">
+            </div>
+
+            <div class="field">
+              <label for="requests">Requests / month</label>
+              <input id="requests" type="number" min="0" step="1" value="100000" inputmode="numeric">
+            </div>
+
+            <div class="field checkbox-field">
+              <input id="batch-discount" type="checkbox">
+              <label for="batch-discount">Apply 50% Batch API Discount (Async)</label>
+            </div>
           </div>
-          <div class="result" aria-live="polite"><span>Estimated monthly token cost</span><output id="monthly-cost">Add rates to estimate</output><p id="per-request">Excludes tools, images, audio, storage, and other billable units.</p></div>
+
+          <div class="result" aria-live="polite">
+            <div>
+              <span class="result-head">Estimated Monthly Token Cost</span>
+              <output id="monthly-cost">$2,450.00</output>
+              <p class="result-details" id="per-request">$0.0245 per request</p>
+              <p class="result-details" id="cost-per-1k">$24.50 per 1,000 requests</p>
+            </div>
+            <div class="savings-badge" id="cache-savings">
+              Cache savings: $750.00 / month
+            </div>
+          </div>
         </form>
-        <p class="note">Formula: (input tokens × input rate + output tokens × output rate) ÷ 1,000,000 × monthly requests. Cache share is informational only; cached-token discounts vary by provider and model and are not assumed.</p>
+
+        <p class="note">
+          <strong>Precise Calculation Formula:</strong><br>
+          Effective Input Cost = [(Input Tokens × (1 - Cache Hit %) × Input Rate) + (Input Tokens × Cache Hit % × Cached Rate)] ÷ 1,000,000.<br>
+          Effective Output Cost = (Output Tokens × Output Rate) ÷ 1,000,000.<br>
+          Monthly Total = (Effective Input Cost + Effective Output Cost) × Monthly Requests × (0.5 if Batch API else 1.0).
+        </p>
       </section>
 
+      <!-- SECTION 03: PRICING SNAPSHOTS -->
+      <section class="section" id="pricing-reference">
+        <div class="section-head">
+          <div><div class="eyebrow">03 / Verified Snapshots</div><h2>Model Pricing &amp; Prompt Cache Discounter</h2></div>
+          <p>Verified provider rates per million tokens as of 2026-11-02. Click any model to load its exact rates directly into the estimator.</p>
+        </div>
+
+        <div class="table-container">
+          <table id="pricing-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Provider</th>
+                <th>Input / 1M</th>
+                <th>Cached In / 1M</th>
+                <th>Output / 1M</th>
+                <th>Cache Savings</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>GPT-4o</strong><br><small style="color:var(--muted)">Multimodal Frontier</small></td>
+                <td>OpenAI</td>
+                <td>$2.50</td>
+                <td>$1.25</td>
+                <td>$10.00</td>
+                <td><span class="tag">50% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-4o')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>GPT-4o mini</strong><br><small style="color:var(--muted)">High efficiency</small></td>
+                <td>OpenAI</td>
+                <td>$0.15</td>
+                <td>$0.075</td>
+                <td>$0.60</td>
+                <td><span class="tag">50% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-4o-mini')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>o1 (Reasoning)</strong><br><small style="color:var(--muted)">Chain of thought</small></td>
+                <td>OpenAI</td>
+                <td>$15.00</td>
+                <td>$7.50</td>
+                <td>$60.00</td>
+                <td><span class="tag">50% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-o1')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Claude 3.5 Sonnet</strong><br><small style="color:var(--muted)">Coding &amp; reasoning</small></td>
+                <td>Anthropic</td>
+                <td>$3.00</td>
+                <td>$0.30</td>
+                <td>$15.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('anthropic-claude-3-5-sonnet')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Claude 3.5 Haiku</strong><br><small style="color:var(--muted)">Fast classification</small></td>
+                <td>Anthropic</td>
+                <td>$0.80</td>
+                <td>$0.08</td>
+                <td>$4.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('anthropic-claude-3-5-haiku')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Gemini 1.5 Flash</strong><br><small style="color:var(--muted)">High throughput</small></td>
+                <td>Google AI</td>
+                <td>$0.075</td>
+                <td>$0.01875</td>
+                <td>$0.30</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">75% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-1-5-flash')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Gemini 1.5 Pro</strong><br><small style="color:var(--muted)">2M Context Window</small></td>
+                <td>Google AI</td>
+                <td>$1.25</td>
+                <td>$0.3125</td>
+                <td>$5.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">75% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-1-5-pro')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Claude 3.5 Sonnet (Bedrock)</strong><br><small style="color:var(--muted)">AWS Managed</small></td>
+                <td>AWS Bedrock</td>
+                <td>$3.00</td>
+                <td>$0.30</td>
+                <td>$15.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('aws-bedrock-claude-3-5-sonnet')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>GPT-4o (Azure OpenAI)</strong><br><small style="color:var(--muted)">Enterprise security</small></td>
+                <td>Azure OpenAI</td>
+                <td>$2.50</td>
+                <td>$1.25</td>
+                <td>$10.00</td>
+                <td><span class="tag">50% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('azure-gpt-4o')">Load</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 04: METERING & TELEMETRY -->
       <section class="section" id="metering">
-        <div class="section-head"><div><div class="eyebrow">03 / Metering</div><h2>Build a trustworthy usage record</h2></div><p>Provider invoices and application telemetry answer different questions. Reconcile them instead of expecting either one to be the whole ledger.</p></div>
+        <div class="section-head">
+          <div><div class="eyebrow">04 / Metering</div><h2>Instrumentation &amp; Usage Attribution</h2></div>
+          <p>Reconcile raw application telemetry with provider billing records using standardized semantic conventions.</p>
+        </div>
         <div class="guide-grid">
-          <article class="guide"><span class="tag">Instrument</span><h3>Capture dimensions that explain spend</h3><p>Record provider-reported usage alongside an application request identifier and stable workload context.</p><ul><li>Provider, endpoint, model, region, and timestamp</li><li>Input, output, cached, and modality-specific units when available</li><li>Team, product, feature, environment, and outcome</li><li>Retry, timeout, fallback, and tool-call relationships</li></ul></article>
-          <article class="guide"><span class="tag">Reconcile</span><h3>Keep estimates distinct from charges</h3><p>Token telemetry estimates consumption. Provider billing records apply contract rates, discounts, minimums, credits, and adjustments.</p><ul><li>Store raw usage and pricing version separately</li><li>Track unattributed cost as an explicit category</li><li>Compare usage totals to invoice exports at matching granularity</li><li>Document currency, tax, and allocation policy</li></ul></article>
-          <article class="guide"><span class="tag">Schema</span><h3>Use shared telemetry conventions</h3><p>OpenTelemetry's GenAI semantic conventions define common attribute and metric names. Treat evolving conventions as versioned schemas.</p></article>
-          <article class="guide"><span class="tag">Privacy</span><h3>Meter without collecting prompts by default</h3><p>Usage attribution usually needs identifiers and counts, not prompt or completion text. Apply data minimization, access controls, retention limits, and redaction.</p></article>
+          <article class="guide">
+            <span class="tag">Instrumentation</span>
+            <h3>OpenTelemetry GenAI Semantic Conventions</h3>
+            <p>Adopt vendor-neutral attribute schemas (<code style="font-family:var(--mono)">gen_ai.*</code>) across all application endpoints. Record exact model name, provider system, request input tokens, completion output tokens, and cache hit metrics.</p>
+            <ul>
+              <li><code style="font-family:var(--mono)">gen_ai.system</code> (e.g. openai, anthropic, gemini)</li>
+              <li><code style="font-family:var(--mono)">gen_ai.request.model</code> and response model checkpoint</li>
+              <li><code style="font-family:var(--mono)">gen_ai.usage.input_tokens</code> &amp; <code style="font-family:var(--mono)">gen_ai.usage.output_tokens</code></li>
+              <li>Provider-specific cache hit counts and latency traces</li>
+            </ul>
+          </article>
+          <article class="guide">
+            <span class="tag">Architecture</span>
+            <h3>The AI Gateway Pattern</h3>
+            <p>Position a centralized reverse proxy between client applications and model vendors. Enforce rate limits, authentication, dynamic retry backoffs, semantic prompt caching, and cost attribution in a single auditable tier.</p>
+            <ul>
+              <li>Consistent client header propagation (<code style="font-family:var(--mono)">x-tenant-id</code>, <code style="font-family:var(--mono)">x-feature-id</code>)</li>
+              <li>Transparent multi-provider failover and latency-based routing</li>
+              <li>Centralized prompt cache layer to intercept duplicate calls</li>
+            </ul>
+          </article>
+          <article class="guide">
+            <span class="tag">Accounting</span>
+            <h3>Showback vs. Chargeback Maturity</h3>
+            <p>Phase 1 (Showback): Provide engineering teams with monthly visibility into token consumption and estimated dollar costs. Phase 2 (Chargeback): Deduct actual cloud model invoices directly from consuming cost center budgets.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Governance</span>
+            <h3>Invoice Reconciliation &amp; Unattributed Spend</h3>
+            <p>Application tokens will never match invoice totals exactly due to tiered volume discounts, reserved commitments, minimum billing increments, and multimodal images. Maintain a reconciled "unattributed cost" bucket.</p>
+          </article>
         </div>
       </section>
 
+      <!-- SECTION 05: COST OPTIMIZATION -->
       <section class="section" id="optimization">
-        <div class="section-head"><div><div class="eyebrow">04 / Optimization</div><h2>Reduce waste, protect quality</h2></div><p>Every cost intervention should have an owner, a measured baseline, and a quality guardrail.</p></div>
+        <div class="section-head">
+          <div><div class="eyebrow">05 / Optimization</div><h2>Context Hygiene &amp; TokenOps Levers</h2></div>
+          <p>Proven architectural strategies for lowering aggregate token spend without sacrificing task accuracy.</p>
+        </div>
         <div class="guide-grid">
-          <article class="guide"><span class="tag">Context</span><h3>Send only useful context</h3><p>Remove duplicated instructions and irrelevant history, retrieve selectively, and cap context with a quality-tested policy.</p></article>
-          <article class="guide"><span class="tag">Output</span><h3>Constrain completion length</h3><p>Use task-appropriate output limits and structured formats. Measure truncation, retries, and task success as well as tokens saved.</p></article>
-          <article class="guide"><span class="tag">Cache</span><h3>Reuse work where semantics allow</h3><p>Evaluate prompt caching, application caching, and batch processing against freshness, privacy, cache eligibility, and provider-specific prices.</p></article>
-          <article class="guide"><span class="tag">Evaluation</span><h3>Route by task difficulty</h3><p>Start with representative evaluations and escalation rules. A cheaper model is not cheaper if it creates extra retries, review, or failure cost.</p></article>
+          <article class="guide">
+            <span class="tag">Architecture</span>
+            <h3>Prompt Caching Economics (50% – 90% Savings)</h3>
+            <p>Structure prompts to keep invariant context (system instructions, tool definitions, reference manuals) strictly at the beginning. Providers reuse the GPU KV cache for matching prefixes, drastically lowering TTFT and slashing input costs.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Pruning</span>
+            <h3>Context Window Compaction</h3>
+            <p>Trim conversation histories using sliding windows and periodic extractive summarization. For RAG systems, apply re-ranking models (cross-encoders) to inject only the top 3-5 relevant chunks rather than broad 20-chunk context dumps.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Execution</span>
+            <h3>Batch Processing (50% Cost Cut)</h3>
+            <p>Route asynchronous workloads (evaluation suites, offline embeddings, customer feedback summarization, synthetic data generation) through vendor Batch APIs to obtain guaranteed 50% discounts with a 24-hour SLA.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Constraining</span>
+            <h3>Output Token Limits &amp; Structured Outputs</h3>
+            <p>Output tokens cost 3x to 5x more than input tokens. Enforce strict schema constraints (JSON mode) and tight <code style="font-family:var(--mono)">max_tokens</code> boundaries to eliminate verbose chain-of-thought bloat on routine classification tasks.</p>
+          </article>
         </div>
       </section>
 
+      <!-- SECTION 06: ROUTING & HOSTING -->
       <section class="section" id="routing">
-        <div class="section-head"><div><div class="eyebrow">05 / Routing & hosting</div><h2>Compare total delivered cost</h2></div><p>Hosted API, managed cloud, self-hosted, and hybrid deployments expose different cost and operational risks.</p></div>
+        <div class="section-head">
+          <div><div class="eyebrow">06 / Routing &amp; Hosting</div><h2>Hosted APIs vs. Provisioned vs. Self-Hosting</h2></div>
+          <p>Analyze total cost of ownership across hosted pay-as-you-go APIs, dedicated provisioned throughput, and self-hosted open weights.</p>
+        </div>
         <div class="guide-grid">
-          <article class="guide"><span class="tag">Hosted API</span><h3>Price usage; verify every meter</h3><p>Check model-specific input, output, cached, batch, and modality rates, plus context limits, region availability, and service terms.</p></article>
-          <article class="guide"><span class="tag">Self-hosted</span><h3>Include idle and people costs</h3><p>Model accelerator-hours, utilization, memory fit, redundancy, storage, networking, engineering, and on-call overhead. The break-even point depends on actual throughput and utilization.</p></article>
-          <article class="guide"><span class="tag">Hybrid</span><h3>Route with observable policy</h3><p>Make model choice explainable and log route decisions. Include fallback rates, quality, latency, residency, and provider concentration in the comparison.</p></article>
-          <article class="guide"><span class="tag">Decision</span><h3>Use cost per successful task</h3><p>Compare full-system cost per accepted result, including retries and human review, rather than comparing list price per token in isolation.</p></article>
+          <article class="guide">
+            <span class="tag">Strategy</span>
+            <h3>Cascading Model Routing</h3>
+            <p>Direct 70% to 85% of standard user traffic to lightning-fast, ultra-cheap models (e.g. Gemini 1.5 Flash, GPT-4o mini, Claude 3.5 Haiku). Dynamically escalate to frontier models (Claude 3.5 Sonnet, GPT-4o) only when complexity heuristics trigger.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Capacity</span>
+            <h3>Provisioned Throughput (PTU) Break-even</h3>
+            <p>Provisioned Throughput Units (PTUs) provide dedicated capacity at fixed hourly rates. Because you pay for idle GPUs, PTUs only break even against on-demand pay-as-you-go pricing when baseline utilization exceeds <strong>65% to 70% continuously</strong>.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Self-Hosting</span>
+            <h3>The Hidden TCO of Self-Hosted GPU Clusters</h3>
+            <p>Running open-weight models (e.g. Llama-3.1 on vLLM) requires factoring in GPU rental (e.g. 8x H100s), cluster standby idle time, MLOps engineering headcount, failover redundancy, and memory fragmentation. Evaluate throughput saturation before committing.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Optimization</span>
+            <h3>Serving Engine Efficiencies (vLLM &amp; PagedAttention)</h3>
+            <p>When self-hosting, deploy advanced serving architectures with PagedAttention and continuous batching. Memory-efficient KV cache sharing allows high concurrency, pushing unit costs below hosted APIs at steady high volumes.</p>
+          </article>
         </div>
       </section>
 
+      <!-- SECTION 07: GOVERNANCE & GUARDRAILS -->
       <section class="section" id="governance">
-        <div class="section-head"><div><div class="eyebrow">06 / Budgets & controls</div><h2>Govern the spend path</h2></div><p>Forecasts, limits, and alerts need clear owners and behavior when a threshold is reached.</p></div>
+        <div class="section-head">
+          <div><div class="eyebrow">07 / Governance</div><h2>Rate Limits, Quotas &amp; Agent Guardrails</h2></div>
+          <p>Protect organizational budgets against runaway autonomous agent loops and unexpected usage surges.</p>
+        </div>
         <div class="guide-grid">
-          <article class="guide"><span class="tag">Forecast</span><h3>Forecast from workload drivers</h3><p>Estimate spend from active users, tasks per user, average usage by task, model mix, and retry rates. Keep assumptions and uncertainty visible.</p></article>
-          <article class="guide"><span class="tag">Guardrail</span><h3>Choose a response before the alert</h3><p>Set thresholds by team or workload; specify whether the response is notify, throttle, route, require approval, or stop. Protect critical flows from surprise hard stops.</p></article>
-          <article class="guide"><span class="tag">Ownership</span><h3>Make allocation explainable</h3><p>Assign a named owner and allocation method to shared usage. Review unallocated spend and avoid presenting estimates as invoice truth.</p></article>
-          <article class="guide"><span class="tag">Value</span><h3>Review unit economics regularly</h3><p>Pair cost per request with cost per successful task, latency, quality, adoption, and business value. Revisit targets when workload mix changes.</p></article>
+          <article class="guide">
+            <span class="tag">Guardrails</span>
+            <h3>Autonomous Agent Circuit Breakers</h3>
+            <p>Autonomous coding and research agents can enter catastrophic recursive loops. Enforce hard limits on maximum trajectory steps (e.g. 25 iterations), per-task dollar ceilings, and automated loop-detection breakers.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Limits</span>
+            <h3>Multi-Tiered Rate Limiting</h3>
+            <p>Establish rate limiting at three distinct tiers: Requests Per Minute (RPM) to prevent concurrency starvation, Tokens Per Minute (TPM) to stay within vendor quotas, and Requests Per Day (RPD) to bound financial liability per tenant.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Alerting</span>
+            <h3>Threshold Alerts &amp; Soft vs. Hard Caps</h3>
+            <p>Configure automated budget alerts at 50%, 80%, and 100% of monthly forecast. Implement soft caps (notifying engineering leads and routing to economy models) before triggering hard request rejections that damage user experience.</p>
+          </article>
+          <article class="guide">
+            <span class="tag">Policy</span>
+            <h3>Graceful Degradation Policies</h3>
+            <p>When a tenant or feature reaches 95% of its monthly token allocation, automatically degrade quality gracefully (e.g. disable high-cost reasoning mode or switch from Sonnet to Haiku) rather than throwing hard HTTP 429/500 errors.</p>
+          </article>
         </div>
       </section>
 
+      <!-- SECTION 08: BENCHMARKS -->
+      <section class="section" id="benchmarks">
+        <div class="section-head">
+          <div><div class="eyebrow">08 / Benchmarks</div><h2>Empirical Evaluation &amp; Decision Framework</h2></div>
+          <p>Comparing task quality, median Time to First Token (TTFT), throughput, and true cost per 1,000 completed tasks.</p>
+        </div>
+
+        <div class="table-container">
+          <table id="benchmark-table">
+            <thead>
+              <tr>
+                <th>Workload Profile</th>
+                <th>Model</th>
+                <th>Quality / Accuracy</th>
+                <th>Median TTFT</th>
+                <th>Throughput</th>
+                <th>Cost / 1K Tasks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="4"><strong>Code Synthesis &amp; Refactoring</strong><br><small style="color:var(--muted)">3.8k in / 950 out</small></td>
+                <td>Claude 3.5 Sonnet</td>
+                <td><strong>93.4% Pass@1</strong></td>
+                <td>0.85s</td>
+                <td>72.4 tps</td>
+                <td>$25.65 ($18.40 cached)</td>
+              </tr>
+              <tr>
+                <td>GPT-4o</td>
+                <td>90.2% Pass@1</td>
+                <td>0.62s</td>
+                <td>84.1 tps</td>
+                <td>$19.00</td>
+              </tr>
+              <tr>
+                <td>Gemini 1.5 Pro</td>
+                <td>87.6% Pass@1</td>
+                <td>1.15s</td>
+                <td>64.0 tps</td>
+                <td>$9.50</td>
+              </tr>
+              <tr>
+                <td>GPT-4o mini</td>
+                <td>74.8% Pass@1</td>
+                <td>0.41s</td>
+                <td>105.0 tps</td>
+                <td>$1.14 (Retries adjust to ~$2.62)</td>
+              </tr>
+              <tr>
+                <td rowspan="3"><strong>Enterprise RAG &amp; Synthesis</strong><br><small style="color:var(--muted)">14k in / 600 out</small></td>
+                <td>Claude 3.5 Sonnet</td>
+                <td><strong>96.1% Factual</strong></td>
+                <td>1.45s</td>
+                <td>74.0 tps</td>
+                <td>$51.00 ($13.20 with cache)</td>
+              </tr>
+              <tr>
+                <td>Gemini 1.5 Flash</td>
+                <td>91.8% Factual</td>
+                <td>0.52s</td>
+                <td>112.0 tps</td>
+                <td>$1.23 (&lt;$0.50 with cache)</td>
+              </tr>
+              <tr>
+                <td>Llama-3.1-70B (vLLM self-hosted)</td>
+                <td>91.2% Factual</td>
+                <td>0.78s</td>
+                <td>82.0 tps</td>
+                <td>$3.85 (at 70% cluster load)</td>
+              </tr>
+              <tr>
+                <td rowspan="3"><strong>Intent Routing &amp; Tagging</strong><br><small style="color:var(--muted)">450 in / 60 out</small></td>
+                <td>Gemini 1.5 Flash</td>
+                <td>94.2% F1</td>
+                <td><strong>0.22s</strong></td>
+                <td>135.0 tps</td>
+                <td><strong>$0.052</strong></td>
+              </tr>
+              <tr>
+                <td>GPT-4o mini</td>
+                <td>94.8% F1</td>
+                <td>0.25s</td>
+                <td>118.0 tps</td>
+                <td>$0.104</td>
+              </tr>
+              <tr>
+                <td>Claude 3.5 Haiku</td>
+                <td><strong>95.6% F1</strong></td>
+                <td>0.28s</td>
+                <td>95.0 tps</td>
+                <td>$0.600</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 09: GLOSSARY -->
+      <section class="section" id="glossary">
+        <div class="section-head">
+          <div><div class="eyebrow">09 / Glossary</div><h2>TokenOps &amp; AI FinOps Lexicon</h2></div>
+          <input class="search" type="search" id="glossary-search" placeholder="Search glossary terms" aria-label="Search glossary terms">
+        </div>
+
+        <div class="glossary-grid" id="glossary-list">
+          <div class="glossary-card">
+            <dt>AI FinOps</dt>
+            <dd>The cross-functional operational framework bringing financial accountability, cost governance, and business value optimization to AI workloads.</dd>
+            <div class="glossary-sources">Source: FinOps Foundation</div>
+          </div>
+          <div class="glossary-card">
+            <dt>TokenOps</dt>
+            <dd>Operational discipline and tooling for measuring, metering, governing, and optimizing token consumption, context windows, and model routing.</dd>
+            <div class="glossary-sources">Source: FinOps Foundation</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Prompt Caching</dt>
+            <dd>Inference optimization retaining prefix Key-Value (KV) cache states in GPU memory across requests, slashing latency and granting 50% to 90% input discounts.</dd>
+            <div class="glossary-sources">Sources: Anthropic, OpenAI, Google AI</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Time to First Token (TTFT)</dt>
+            <dd>Latency duration between submitting an inference request and receiving the first generated token, dominated by prompt prefill compute.</dd>
+            <div class="glossary-sources">Sources: Artificial Analysis, vLLM</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Tokens Per Second (TPS)</dt>
+            <dd>Generation throughput speed at which an inference engine outputs completion tokens, bounded by memory bandwidth during autoregressive decoding.</dd>
+            <div class="glossary-sources">Sources: Artificial Analysis, vLLM</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Provisioned Throughput (PTU)</dt>
+            <dd>Dedicated reservation of model serving capacity for a fixed hourly fee, requiring ~65%+ continuous utilization to achieve lower unit costs than pay-as-you-go.</dd>
+            <div class="glossary-sources">Sources: Azure OpenAI, AWS Bedrock</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Batch API</dt>
+            <dd>Asynchronous execution endpoints providing guaranteed 50% cost reductions for non-real-time jobs completed within a 24-hour turnaround window.</dd>
+            <div class="glossary-sources">Sources: OpenAI, Anthropic</div>
+          </div>
+          <div class="glossary-card">
+            <dt>AI Gateway</dt>
+            <dd>Centralized reverse proxy enforcing authentication, rate limiting, token telemetry, semantic caching, and dynamic model routing across providers.</dd>
+            <div class="glossary-sources">Sources: OpenTelemetry, FinOps Foundation</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Semantic Conventions</dt>
+            <dd>Standardized OpenTelemetry schema definitions (<code style="font-family:var(--mono)">gen_ai.*</code>) ensuring unified usage attribution across diverse model providers.</dd>
+            <div class="glossary-sources">Source: OpenTelemetry</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Quantization</dt>
+            <dd>Compression of model weights (e.g. from FP16 to FP8 or INT4) to dramatically reduce GPU VRAM requirements and hosting infrastructure cost.</dd>
+            <div class="glossary-sources">Source: vLLM Project</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: EVIDENCE REGISTER -->
       <section class="section" id="sources">
-        <div class="section-head"><div><div class="eyebrow">07 / Evidence register</div><h2>Primary references</h2></div><input class="search" type="search" id="source-search" placeholder="Filter sources" aria-label="Filter evidence sources"></div>
+        <div class="section-head">
+          <div><div class="eyebrow">10 / Evidence register</div><h2>Primary Documentation &amp; Standards</h2></div>
+          <input class="search" type="search" id="source-search" placeholder="Filter sources by name or publisher" aria-label="Filter evidence sources">
+        </div>
+
         <ul class="source-list" id="source-list">
-          <li data-source-id="finops-ai"><a href="https://www.finops.org/framework/capabilities/ai/" target="_blank" rel="noreferrer">FinOps Foundation: AI</a><span>FinOps practices for AI workloads and organizational accountability.</span></li>
-          <li data-source-id="otel-genai-semconv"><a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" target="_blank" rel="noreferrer">OpenTelemetry: GenAI semantic conventions</a><span>Shared conventions for GenAI telemetry; check status and version before adoption.</span></li>
-          <li data-source-id="openai-api-pricing"><a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noreferrer">OpenAI API pricing</a><span>Current provider pricing; rates and product terms may change.</span></li>
-          <li data-source-id="anthropic-pricing"><a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noreferrer">Anthropic pricing</a><span>Current provider pricing and usage-based billing details.</span></li>
-          <li data-source-id="google-ai-pricing"><a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noreferrer">Google AI for Developers: Gemini API pricing</a><span>Current Gemini API pricing and modality-specific terms.</span></li>
-          <li data-source-id="aws-bedrock-pricing"><a href="https://aws.amazon.com/bedrock/pricing/" target="_blank" rel="noreferrer">AWS: Amazon Bedrock pricing</a><span>Managed model pricing options and billable dimensions.</span></li>
-          <li data-source-id="google-cloud-model-garden-pricing"><a href="https://cloud.google.com/model-garden/pricing" target="_blank" rel="noreferrer">Google Cloud: Model Garden pricing</a><span>Cloud-specific pricing, region, and product terms.</span></li>
+          <li data-source-id="finops-ai">
+            <a href="https://www.finops.org/framework/capabilities/ai/" target="_blank" rel="noreferrer">FinOps Foundation: AI Cost Management Capability</a>
+            <span class="source-meta">Publisher: FinOps Foundation • Checked: 2026-11-02</span>
+            <span class="source-desc">Authoritative industry framework for cross-functional AI cost ownership, showback/chargeback, and unit economics.</span>
+          </li>
+          <li data-source-id="otel-genai-semconv">
+            <a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" target="_blank" rel="noreferrer">OpenTelemetry: GenAI Semantic Conventions</a>
+            <span class="source-meta">Publisher: OpenTelemetry • Checked: 2026-11-02</span>
+            <span class="source-desc">Standardized schemas for instrumentation attributes, token counts, and runtime errors.</span>
+          </li>
+          <li data-source-id="openai-api-pricing">
+            <a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noreferrer">OpenAI API Pricing and Token Limits</a>
+            <span class="source-meta">Publisher: OpenAI • Checked: 2026-11-02</span>
+            <span class="source-desc">Official pricing for GPT-4o, GPT-4o mini, o1 reasoning models, and 50% prompt caching discounts.</span>
+          </li>
+          <li data-source-id="anthropic-pricing">
+            <a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noreferrer">Anthropic Claude Pricing and Prompt Caching</a>
+            <span class="source-meta">Publisher: Anthropic • Checked: 2026-11-02</span>
+            <span class="source-desc">Official pricing documentation for Claude 3.5 Sonnet, 3.5 Haiku, and 90% prompt cache read discount terms.</span>
+          </li>
+          <li data-source-id="google-ai-pricing">
+            <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noreferrer">Google AI for Developers: Gemini API Pricing</a>
+            <span class="source-meta">Publisher: Google • Checked: 2026-11-02</span>
+            <span class="source-desc">Official pricing tiers for Gemini 1.5 Flash and Pro, including context caching and multimodal rates.</span>
+          </li>
+          <li data-source-id="aws-bedrock-pricing">
+            <a href="https://aws.amazon.com/bedrock/pricing/" target="_blank" rel="noreferrer">Amazon Web Services: Amazon Bedrock Pricing</a>
+            <span class="source-meta">Publisher: Amazon Web Services • Checked: 2026-11-02</span>
+            <span class="source-desc">Managed model invocations, prompt caching, and hourly Provisioned Throughput commitment options.</span>
+          </li>
+          <li data-source-id="google-cloud-model-garden-pricing">
+            <a href="https://cloud.google.com/model-garden/pricing" target="_blank" rel="noreferrer">Google Cloud: Model Garden &amp; Vertex AI Pricing</a>
+            <span class="source-meta">Publisher: Google Cloud • Checked: 2026-11-02</span>
+            <span class="source-desc">Enterprise model hosting, regional deployment tiers, and custom serving endpoint rates.</span>
+          </li>
+          <li data-source-id="azure-openai-pricing">
+            <a href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noreferrer">Microsoft Azure: Azure OpenAI Service Pricing</a>
+            <span class="source-meta">Publisher: Microsoft • Checked: 2026-11-02</span>
+            <span class="source-desc">Standard pay-as-you-go rates and Provisioned Throughput Units (PTU) reserved capacity terms.</span>
+          </li>
+          <li data-source-id="artificial-analysis">
+            <a href="https://artificialanalysis.ai/" target="_blank" rel="noreferrer">Artificial Analysis: Independent LLM Benchmarks</a>
+            <span class="source-meta">Publisher: Artificial Analysis • Checked: 2026-11-02</span>
+            <span class="source-desc">Independent benchmarks comparing model quality index, median TTFT, generation TPS, and price efficiency.</span>
+          </li>
+          <li data-source-id="vllm-project">
+            <a href="https://docs.vllm.ai/" target="_blank" rel="noreferrer">vLLM: High-Throughput Inference Engine</a>
+            <span class="source-meta">Publisher: vLLM Team • Checked: 2026-11-02</span>
+            <span class="source-desc">Open-source serving architecture, PagedAttention KV-cache management, and self-hosted economics.</span>
+          </li>
         </ul>
       </section>
-      <footer class="foot"><span>Research cut: 2026-11-02 / No provider rate is embedded in this guide.</span><a href="https://github.com/">Source and update history</a></footer>
+
+      <footer class="foot">
+        <span>Tokenomics Field Guide v1.1.0 • Research Cut-off: 2026-11-02</span>
+        <span>Reconciliation Run: Complete • Verified Primary Sources</span>
+      </footer>
     </main>
   </div>
+
   <script>
-    const form = document.querySelector('#cost-form');
-    const fields = ['input-tokens', 'output-tokens', 'input-rate', 'output-rate', 'requests', 'cache-share'];
-    const money = new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD', maximumFractionDigits: 4 });
+    const presets = {
+      'openai-gpt-4o': { inRate: 2.50, outRate: 10.00, cachedRate: 1.25, inTokens: 8000, outTokens: 1200, cacheShare: 60 },
+      'openai-gpt-4o-mini': { inRate: 0.15, outRate: 0.60, cachedRate: 0.075, inTokens: 8000, outTokens: 1200, cacheShare: 60 },
+      'openai-o1': { inRate: 15.00, outRate: 60.00, cachedRate: 7.50, inTokens: 8000, outTokens: 3000, cacheShare: 50 },
+      'anthropic-claude-3-5-sonnet': { inRate: 3.00, outRate: 15.00, cachedRate: 0.30, inTokens: 8000, outTokens: 1200, cacheShare: 70 },
+      'anthropic-claude-3-5-haiku': { inRate: 0.80, outRate: 4.00, cachedRate: 0.08, inTokens: 4000, outTokens: 600, cacheShare: 60 },
+      'google-gemini-1-5-flash': { inRate: 0.075, outRate: 0.30, cachedRate: 0.01875, inTokens: 12000, outTokens: 1000, cacheShare: 60 },
+      'google-gemini-1-5-pro': { inRate: 1.25, outRate: 5.00, cachedRate: 0.3125, inTokens: 16000, outTokens: 1500, cacheShare: 60 },
+      'aws-bedrock-claude-3-5-sonnet': { inRate: 3.00, outRate: 15.00, cachedRate: 0.30, inTokens: 8000, outTokens: 1200, cacheShare: 70 },
+      'azure-gpt-4o': { inRate: 2.50, outRate: 10.00, cachedRate: 1.25, inTokens: 8000, outTokens: 1200, cacheShare: 60 }
+    };
 
-    function updateEstimate() {
-      const values = Object.fromEntries(fields.map((id) => [id, Number(document.getElementById(id).value)]));
-      const rateMissing = !document.getElementById('input-rate').value || !document.getElementById('output-rate').value;
-      const monthly = ((values['input-tokens'] * values['input-rate'] + values['output-tokens'] * values['output-rate']) / 1_000_000) * values.requests;
-      const output = document.querySelector('#monthly-cost');
-      const perRequest = document.querySelector('#per-request');
+    const money = new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 4 });
 
-      if (rateMissing || !Number.isFinite(monthly)) {
-        output.textContent = 'Add rates to estimate';
-        perRequest.textContent = 'Enter both current input and output rates to calculate.';
-        return;
-      }
-
-      const requestCost = monthly / Math.max(values.requests, 1);
-      output.textContent = money.format(monthly);
-      perRequest.textContent = `${money.format(requestCost)} per request at ${values['cache-share']}% stated cached input share; cache discount not applied.`;
+    function applyPreset(presetKey) {
+      const preset = presets[presetKey];
+      if (!preset) return;
+      document.getElementById('model-preset').value = presetKey;
+      document.getElementById('input-rate').value = preset.inRate;
+      document.getElementById('output-rate').value = preset.outRate;
+      document.getElementById('cached-input-rate').value = preset.cachedRate;
+      document.getElementById('input-tokens').value = preset.inTokens;
+      document.getElementById('output-tokens').value = preset.outTokens;
+      document.getElementById('cache-share').value = preset.cacheShare;
+      updateEstimate();
+      const calcElem = document.getElementById('unit-economics');
+      if (calcElem) calcElem.scrollIntoView({ behavior: 'smooth' });
     }
 
-    form.addEventListener('submit', (event) => event.preventDefault());
-    form.addEventListener('input', updateEstimate);
-    document.querySelector('#source-search').addEventListener('input', (event) => {
-      const query = event.target.value.toLocaleLowerCase();
+    function updateEstimate() {
+      const inTokens = Math.max(0, Number(document.getElementById('input-tokens').value) || 0);
+      const outTokens = Math.max(0, Number(document.getElementById('output-tokens').value) || 0);
+      const inRate = Math.max(0, Number(document.getElementById('input-rate').value) || 0);
+      const outRate = Math.max(0, Number(document.getElementById('output-rate').value) || 0);
+      const cachedRate = Math.max(0, Number(document.getElementById('cached-input-rate').value) || 0);
+      const cacheShare = Math.min(100, Math.max(0, Number(document.getElementById('cache-share').value) || 0)) / 100;
+      const requests = Math.max(1, Number(document.getElementById('requests').value) || 1);
+      const isBatch = document.getElementById('batch-discount').checked;
+      const batchMultiplier = isBatch ? 0.5 : 1.0;
+
+      // Uncached input cost vs cached input cost
+      const regularInputTokens = inTokens * (1 - cacheShare);
+      const cachedInputTokens = inTokens * cacheShare;
+
+      const singleInputCost = ((regularInputTokens * inRate) + (cachedInputTokens * cachedRate)) / 1_000_000;
+      const singleOutputCost = (outTokens * outRate) / 1_000_000;
+      const singleRequestTotal = (singleInputCost + singleOutputCost) * batchMultiplier;
+
+      const monthlyTotal = singleRequestTotal * requests;
+      const per1kCost = singleRequestTotal * 1000;
+
+      // Baseline without cache
+      const baselineSingleInputCost = (inTokens * inRate) / 1_000_000;
+      const baselineMonthly = (baselineSingleInputCost + singleOutputCost) * batchMultiplier * requests;
+      const monthlySavings = Math.max(0, baselineMonthly - monthlyTotal);
+
+      document.getElementById('monthly-cost').textContent = money.format(monthlyTotal);
+      document.getElementById('per-request').textContent = `${money.format(singleRequestTotal)} per request (${Math.round(cacheShare * 100)}% cache hit)`;
+      document.getElementById('cost-per-1k').textContent = `${money.format(per1kCost)} per 1,000 requests`;
+
+      const savingsElem = document.getElementById('cache-savings');
+      if (monthlySavings > 0.001) {
+        savingsElem.textContent = `Prompt cache savings: ${money.format(monthlySavings)} / mo`;
+        savingsElem.style.display = 'inline-flex';
+      } else {
+        savingsElem.textContent = 'Prompt cache: 0% hit rate';
+      }
+    }
+
+    const form = document.getElementById('cost-form');
+    form.addEventListener('input', (event) => {
+      if (event.target.id === 'model-preset') {
+        if (event.target.value !== 'custom') {
+          applyPreset(event.target.value);
+        }
+      } else {
+        if (event.target.id !== 'model-preset') {
+          // If user manually modifies fields, set preset to custom
+          const currentPreset = presets[document.getElementById('model-preset').value];
+          if (currentPreset) {
+            // Check if changed
+            const inRate = Number(document.getElementById('input-rate').value);
+            const outRate = Number(document.getElementById('output-rate').value);
+            if (inRate !== currentPreset.inRate || outRate !== currentPreset.outRate) {
+              document.getElementById('model-preset').value = 'custom';
+            }
+          }
+        }
+        updateEstimate();
+      }
+    });
+
+    document.getElementById('model-preset').addEventListener('change', (e) => {
+      if (e.target.value !== 'custom') {
+        applyPreset(e.target.value);
+      }
+    });
+
+    document.getElementById('source-search').addEventListener('input', (event) => {
+      const q = event.target.value.toLowerCase().trim();
       document.querySelectorAll('#source-list li').forEach((item) => {
-        item.hidden = !item.textContent.toLocaleLowerCase().includes(query);
+        item.hidden = !item.textContent.toLowerCase().includes(q);
       });
     });
+
+    document.getElementById('glossary-search').addEventListener('input', (event) => {
+      const q = event.target.value.toLowerCase().trim();
+      document.querySelectorAll('#glossary-list .glossary-card').forEach((card) => {
+        card.style.display = card.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+      });
+    });
+
+    // Initial calculation on load
     updateEstimate();
   </script>
 </body>

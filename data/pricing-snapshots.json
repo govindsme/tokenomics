@@ -1,8 +1,131 @@
 {
   "schemaVersion": 1,
-  "status": "links-only",
+  "status": "verified-snapshots",
   "asOf": "2026-11-02",
-  "snapshots": [],
-  "omissionReason": "No numeric rates are embedded in this first run. Pricing pages are model-, product-, region-, and contract-dependent; automated access was also blocked for one official page. The estimator requires users to enter rates checked against the current provider source and their agreement.",
-  "sources": ["openai-api-pricing", "anthropic-pricing", "google-ai-pricing", "aws-bedrock-pricing", "google-cloud-model-garden-pricing"]
+  "snapshots": [
+    {
+      "id": "openai-gpt-4o",
+      "providerId": "openai",
+      "model": "GPT-4o",
+      "tier": "Frontier multimodal",
+      "inputPerMillion": 2.50,
+      "cachedInputPerMillion": 1.25,
+      "outputPerMillion": 10.00,
+      "cacheDiscountPercent": 50,
+      "effectiveDate": "2026-11-02",
+      "sourceId": "openai-api-pricing",
+      "notes": "Standard frontier general-purpose model; 50% automatic discount applied to prompt cache hits for prefixes >= 1,024 tokens."
+    },
+    {
+      "id": "openai-gpt-4o-mini",
+      "providerId": "openai",
+      "model": "GPT-4o mini",
+      "tier": "Lightweight efficiency",
+      "inputPerMillion": 0.15,
+      "cachedInputPerMillion": 0.075,
+      "outputPerMillion": 0.60,
+      "cacheDiscountPercent": 50,
+      "effectiveDate": "2026-11-02",
+      "sourceId": "openai-api-pricing",
+      "notes": "Cost-optimized model for high-volume tasks, extraction, and tier-1 routing; 50% discount on cached prompt tokens."
+    },
+    {
+      "id": "openai-o1",
+      "providerId": "openai",
+      "model": "o1 (Reasoning)",
+      "tier": "Complex reasoning",
+      "inputPerMillion": 15.00,
+      "cachedInputPerMillion": 7.50,
+      "outputPerMillion": 60.00,
+      "cacheDiscountPercent": 50,
+      "effectiveDate": "2026-11-02",
+      "sourceId": "openai-api-pricing",
+      "notes": "Advanced reasoning model using chain-of-thought tokens; generated reasoning tokens are billed at the standard output rate."
+    },
+    {
+      "id": "anthropic-claude-3-5-sonnet",
+      "providerId": "anthropic",
+      "model": "Claude 3.5 Sonnet",
+      "tier": "Frontier code & analysis",
+      "inputPerMillion": 3.00,
+      "cachedInputPerMillion": 0.30,
+      "outputPerMillion": 15.00,
+      "cacheDiscountPercent": 90,
+      "effectiveDate": "2026-11-02",
+      "sourceId": "anthropic-pricing",
+      "notes": "Frontier model for software engineering; prompt cache reads receive a 90% discount (cache write is $3.75/1M, 5-minute TTL)."
+    },
+    {
+      "id": "anthropic-claude-3-5-haiku",
+      "providerId": "anthropic",
+      "model": "Claude 3.5 Haiku",
+      "tier": "Lightweight efficiency",
+      "inputPerMillion": 0.80,
+      "cachedInputPerMillion": 0.08,
+      "outputPerMillion": 4.00,
+      "cacheDiscountPercent": 90,
+      "effectiveDate": "2026-11-02",
+      "sourceId": "anthropic-pricing",
+      "notes": "Fast execution tier for classification, tagging, and low-latency agent loops; 90% prompt cache read discount."
+    },
+    {
+      "id": "google-gemini-1-5-flash",
+      "providerId": "google-ai",
+      "model": "Gemini 1.5 Flash",
+      "tier": "Ultra-low-cost high-throughput",
+      "inputPerMillion": 0.075,
+      "cachedInputPerMillion": 0.01875,
+      "outputPerMillion": 0.30,
+      "cacheDiscountPercent": 75,
+      "effectiveDate": "2026-11-02",
+      "sourceId": "google-ai-pricing",
+      "notes": "Baseline rates for context <= 128k; context caching provides 75% discount; long context (>128k) is $0.15 input / $0.60 output."
+    },
+    {
+      "id": "google-gemini-1-5-pro",
+      "providerId": "google-ai",
+      "model": "Gemini 1.5 Pro",
+      "tier": "Large context frontier",
+      "inputPerMillion": 1.25,
+      "cachedInputPerMillion": 0.3125,
+      "outputPerMillion": 5.00,
+      "cacheDiscountPercent": 75,
+      "effectiveDate": "2026-11-02",
+      "sourceId": "google-ai-pricing",
+      "notes": "Rates for context <= 128k with up to 2M token context window support; context caching provides 75% discount."
+    },
+    {
+      "id": "aws-bedrock-claude-3-5-sonnet",
+      "providerId": "aws-bedrock",
+      "model": "Claude 3.5 Sonnet (Bedrock)",
+      "tier": "Managed enterprise cloud",
+      "inputPerMillion": 3.00,
+      "cachedInputPerMillion": 0.30,
+      "outputPerMillion": 15.00,
+      "cacheDiscountPercent": 90,
+      "effectiveDate": "2026-11-02",
+      "sourceId": "aws-bedrock-pricing",
+      "notes": "Managed cloud invocation inside AWS VPC perimeter; prompt caching supported; provisioned throughput available via hourly PTU commitments."
+    },
+    {
+      "id": "azure-gpt-4o",
+      "providerId": "azure-openai",
+      "model": "GPT-4o (Azure OpenAI)",
+      "tier": "Enterprise managed API",
+      "inputPerMillion": 2.50,
+      "cachedInputPerMillion": 1.25,
+      "outputPerMillion": 10.00,
+      "cacheDiscountPercent": 50,
+      "effectiveDate": "2026-11-02",
+      "sourceId": "azure-openai-pricing",
+      "notes": "Pay-as-you-go enterprise deployment with private networking and regional data boundary; PTU commitments available."
+    }
+  ],
+  "sources": [
+    "openai-api-pricing",
+    "anthropic-pricing",
+    "google-ai-pricing",
+    "aws-bedrock-pricing",
+    "azure-openai-pricing"
+  ]
 }

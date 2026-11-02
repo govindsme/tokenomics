@@ -1,12 +1,86 @@
 {
   "schemaVersion": 1,
   "topics": [
-    {"id":"operating-picture","title":"Operating picture","anchor":"overview","level":"introductory","sourceIds":["finops-ai"]},
-    {"id":"unit-economics","title":"Unit economics","anchor":"unit-economics","level":"practitioner","sourceIds":["openai-api-pricing","anthropic-pricing","google-ai-pricing"]},
-    {"id":"metering","title":"Metering and attribution","anchor":"metering","level":"practitioner","sourceIds":["otel-genai-semconv","finops-ai"]},
-    {"id":"optimization","title":"Cost optimization","anchor":"optimization","level":"practitioner","sourceIds":["finops-ai"]},
-    {"id":"routing","title":"Routing and hosting economics","anchor":"routing","level":"practitioner","sourceIds":["finops-ai"]},
-    {"id":"governance","title":"Budgets and controls","anchor":"governance","level":"practitioner","sourceIds":["finops-ai"]},
-    {"id":"evidence","title":"Evidence register","anchor":"sources","level":"reference","sourceIds":["finops-ai","otel-genai-semconv","openai-api-pricing","anthropic-pricing","google-ai-pricing","aws-bedrock-pricing","google-cloud-model-garden-pricing"]}
+    {
+      "id": "operating-picture",
+      "title": "Operating picture",
+      "anchor": "overview",
+      "level": "introductory",
+      "sourceIds": ["finops-ai"]
+    },
+    {
+      "id": "unit-economics",
+      "title": "Unit economics & calculator",
+      "anchor": "unit-economics",
+      "level": "practitioner",
+      "sourceIds": ["openai-api-pricing", "anthropic-pricing", "google-ai-pricing"]
+    },
+    {
+      "id": "pricing-reference",
+      "title": "Verified pricing snapshots",
+      "anchor": "pricing-reference",
+      "level": "reference",
+      "sourceIds": ["openai-api-pricing", "anthropic-pricing", "google-ai-pricing", "aws-bedrock-pricing", "azure-openai-pricing"]
+    },
+    {
+      "id": "metering",
+      "title": "Metering & telemetry",
+      "anchor": "metering",
+      "level": "practitioner",
+      "sourceIds": ["otel-genai-semconv", "finops-ai"]
+    },
+    {
+      "id": "optimization",
+      "title": "Cost & context optimization",
+      "anchor": "optimization",
+      "level": "practitioner",
+      "sourceIds": ["anthropic-pricing", "openai-api-pricing", "google-ai-pricing", "finops-ai"]
+    },
+    {
+      "id": "routing",
+      "title": "Routing & hosting economics",
+      "anchor": "routing",
+      "level": "architect",
+      "sourceIds": ["vllm-project", "artificial-analysis", "aws-bedrock-pricing", "azure-openai-pricing"]
+    },
+    {
+      "id": "governance",
+      "title": "Budgets, quotas & guardrails",
+      "anchor": "governance",
+      "level": "governance",
+      "sourceIds": ["finops-ai", "otel-genai-semconv"]
+    },
+    {
+      "id": "benchmarks",
+      "title": "Benchmark evaluation framework",
+      "anchor": "benchmarks",
+      "level": "architect",
+      "sourceIds": ["artificial-analysis", "vllm-project"]
+    },
+    {
+      "id": "glossary",
+      "title": "TokenOps & FinOps glossary",
+      "anchor": "glossary",
+      "level": "reference",
+      "sourceIds": ["finops-ai", "otel-genai-semconv", "openai-api-pricing", "anthropic-pricing"]
+    },
+    {
+      "id": "evidence",
+      "title": "Evidence register",
+      "anchor": "sources",
+      "level": "reference",
+      "sourceIds": [
+        "finops-ai",
+        "otel-genai-semconv",
+        "openai-api-pricing",
+        "anthropic-pricing",
+        "google-ai-pricing",
+        "aws-bedrock-pricing",
+        "google-cloud-model-garden-pricing",
+        "azure-openai-pricing",
+        "artificial-analysis",
+        "vllm-project"
+      ]
+    }
   ]
 }

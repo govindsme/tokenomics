@@ -1,13 +1,95 @@
 {
   "schemaVersion": 1,
   "terms": [
-    {"term":"AI FinOps","definition":"The practice of bringing financial accountability and cross-functional cost management to AI workloads.","sourceIds":["finops-ai"]},
-    {"term":"TokenOps","definition":"Operational controls and practices for measuring, governing, and optimizing token-based AI consumption.","sourceIds":["finops-ai"]},
-    {"term":"Input token","definition":"A provider-metered text or other supported input unit sent to a model; exact counting and billing rules are provider-specific.","sourceIds":["openai-api-pricing","anthropic-pricing"]},
-    {"term":"Output token","definition":"A provider-metered generated unit; provider definitions and rates vary by model and product.","sourceIds":["openai-api-pricing","anthropic-pricing"]},
-    {"term":"Prompt caching","definition":"A provider or application mechanism for reusing eligible prompt content; behavior, eligibility, and pricing depend on implementation.","sourceIds":["openai-api-pricing","anthropic-pricing"]},
-    {"term":"Cost allocation","definition":"Assigning shared or direct costs to the teams, products, or workloads responsible for consumption.","sourceIds":["finops-ai"]},
-    {"term":"Unit economics","definition":"Cost and value measured against a consistent unit of workload or successful outcome.","sourceIds":["finops-ai"]},
-    {"term":"Semantic conventions","definition":"Shared names and meanings for telemetry attributes and metrics, maintained as part of a specification.","sourceIds":["otel-genai-semconv"]}
+    {
+      "term": "AI FinOps",
+      "definition": "The cross-functional operational framework and cultural practice that brings financial accountability, cost transparency, and business value optimization to AI and machine learning workloads.",
+      "sourceIds": ["finops-ai"]
+    },
+    {
+      "term": "TokenOps",
+      "definition": "The technical discipline of measuring, managing, governing, and optimizing token consumption, context windows, model routing, and prompt efficiency across generative AI applications.",
+      "sourceIds": ["finops-ai"]
+    },
+    {
+      "term": "Input Token",
+      "definition": "The basic atomic unit of text, code, or multimodal prompt data sent to an LLM for inference, metered and billed by providers according to model-specific rates.",
+      "sourceIds": ["openai-api-pricing", "anthropic-pricing"]
+    },
+    {
+      "term": "Output Token",
+      "definition": "The generated completion unit returned by a model (including internal chain-of-thought or reasoning tokens), typically billed at a 3x to 5x higher rate than input tokens due to autoregressive compute demands.",
+      "sourceIds": ["openai-api-pricing", "anthropic-pricing"]
+    },
+    {
+      "term": "Prompt Caching",
+      "definition": "An inference optimization where prefix Key-Value (KV) cache states are stored in accelerator memory across requests, reducing latency and discounting input token billing by 50% to 90%.",
+      "sourceIds": ["anthropic-pricing", "openai-api-pricing", "google-ai-pricing"]
+    },
+    {
+      "term": "Time To First Token (TTFT)",
+      "definition": "The latency interval between submitting an inference request and receiving the first generated token, dominated by prompt ingestion, prefill compute, and network transmission.",
+      "sourceIds": ["artificial-analysis", "vllm-project"]
+    },
+    {
+      "term": "Tokens Per Second (TPS)",
+      "definition": "The throughput speed at which an inference engine or model generates completion tokens once decoding has begun, reflecting decoding efficiency and memory bandwidth.",
+      "sourceIds": ["artificial-analysis", "vllm-project"]
+    },
+    {
+      "term": "Provisioned Throughput (PTU / Reserved Capacity)",
+      "definition": "A cloud pricing model where an organization reserves dedicated GPU capacity or throughput units for a fixed hourly or annual fee, offering guaranteed availability and consistent latency.",
+      "sourceIds": ["azure-openai-pricing", "aws-bedrock-pricing"]
+    },
+    {
+      "term": "Batch API",
+      "definition": "An asynchronous processing endpoint provided by model vendors that processes non-real-time requests (such as evaluations, embeddings, and batch summarization) within 24 hours at a 50% cost discount.",
+      "sourceIds": ["openai-api-pricing", "anthropic-pricing"]
+    },
+    {
+      "term": "Context Window Compaction",
+      "definition": "Techniques such as semantic pruning, summarization of dialogue history, and selective retrieval designed to minimize prompt tokens sent to an LLM without degrading context fidelity.",
+      "sourceIds": ["finops-ai"]
+    },
+    {
+      "term": "Model Routing",
+      "definition": "An architectural pattern where incoming prompts are classified by complexity, intent, or latency needs and dynamically routed to the most cost-effective model tier capable of completing the task.",
+      "sourceIds": ["artificial-analysis", "finops-ai"]
+    },
+    {
+      "term": "AI Gateway",
+      "definition": "A centralized reverse proxy positioned between client applications and model providers to enforce rate limits, authentication, unified telemetry, prompt caching, circuit breaking, and fallbacks.",
+      "sourceIds": ["otel-genai-semconv", "finops-ai"]
+    },
+    {
+      "term": "Showback vs Chargeback",
+      "definition": "Showback provides financial visibility and reporting to consuming teams without transferring internal budget, whereas Chargeback directly debits consuming cost centers for their measured AI consumption.",
+      "sourceIds": ["finops-ai"]
+    },
+    {
+      "term": "Unit Economics",
+      "definition": "Financial metrics that evaluate AI expenditure relative to direct business outcomes, such as cost per active user, cost per resolved customer inquiry, or cost per accepted code commit.",
+      "sourceIds": ["finops-ai"]
+    },
+    {
+      "term": "Semantic Conventions",
+      "definition": "Industry-standard attribute and metric naming schemas established by OpenTelemetry (under gen_ai.*) that ensure observability and cost attribution data remain consistent across multiple providers.",
+      "sourceIds": ["otel-genai-semconv"]
+    },
+    {
+      "term": "Quantization",
+      "definition": "Compressing model weights from full precision (FP16 or BF16) to lower bit precision (such as FP8, INT8, or INT4), drastically reducing GPU VRAM requirements and hosting costs with minimal quality degradation.",
+      "sourceIds": ["vllm-project"]
+    },
+    {
+      "term": "Continuous Batching",
+      "definition": "An inference engine serving technique that dynamically schedules and batches incoming requests at the token level rather than request level, maximizing GPU compute saturation and driving down unit cost.",
+      "sourceIds": ["vllm-project"]
+    },
+    {
+      "term": "Circuit Breaker",
+      "definition": "An automated stability control that interrupts execution or drops downstream requests when predefined cost thresholds, error rates, or recursive loop depths are detected in autonomous agents.",
+      "sourceIds": ["finops-ai"]
+    }
   ]
 }

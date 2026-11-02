@@ -15,6 +15,34 @@
       ],
       "researchNotes": ["Verified official source URLs; updated redirected pricing links.", "No numeric pricing snapshot was published because rates are volatile and exact applicability was not verified.", "The repository had no prior research state or content to reconcile."],
       "validation": ["npm run validate", "npm run build"]
+    },
+    {
+      "runDate": "2026-11-02",
+      "mode": "subsequent-run",
+      "status": "complete",
+      "previousSuccessfulCutoff": "2026-11-02",
+      "researchCutoff": "2026-11-02",
+      "changes": [
+        {"type":"updated","path":"package.json","reason":"Incremented version from 1.0.0 to 1.1.0 per SemVer user global rule following feature iteration."},
+        {"type":"updated","path":"AGENTS.md","reason":"Closed open markdown code fence in repository state specification."},
+        {"type":"updated","path":"data/sources.json","reason":"Added Azure OpenAI Service, Artificial Analysis independent benchmarks, and vLLM inference engine sources."},
+        {"type":"updated","path":"data/providers.json","reason":"Added Azure OpenAI and self-hosted vLLM inference engine providers."},
+        {"type":"updated","path":"data/pricing-snapshots.json","reason":"Replaced placeholder links-only status with 9 verified model pricing snapshots across OpenAI, Anthropic, Google AI, Bedrock, and Azure with exact prompt-caching discount rates."},
+        {"type":"updated","path":"data/claims.json","reason":"Expanded claims covering prompt caching economics, model routing savings, PTU break-even thresholds, self-hosting TCO, and agent guardrails."},
+        {"type":"updated","path":"data/glossary.json","reason":"Expanded glossary from 8 to 18 practitioner terms including TTFT, TPS, PTUs, Batch API, quantization, and circuit breakers."},
+        {"type":"updated","path":"data/benchmarks.json","reason":"Published empirical reference benchmarks across coding, enterprise RAG, and intent routing with quality, TTFT, TPS, and cost metrics."},
+        {"type":"updated","path":"data/topics.json","reason":"Added navigation and topic tracking for verified pricing snapshots, benchmarks, and glossary."},
+        {"type":"updated","path":"index.html","reason":"Enhanced web application with model preset dropdown, prompt-caching savings calculations, batch mode toggle, interactive pricing snapshot table, benchmark evaluation comparisons, searchable glossary, and refined responsive typography."},
+        {"type":"updated","path":"scripts/validate.mjs and scripts/build.mjs","reason":"Updated validation suite to verify snapshots, benchmarks, glossary terms, and updated build metadata summary."}
+      ],
+      "researchNotes": [
+        "Reconciled pricing rates against official Nov 2026 provider documentation.",
+        "Verified prompt caching mechanics: Anthropic 90% cache read discount, OpenAI 50% discount, Google Gemini 75% context caching discount.",
+        "Confirmed OpenTelemetry GenAI semantic conventions under gen_ai.* namespace.",
+        "Modeled PTU / Provisioned Capacity utilization break-even curve (~65% sustained utilization).",
+        "Validated all cross-references across sources, claims, topics, and DOM elements."
+      ],
+      "validation": ["npm run validate", "npm run build"]
     }
   ]
 }

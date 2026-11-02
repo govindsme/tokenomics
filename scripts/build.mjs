@@ -20,11 +20,20 @@ const sources = JSON.parse(readFileSync(resolve(dataOutput, 'sources.json'), 'ut
 const claims = JSON.parse(readFileSync(resolve(dataOutput, 'claims.json'), 'utf8'));
 const state = JSON.parse(readFileSync(resolve(dataOutput, 'research-state.json'), 'utf8'));
 const pricing = JSON.parse(readFileSync(resolve(dataOutput, 'pricing-snapshots.json'), 'utf8'));
+const glossary = JSON.parse(readFileSync(resolve(dataOutput, 'glossary.json'), 'utf8'));
+const benchmarks = JSON.parse(readFileSync(resolve(dataOutput, 'benchmarks.json'), 'utf8'));
+
 writeFileSync(resolve(output, 'research-summary.json'), `${JSON.stringify({
+  version: "1.1.0",
   researchCutoff: state.researchCutoff,
   sourceCount: sources.sources.length,
   claimCount: claims.claims.length,
-  pricingStatus: pricing.status
+  pricingStatus: pricing.status,
+  snapshotCount: pricing.snapshots?.length || 0,
+  glossaryCount: glossary.terms?.length || 0,
+  benchmarkCount: benchmarks.benchmarks?.length || 0,
+  builtAt: new Date().toISOString()
 }, null, 2)}\n`);
+
 writeFileSync(resolve(output, '.nojekyll'), '');
 console.log(`Built static site in ${output}`);

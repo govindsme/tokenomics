@@ -1,12 +1,95 @@
 {
   "schemaVersion": 1,
   "sources": [
-    {"id":"finops-ai","title":"FinOps Foundation: AI","url":"https://www.finops.org/framework/capabilities/ai/","publisher":"FinOps Foundation","sourceType":"framework","checkedAt":"2026-11-02","notes":"Framework guidance for applying FinOps practices to AI workloads."},
-    {"id":"otel-genai-semconv","title":"OpenTelemetry: GenAI semantic conventions","url":"https://opentelemetry.io/docs/specs/semconv/gen-ai/","publisher":"OpenTelemetry","sourceType":"technical-specification","checkedAt":"2026-11-02","notes":"GenAI telemetry conventions; check the current status and version before implementation."},
-    {"id":"openai-api-pricing","title":"OpenAI API pricing","url":"https://developers.openai.com/api/docs/pricing","publisher":"OpenAI","sourceType":"pricing-documentation","checkedAt":"2026-11-02","notes":"Official pricing page; the prior URL blocked automated access, so the canonical documentation URL was verified separately."},
-    {"id":"anthropic-pricing","title":"Anthropic pricing","url":"https://platform.claude.com/docs/en/about-claude/pricing","publisher":"Anthropic","sourceType":"pricing-documentation","checkedAt":"2026-11-02","notes":"Official pricing documentation; the former docs URL redirects here."},
-    {"id":"google-ai-pricing","title":"Gemini API pricing","url":"https://ai.google.dev/gemini-api/docs/pricing","publisher":"Google","sourceType":"pricing-documentation","checkedAt":"2026-11-02","notes":"Official Gemini API pricing documentation."},
-    {"id":"aws-bedrock-pricing","title":"Amazon Bedrock pricing","url":"https://aws.amazon.com/bedrock/pricing/","publisher":"Amazon Web Services","sourceType":"pricing-documentation","checkedAt":"2026-11-02","notes":"Official managed-model pricing page."},
-    {"id":"google-cloud-model-garden-pricing","title":"Google Cloud Model Garden pricing","url":"https://cloud.google.com/model-garden/pricing","publisher":"Google Cloud","sourceType":"pricing-documentation","checkedAt":"2026-11-02","notes":"Current destination of the former Vertex AI generative AI pricing URL."}
+    {
+      "id": "finops-ai",
+      "title": "FinOps Foundation: AI Cost Management Capability",
+      "url": "https://www.finops.org/framework/capabilities/ai/",
+      "publisher": "FinOps Foundation",
+      "sourceType": "framework",
+      "checkedAt": "2026-11-02",
+      "notes": "Framework guidance for applying FinOps practices, showback/chargeback, and unit economics to AI workloads."
+    },
+    {
+      "id": "otel-genai-semconv",
+      "title": "OpenTelemetry: GenAI Semantic Conventions",
+      "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
+      "publisher": "OpenTelemetry",
+      "sourceType": "technical-specification",
+      "checkedAt": "2026-11-02",
+      "notes": "Standardized attribute and metric definitions for AI instrumentation including gen_ai.system, model, usage tokens, and errors."
+    },
+    {
+      "id": "openai-api-pricing",
+      "title": "OpenAI API Pricing and Token Limits",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "publisher": "OpenAI",
+      "sourceType": "pricing-documentation",
+      "checkedAt": "2026-11-02",
+      "notes": "Official model pricing including GPT-4o, GPT-4o mini, o1 reasoning models, and prompt caching discounts."
+    },
+    {
+      "id": "anthropic-pricing",
+      "title": "Anthropic Claude Pricing and Prompt Caching",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "publisher": "Anthropic",
+      "sourceType": "pricing-documentation",
+      "checkedAt": "2026-11-02",
+      "notes": "Official Claude pricing including 3.5 Sonnet, 3.5 Haiku, and 90% prompt cache read discount terms."
+    },
+    {
+      "id": "google-ai-pricing",
+      "title": "Google AI for Developers: Gemini API Pricing",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "publisher": "Google",
+      "sourceType": "pricing-documentation",
+      "checkedAt": "2026-11-02",
+      "notes": "Official Gemini API pricing tiers for 1.5 Flash and 1.5 Pro, including context caching discounts and long-context rates."
+    },
+    {
+      "id": "aws-bedrock-pricing",
+      "title": "Amazon Web Services: Amazon Bedrock Pricing",
+      "url": "https://aws.amazon.com/bedrock/pricing/",
+      "publisher": "Amazon Web Services",
+      "sourceType": "pricing-documentation",
+      "checkedAt": "2026-11-02",
+      "notes": "Official managed-model pricing for Bedrock on-demand invocations and Provisioned Throughput hourly commitments."
+    },
+    {
+      "id": "google-cloud-model-garden-pricing",
+      "title": "Google Cloud: Model Garden & Vertex AI Pricing",
+      "url": "https://cloud.google.com/model-garden/pricing",
+      "publisher": "Google Cloud",
+      "sourceType": "pricing-documentation",
+      "checkedAt": "2026-11-02",
+      "notes": "Enterprise Vertex AI and Model Garden serving options, regional rates, and commitment options."
+    },
+    {
+      "id": "azure-openai-pricing",
+      "title": "Microsoft Azure: Azure OpenAI Service Pricing",
+      "url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "publisher": "Microsoft",
+      "sourceType": "pricing-documentation",
+      "checkedAt": "2026-11-02",
+      "notes": "Standard pay-as-you-go and Provisioned Throughput Units (PTU) reserved capacity for enterprise OpenAI models."
+    },
+    {
+      "id": "artificial-analysis",
+      "title": "Artificial Analysis: Independent LLM Benchmarks & Quality/Price Frontier",
+      "url": "https://artificialanalysis.ai/",
+      "publisher": "Artificial Analysis",
+      "sourceType": "benchmark-repository",
+      "checkedAt": "2026-11-02",
+      "notes": "Independent benchmarking of model quality indices, median Time To First Token (TTFT), generation tokens per second (TPS), and price efficiency."
+    },
+    {
+      "id": "vllm-project",
+      "title": "vLLM: High-Throughput and Memory-Efficient Inference Engine",
+      "url": "https://docs.vllm.ai/",
+      "publisher": "vLLM Team",
+      "sourceType": "technical-specification",
+      "checkedAt": "2026-11-02",
+      "notes": "Open-source serving architecture, PagedAttention KV-cache management, continuous batching, and self-hosted inference economics."
+    }
   ]
 }

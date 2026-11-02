@@ -105,3 +105,4 @@ data/
   update-history.json
   research-state.json
   benchmarks.json
+```

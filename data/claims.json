@@ -1,10 +1,85 @@
 {
   "schemaVersion": 1,
   "claims": [
-    {"id":"ai-finops-needs-cross-functional-ownership","statement":"AI FinOps requires collaboration between the teams that build, operate, govern, and fund AI workloads.","claimType":"framework-guidance","sourceIds":["finops-ai"],"checkedAt":"2026-11-02","scope":"Organizational practice; implementation varies by organization."},
-    {"id":"genai-telemetry-conventions-evolve","statement":"GenAI telemetry conventions should be adopted with explicit version and status awareness.","claimType":"technical-guidance","sourceIds":["otel-genai-semconv"],"checkedAt":"2026-11-02","scope":"Consult the current specification before instrumenting; semantic conventions can change."},
-    {"id":"provider-prices-are-product-specific","statement":"A provider price estimate must use the applicable model and product rates, not a provider-wide assumed token price.","claimType":"pricing-method","sourceIds":["openai-api-pricing","anthropic-pricing","google-ai-pricing","aws-bedrock-pricing","google-cloud-model-garden-pricing"],"checkedAt":"2026-11-02","scope":"Rates may also depend on region, modality, usage tier, discounts, and contract terms."},
-    {"id":"usage-estimates-are-not-invoices","statement":"Application token estimates should be reconciled with provider billing records before they are presented as actual cost.","claimType":"operational-guidance","sourceIds":["finops-ai","openai-api-pricing","anthropic-pricing"],"checkedAt":"2026-11-02","scope":"The site estimator calculates a token-rate estimate only and omits other billable units and contract adjustments."},
-    {"id":"optimize-against-outcomes","statement":"Cost optimizations should be assessed against task quality and successful outcomes, not token reduction alone.","claimType":"operational-guidance","sourceIds":["finops-ai"],"checkedAt":"2026-11-02","scope":"Recommended evaluation practice; select outcome measures appropriate to the workload."}
+    {
+      "id": "ai-finops-needs-cross-functional-ownership",
+      "statement": "AI FinOps requires structured collaboration between engineering, platform, product, finance, and security teams.",
+      "claimType": "framework-guidance",
+      "sourceIds": ["finops-ai"],
+      "checkedAt": "2026-11-02",
+      "scope": "Organizational practice; establishes clear showback, chargeback, and business value alignment for AI investments."
+    },
+    {
+      "id": "genai-telemetry-conventions-standardization",
+      "statement": "Standardizing telemetry attributes via OpenTelemetry GenAI semantic conventions prevents vendor lock-in and simplifies cross-model attribution.",
+      "claimType": "technical-guidance",
+      "sourceIds": ["otel-genai-semconv"],
+      "checkedAt": "2026-11-02",
+      "scope": "Implementation standard using gen_ai.* attributes for request, response, token usage, and error dimensions."
+    },
+    {
+      "id": "provider-prices-are-product-specific",
+      "statement": "Model billing requires exact model, tier, modality, and contract rates, rather than a generic blended token price assumption.",
+      "claimType": "pricing-method",
+      "sourceIds": ["openai-api-pricing", "anthropic-pricing", "google-ai-pricing", "aws-bedrock-pricing", "google-cloud-model-garden-pricing", "azure-openai-pricing"],
+      "checkedAt": "2026-11-02",
+      "scope": "Prices vary by prompt length, cache eligibility, region, modality, and volume commitments."
+    },
+    {
+      "id": "usage-estimates-require-billing-reconciliation",
+      "statement": "Application token estimates must be routinely reconciled against provider billing exports to account for committed use discounts, minimums, credits, and taxes.",
+      "claimType": "operational-guidance",
+      "sourceIds": ["finops-ai", "openai-api-pricing", "anthropic-pricing"],
+      "checkedAt": "2026-11-02",
+      "scope": "Calculated token totals are operational proxies, while invoice ledgers represent true financial liability."
+    },
+    {
+      "id": "optimize-against-outcomes-and-quality",
+      "statement": "Cost reduction strategies must be bounded by rigorous quality evaluation; a cheaper model that increases retry rates or human review increases total cost.",
+      "claimType": "operational-guidance",
+      "sourceIds": ["finops-ai", "artificial-analysis"],
+      "checkedAt": "2026-11-02",
+      "scope": "Unit economics must measure cost per successful, accepted task rather than isolated token price."
+    },
+    {
+      "id": "prompt-caching-reduces-input-cost-substantially",
+      "statement": "Prompt caching provides 50% to 90% cost reduction on recurring context, system instructions, and RAG document prefixes.",
+      "claimType": "technical-guidance",
+      "sourceIds": ["anthropic-pricing", "openai-api-pricing", "google-ai-pricing"],
+      "checkedAt": "2026-11-02",
+      "scope": "Applicable when prompts share identical prefix tokens above provider-mandated minimum thresholds (e.g. 1024 tokens)."
+    },
+    {
+      "id": "model-routing-delivers-blended-savings",
+      "statement": "Dynamic model routing sends routine tasks to fast lightweight models and escalates hard cases to frontier models, reducing average cost by 60-80%.",
+      "claimType": "architecture-guidance",
+      "sourceIds": ["artificial-analysis", "finops-ai"],
+      "checkedAt": "2026-11-02",
+      "scope": "Requires an intelligent classifier or evaluator gateway with explicit latency and quality SLAs."
+    },
+    {
+      "id": "provisioned-throughput-utilization-breakeven",
+      "statement": "Provisioned Throughput (PTUs or Reserved Capacity) requires sustained baseline utilization above ~65% to achieve a lower unit cost than on-demand pay-as-you-go.",
+      "claimType": "financial-guidance",
+      "sourceIds": ["azure-openai-pricing", "aws-bedrock-pricing", "finops-ai"],
+      "checkedAt": "2026-11-02",
+      "scope": "Under low or bursty off-peak traffic, paying for idle reserved capacity dramatically increases effective cost per token."
+    },
+    {
+      "id": "self-hosting-tco-hidden-costs",
+      "statement": "Self-hosting open-weight models on dedicated GPU clusters incurs substantial fixed costs for idle capacity, engineering staff, driver management, and redundancy.",
+      "claimType": "architecture-guidance",
+      "sourceIds": ["vllm-project", "finops-ai"],
+      "checkedAt": "2026-11-02",
+      "scope": "Self-hosting break-even is achieved only at high steady-state request volumes with optimized serving stacks like vLLM."
+    },
+    {
+      "id": "guardrails-prevent-runaway-agent-spend",
+      "statement": "Automated rate limits, token quotas, and recursion circuit breakers are required to protect against runaway autonomous agent loops.",
+      "claimType": "operational-guidance",
+      "sourceIds": ["finops-ai", "otel-genai-semconv"],
+      "checkedAt": "2026-11-02",
+      "scope": "Enforces max steps, per-session token budgets, and automated fallback when thresholds are breached."
+    }
   ]
 }
