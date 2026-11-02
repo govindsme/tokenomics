@@ -1,0 +1,26 @@
+name: Autonomous Research & Reconciliation Check
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Verify Research State & Validate Site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate Machine-Readable Ledger
+        run: npm run validate
+      - name: Build Deployable Assets & Summary
+        run: npm run build
+      - name: Report Build Summary
+        run: |
+          cat dist/research-summary.json

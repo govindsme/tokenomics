@@ -90,6 +90,24 @@
       "sourceType": "technical-specification",
       "checkedAt": "2026-11-02",
       "notes": "Open-source serving architecture, PagedAttention KV-cache management, continuous batching, and self-hosted inference economics."
+    },
+    {
+      "id": "focus-finops-spec",
+      "title": "FinOps Foundation: FOCUS™ Open Cost and Usage Specification",
+      "url": "https://focus.finops.org/",
+      "publisher": "FinOps Foundation",
+      "sourceType": "open-standard",
+      "checkedAt": "2026-11-02",
+      "notes": "Open-standard cloud billing schema normalizing billing and usage across clouds and AI services."
+    },
+    {
+      "id": "litellm-gateway",
+      "title": "LiteLLM: Enterprise AI Gateway & Routing Specification",
+      "url": "https://docs.litellm.ai/",
+      "publisher": "BerriAI",
+      "sourceType": "technical-specification",
+      "checkedAt": "2026-11-02",
+      "notes": "Production proxy architecture for centralized rate limits, fallbacks, OTel telemetry, and multi-provider load balancing."
     }
   ]
 }

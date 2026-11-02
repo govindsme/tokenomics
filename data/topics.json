@@ -9,11 +9,25 @@
       "sourceIds": ["finops-ai"]
     },
     {
+      "id": "maturity-model",
+      "title": "AI FinOps maturity roadmap",
+      "anchor": "maturity-model",
+      "level": "leadership",
+      "sourceIds": ["finops-ai", "focus-finops-spec"]
+    },
+    {
       "id": "unit-economics",
-      "title": "Unit economics & calculator",
+      "title": "Unit economics & token calculator",
       "anchor": "unit-economics",
       "level": "practitioner",
       "sourceIds": ["openai-api-pricing", "anthropic-pricing", "google-ai-pricing"]
+    },
+    {
+      "id": "tco-simulator",
+      "title": "Hosted vs self-hosted TCO engine",
+      "anchor": "tco-simulator",
+      "level": "architect",
+      "sourceIds": ["vllm-project", "azure-openai-pricing", "aws-bedrock-pricing"]
     },
     {
       "id": "pricing-reference",
@@ -27,7 +41,7 @@
       "title": "Metering & telemetry",
       "anchor": "metering",
       "level": "practitioner",
-      "sourceIds": ["otel-genai-semconv", "finops-ai"]
+      "sourceIds": ["otel-genai-semconv", "finops-ai", "focus-finops-spec", "litellm-gateway"]
     },
     {
       "id": "optimization",
@@ -41,14 +55,14 @@
       "title": "Routing & hosting economics",
       "anchor": "routing",
       "level": "architect",
-      "sourceIds": ["vllm-project", "artificial-analysis", "aws-bedrock-pricing", "azure-openai-pricing"]
+      "sourceIds": ["vllm-project", "artificial-analysis", "aws-bedrock-pricing", "azure-openai-pricing", "litellm-gateway"]
     },
     {
       "id": "governance",
       "title": "Budgets, quotas & guardrails",
       "anchor": "governance",
       "level": "governance",
-      "sourceIds": ["finops-ai", "otel-genai-semconv"]
+      "sourceIds": ["finops-ai", "otel-genai-semconv", "litellm-gateway"]
     },
     {
       "id": "benchmarks",
@@ -58,11 +72,18 @@
       "sourceIds": ["artificial-analysis", "vllm-project"]
     },
     {
+      "id": "blueprints",
+      "title": "Production code blueprints & recipes",
+      "anchor": "blueprints",
+      "level": "practitioner",
+      "sourceIds": ["otel-genai-semconv", "litellm-gateway", "focus-finops-spec"]
+    },
+    {
       "id": "glossary",
       "title": "TokenOps & FinOps glossary",
       "anchor": "glossary",
       "level": "reference",
-      "sourceIds": ["finops-ai", "otel-genai-semconv", "openai-api-pricing", "anthropic-pricing"]
+      "sourceIds": ["finops-ai", "otel-genai-semconv", "openai-api-pricing", "anthropic-pricing", "focus-finops-spec"]
     },
     {
       "id": "evidence",
@@ -79,7 +100,9 @@
         "google-cloud-model-garden-pricing",
         "azure-openai-pricing",
         "artificial-analysis",
-        "vllm-project"
+        "vllm-project",
+        "focus-finops-spec",
+        "litellm-gateway"
       ]
     }
   ]

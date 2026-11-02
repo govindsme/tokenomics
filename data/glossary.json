@@ -54,12 +54,12 @@
     {
       "term": "Model Routing",
       "definition": "An architectural pattern where incoming prompts are classified by complexity, intent, or latency needs and dynamically routed to the most cost-effective model tier capable of completing the task.",
-      "sourceIds": ["artificial-analysis", "finops-ai"]
+      "sourceIds": ["artificial-analysis", "finops-ai", "litellm-gateway"]
     },
     {
       "term": "AI Gateway",
       "definition": "A centralized reverse proxy positioned between client applications and model providers to enforce rate limits, authentication, unified telemetry, prompt caching, circuit breaking, and fallbacks.",
-      "sourceIds": ["otel-genai-semconv", "finops-ai"]
+      "sourceIds": ["otel-genai-semconv", "finops-ai", "litellm-gateway"]
     },
     {
       "term": "Showback vs Chargeback",
@@ -89,7 +89,22 @@
     {
       "term": "Circuit Breaker",
       "definition": "An automated stability control that interrupts execution or drops downstream requests when predefined cost thresholds, error rates, or recursive loop depths are detected in autonomous agents.",
-      "sourceIds": ["finops-ai"]
+      "sourceIds": ["finops-ai", "litellm-gateway"]
+    },
+    {
+      "term": "FOCUS™ Specification",
+      "definition": "FinOps Open Cost and Usage Specification; an open standard defining cloud and AI consumption billing columns, standardizing ChargeType, ConsumedQuantity, and EffectiveCost across multi-cloud ledgers.",
+      "sourceIds": ["focus-finops-spec", "finops-ai"]
+    },
+    {
+      "term": "Reasoning Tokens",
+      "definition": "Internal chain-of-thought tokens produced during test-time compute by reasoning models (such as o1 or DeepSeek-R1) to plan and evaluate intermediate steps, billed as billable output tokens.",
+      "sourceIds": ["openai-api-pricing", "artificial-analysis"]
+    },
+    {
+      "term": "PagedAttention",
+      "definition": "A memory allocation algorithm inspired by OS virtual memory that partitions KV-cache tensors into non-contiguous physical memory blocks, eliminating internal fragmentation in LLM serving engines.",
+      "sourceIds": ["vllm-project"]
     }
   ]
 }

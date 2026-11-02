@@ -43,6 +43,29 @@
         "Validated all cross-references across sources, claims, topics, and DOM elements."
       ],
       "validation": ["npm run validate", "npm run build"]
+    },
+    {
+      "runDate": "2026-11-02",
+      "mode": "subsequent-run",
+      "status": "complete",
+      "previousSuccessfulCutoff": "2026-11-02",
+      "researchCutoff": "2026-11-02",
+      "changes": [
+        {"type":"updated","path":"package.json","reason":"Bumped version to 1.2.0 following BoK expansion and tooling additions."},
+        {"type":"added","path":".github/workflows/reconcile.yml","reason":"Added weekly scheduled GitHub Action for automated reconciliation and validation."},
+        {"type":"updated","path":"data/sources.json","reason":"Added FinOps Foundation FOCUS 1.0 open cost specification and LiteLLM gateway architecture."},
+        {"type":"updated","path":"data/claims.json","reason":"Added FOCUS multi-cloud normalization and test-time compute / reasoning token economics claims."},
+        {"type":"updated","path":"data/glossary.json","reason":"Added FOCUS specification, reasoning tokens, test-time compute, and PagedAttention terms."},
+        {"type":"updated","path":"data/topics.json","reason":"Added maturity model, TCO simulator, and production blueprints topics."},
+        {"type":"updated","path":"index.html","reason":"Added AI FinOps Maturity Model (Crawl/Walk/Run), Hosted API vs. GPU Cluster TCO Simulator, production code blueprints (Python/TS OTel instrumentation, LiteLLM gateway YAML, FOCUS mapping), and historical price deflation trendline."},
+        {"type":"updated","path":"scripts/validate.mjs and build.mjs","reason":"Updated validation suite for TCO engine, blueprint sections, and summary metadata."}
+      ],
+      "researchNotes": [
+        "Synthesized FinOps Foundation FOCUS 1.0 mapping for generative AI token usage attribution.",
+        "Integrated GPU cluster hardware modeling (8x H100 SXM @ $24/hr with 35-70% utilization curve) for TCO break-even analysis.",
+        "Added production OTel GenAI instrumentation recipes conforming to gen_ai.system, gen_ai.request.model, and gen_ai.usage.* standards."
+      ],
+      "validation": ["npm run validate", "npm run build"]
     }
   ]
 }

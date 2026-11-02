@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="AI FinOps and TokenOps Field Guide: practical frameworks for LLM cost attribution, prompt caching economics, model routing, and unit economics.">
+  <meta name="description" content="AI FinOps, TokenOps, and Model Economics Body of Knowledge: comprehensive guide to telemetry, prompt caching, model routing, and unit economics.">
   <meta name="theme-color" content="#f3f2ec">
-  <title>Tokenomics | AI FinOps &amp; TokenOps Field Guide</title>
+  <title>Tokenomics | AI FinOps &amp; TokenOps Body of Knowledge</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -13,17 +13,17 @@
     :root {
       color-scheme: light;
       --paper: #f3f2ec;
-      --ink: #1f231e;
-      --muted: #626860;
-      --line: #d3d6cb;
+      --ink: #1e221d;
+      --muted: #5e645c;
+      --line: #d2d5cb;
       --panel: #fffefa;
-      --panel-alt: #f7f6f0;
+      --panel-alt: #f6f5ef;
       --green: #c8ef62;
-      --green-dark: #223819;
+      --green-dark: #203517;
       --coral: #df583d;
-      --coral-light: #faece8;
-      --blue: #2f607c;
-      --blue-light: #eef5f8;
+      --coral-bg: #faede9;
+      --blue: #2a5d7c;
+      --blue-bg: #edf4f7;
       --mono: "DM Mono", monospace;
       --sans: "DM Sans", sans-serif;
       --display: "Manrope", sans-serif;
@@ -33,10 +33,10 @@
     body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.65 var(--sans); }
     button, input, select { font: inherit; }
     a { color: inherit; }
-    .topbar { position: sticky; z-index: 10; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; padding: 0 clamp(1rem, 4vw, 3rem); border-bottom: 1px solid var(--line); background: rgba(243,242,236,.96); backdrop-filter: blur(12px); }
+    .topbar { position: sticky; z-index: 20; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; padding: 0 clamp(1rem, 3.5vw, 3rem); border-bottom: 1px solid var(--line); background: rgba(243,242,236,.96); backdrop-filter: blur(12px); }
     .brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; font: 800 15px var(--display); letter-spacing: .03em; }
     .brand-mark { display: grid; width: 30px; height: 30px; place-items: center; background: var(--green); color: var(--green-dark); font: 600 13px var(--mono); border-radius: 3px; }
-    .version-tag { display: inline-block; padding: .15rem .45rem; background: #e5e8dc; color: #444b41; font: 500 10px var(--mono); border-radius: 2px; }
+    .version-tag { display: inline-block; padding: .15rem .45rem; background: #e4e7db; color: #41483e; font: 500 10px var(--mono); border-radius: 2px; }
     .top-meta { display: flex; align-items: center; gap: 1.25rem; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
     .top-meta a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
     .top-meta a:hover { color: var(--ink); }
@@ -45,14 +45,14 @@
     .side-label, .eyebrow { color: var(--muted); font: 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
     .side-label { margin: 0 0 .9rem; font-weight: 600; }
     .nav-group { margin-bottom: 2rem; }
-    .nav-link { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; padding: .42rem 0; color: #535950; font-size: 13px; text-decoration: none; border-bottom: 1px solid transparent; }
+    .nav-link { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; padding: .38rem 0; color: #51574d; font-size: 12.5px; text-decoration: none; border-bottom: 1px solid transparent; }
     .nav-link:hover, .nav-link:focus-visible { color: var(--ink); border-bottom-color: var(--line); }
-    .nav-link span:last-child { color: #8e9488; font: 10px var(--mono); }
+    .nav-link span:last-child { color: #8d9387; font: 10px var(--mono); }
     main { min-width: 0; padding: 2.5rem clamp(1.25rem, 5vw, 5.5rem) 7rem; }
     .intro { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr); gap: 2.5rem; align-items: end; padding: 2.2rem 0 2.5rem; border-bottom: 1px solid var(--line); }
     h1 { max-width: 760px; margin: .8rem 0 1rem; font: 800 clamp(2.3rem, 4.2vw, 4.6rem)/1.02 var(--display); letter-spacing: -0.02em; }
-    .intro p { max-width: 660px; margin: 0; color: #4e554b; font-size: 17px; line-height: 1.6; }
-    .stamp { display: flex; flex-direction: column; justify-content: flex-end; gap: .65rem; padding: 1.25rem; border-left: 3px solid var(--coral); background: #e9eade; }
+    .intro p { max-width: 660px; margin: 0; color: #4c5249; font-size: 17px; line-height: 1.6; }
+    .stamp { display: flex; flex-direction: column; justify-content: flex-end; gap: .65rem; padding: 1.25rem; border-left: 3px solid var(--coral); background: #e8e9dc; }
     .stamp strong { font: 700 13px var(--display); color: var(--ink); }
     .stamp span { color: var(--muted); font: 11px/1.55 var(--mono); }
     .section { padding: 3.2rem 0; border-bottom: 1px solid var(--line); }
@@ -64,51 +64,64 @@
     .snapshot article + article { border-left: 1px solid var(--line); }
     .snapshot .number { display: block; margin: .4rem 0 .5rem; font: 800 30px/1.1 var(--display); color: var(--ink); }
     .snapshot p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.55; }
-    .calculator { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(290px, .85fr); gap: 1.6rem; padding: 1.6rem; border: 1px solid #bdc2b4; background: var(--panel); box-shadow: 0 4px 18px rgba(0,0,0,.03); }
+    .maturity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1.2rem; }
+    .maturity-card { padding: 1.3rem; border: 1px solid var(--line); background: var(--panel); border-top: 4px solid var(--blue); }
+    .maturity-card.crawl { border-top-color: #9aa095; }
+    .maturity-card.walk { border-top-color: var(--blue); }
+    .maturity-card.run { border-top-color: #277717; }
+    .maturity-card h3 { margin: .25rem 0 .7rem; font: 700 17px var(--display); }
+    .maturity-card ul { margin: 0; padding-left: 1.15rem; font-size: 12.5px; color: #494f45; }
+    .maturity-card li + li { margin-top: .4rem; }
+    .calculator { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(290px, .85fr); gap: 1.6rem; padding: 1.6rem; border: 1px solid #bcc1b3; background: var(--panel); box-shadow: 0 4px 18px rgba(0,0,0,.03); }
     .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.1rem; }
     .field-full { grid-column: span 2; }
     .field { display: grid; gap: .35rem; }
-    .field label { color: #474d44; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+    .field label { color: #454b42; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
     .field select, .field input { width: 100%; min-width: 0; padding: .65rem .75rem; border: 1px solid var(--line); border-radius: 2px; background: #fff; color: var(--ink); font: 13.5px var(--mono); }
     .field select:focus, .field input:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
-    .checkbox-field { display: flex; align-items: center; gap: .6rem; padding: .5rem 0; font-size: 12.5px; color: #454c41; }
+    .checkbox-field { display: flex; align-items: center; gap: .6rem; padding: .5rem 0; font-size: 12.5px; color: #434a3f; }
     .checkbox-field input { width: auto; cursor: pointer; }
     .result { display: flex; flex-direction: column; justify-content: space-between; padding: 1.35rem; background: var(--green); color: var(--green-dark); }
+    .result.result-blue { background: #bfe5f5; color: #10384d; }
     .result-head { font: 600 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
-    .result output { display: block; margin: .6rem 0 .4rem; font: 800 clamp(2rem, 3.2vw, 3rem)/1.1 var(--display); letter-spacing: -0.02em; }
-    .result-details { margin: 0; font-size: 12px; line-height: 1.5; color: #1e3315; }
-    .savings-badge { display: inline-flex; align-items: center; gap: .4rem; margin-top: .75rem; padding: .35rem .6rem; background: rgba(255,255,255,.55); border-radius: 2px; font: 600 11px var(--mono); color: #162a0f; }
-    .note { margin: 1rem 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .result output { display: block; margin: .6rem 0 .4rem; font: 800 clamp(1.9rem, 3.2vw, 2.9rem)/1.1 var(--display); letter-spacing: -0.02em; }
+    .result-details { margin: 0; font-size: 12px; line-height: 1.5; color: #1c3113; }
+    .result.result-blue .result-details { color: #10384d; }
+    .savings-badge { display: inline-flex; align-items: center; gap: .4rem; margin-top: .75rem; padding: .35rem .6rem; background: rgba(255,255,255,.6); border-radius: 2px; font: 600 11px var(--mono); color: #14280d; }
+    .note { margin: 1rem 0 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
     .table-container { overflow-x: auto; border: 1px solid var(--line); background: var(--panel); margin-top: 1rem; }
     table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12.5px; }
-    th { padding: .75rem 1rem; background: var(--panel-alt); color: #4a5146; font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid var(--line); }
-    td { padding: .75rem 1rem; border-bottom: 1px solid #eceee5; vertical-align: middle; }
+    th { padding: .75rem 1rem; background: var(--panel-alt); color: #474d43; font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid var(--line); }
+    td { padding: .75rem 1rem; border-bottom: 1px solid #ebeee3; vertical-align: middle; }
     tr:last-child td { border-bottom: 0; }
-    tr:hover td { background: #fafaf6; }
-    .btn-apply { padding: .25rem .55rem; background: #e3e7d9; border: 1px solid var(--line); border-radius: 2px; cursor: pointer; font: 600 10.5px var(--mono); color: var(--ink); }
+    tr:hover td { background: #fafaf5; }
+    .btn-apply { padding: .25rem .55rem; background: #e1e5d7; border: 1px solid var(--line); border-radius: 2px; cursor: pointer; font: 600 10.5px var(--mono); color: var(--ink); }
     .btn-apply:hover { background: var(--green); border-color: var(--green-dark); }
     .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2.2rem; }
     .guide { padding: 1.4rem 0; border-bottom: 1px solid var(--line); scroll-margin-top: 5rem; }
     .guide h3 { margin: .35rem 0 .6rem; font: 700 18px var(--display); }
-    .guide p { margin: 0; color: #4e554b; font-size: 13.5px; line-height: 1.6; }
-    .guide ul { margin: .75rem 0 0; padding-left: 1.25rem; color: #4e554b; font-size: 12.5px; }
+    .guide p { margin: 0; color: #4a5146; font-size: 13.5px; line-height: 1.6; }
+    .guide ul { margin: .75rem 0 0; padding-left: 1.25rem; color: #4a5146; font-size: 12.5px; }
     .guide li + li { margin-top: .4rem; }
-    .tag { display: inline-block; padding: .2rem .45rem; background: #e2e5db; color: #3c4238; font: 600 9.5px var(--mono); text-transform: uppercase; border-radius: 2px; }
+    .tag { display: inline-block; padding: .2rem .45rem; background: #e0e4d9; color: #3a4036; font: 600 9.5px var(--mono); text-transform: uppercase; border-radius: 2px; }
     .source-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.2rem; margin: 0; padding: 0; list-style: none; }
     .source-list li { padding: .95rem 0; border-bottom: 1px solid var(--line); font-size: 12.5px; }
     .source-list a { font-weight: 600; text-underline-offset: 3px; }
     .source-list a:hover { color: var(--blue); }
     .source-meta { display: block; margin-top: .25rem; color: var(--muted); font-size: 11px; }
-    .source-desc { display: block; margin-top: .35rem; color: #495045; font-size: 12px; }
+    .source-desc { display: block; margin-top: .35rem; color: #474e43; font-size: 12px; }
     .glossary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem 2.2rem; margin-top: 1rem; }
     .glossary-card { padding: 1.1rem; border: 1px solid var(--line); background: var(--panel); }
     .glossary-card dt { font: 700 15px var(--display); color: var(--ink); margin-bottom: .4rem; }
-    .glossary-card dd { margin: 0; color: #4b5247; font-size: 12.5px; line-height: 1.55; }
+    .glossary-card dd { margin: 0; color: #474e43; font-size: 12.5px; line-height: 1.55; }
     .glossary-sources { margin-top: .6rem; font: 10px var(--mono); color: var(--muted); }
+    .code-block { margin-top: .8rem; padding: 1rem; background: #1f241d; color: #e9f0e2; font: 12px/1.55 var(--mono); border-radius: 3px; overflow-x: auto; }
+    .code-tabs { display: flex; gap: .5rem; margin-bottom: .8rem; }
+    .code-tab-btn { padding: .35rem .75rem; background: var(--panel-alt); border: 1px solid var(--line); cursor: pointer; font: 600 11px var(--mono); }
+    .code-tab-btn.active { background: #1f241d; color: #fff; border-color: #1f241d; }
     .search { width: min(280px, 35vw); padding: .5rem .75rem; border: 1px solid var(--line); border-radius: 2px; background: var(--panel); font-size: 12.5px; }
     .search:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
-    .foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 2rem; color: var(--muted); font: 11px var(--mono); }
-    .foot a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 2.5rem; color: var(--muted); font: 11px var(--mono); }
     @media (max-width: 960px) {
       .layout { grid-template-columns: 1fr; }
       aside { position: static; display: flex; gap: .4rem; height: auto; overflow-x: auto; padding: .75rem 1rem; border-right: 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
@@ -117,7 +130,7 @@
       .nav-link span:last-child { display: none; }
       main { padding: 1.5rem 1.25rem 5rem; }
       .intro { grid-template-columns: 1fr; gap: 1.5rem; }
-      .snapshot { grid-template-columns: 1fr; }
+      .snapshot, .maturity-grid { grid-template-columns: 1fr; }
       .snapshot article + article { border-top: 1px solid var(--line); border-left: 0; }
       .calculator { grid-template-columns: 1fr; }
       .guide-grid, .source-list, .glossary-grid { grid-template-columns: 1fr; }
@@ -129,31 +142,36 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#overview" aria-label="Tokenomics home"><span class="brand-mark">T/</span> TOKENOMICS <span class="version-tag">v1.1.0</span></a>
+    <a class="brand" href="#overview" aria-label="Tokenomics home"><span class="brand-mark">T/</span> TOKENOMICS <span class="version-tag">v1.2.0 • BoK</span></a>
     <div class="top-meta">
-      <span class="wide">AI FinOps &amp; TokenOps Guide</span>
+      <span class="wide">AI FinOps &amp; TokenOps Body of Knowledge</span>
+      <a href="#maturity-model">Roadmap</a>
       <a href="#unit-economics">Calculator</a>
+      <a href="#tco-simulator">TCO Engine</a>
       <a href="#pricing-reference">Snapshots</a>
-      <a href="#benchmarks">Benchmarks</a>
+      <a href="#blueprints">Blueprints</a>
       <a href="#glossary">Glossary</a>
       <a href="#sources">Evidence</a>
     </div>
   </header>
 
   <div class="layout" id="top">
-    <aside aria-label="Guide navigation">
+    <aside aria-label="Knowledge Area Navigation">
       <div class="nav-group">
-        <p class="side-label">Knowledge Areas</p>
+        <p class="side-label">Body of Knowledge</p>
         <a class="nav-link" href="#overview">Operating picture <span>01</span></a>
-        <a class="nav-link" href="#unit-economics">Unit economics <span>02</span></a>
-        <a class="nav-link" href="#pricing-reference">Pricing snapshots <span>03</span></a>
-        <a class="nav-link" href="#metering">Metering &amp; telemetry <span>04</span></a>
-        <a class="nav-link" href="#optimization">Cost optimization <span>05</span></a>
-        <a class="nav-link" href="#routing">Routing &amp; hosting <span>06</span></a>
-        <a class="nav-link" href="#governance">Budgets &amp; guardrails <span>07</span></a>
-        <a class="nav-link" href="#benchmarks">Benchmarks <span>08</span></a>
-        <a class="nav-link" href="#glossary">Glossary <span>09</span></a>
-        <a class="nav-link" href="#sources">Evidence register <span>10</span></a>
+        <a class="nav-link" href="#maturity-model">FinOps roadmap <span>02</span></a>
+        <a class="nav-link" href="#unit-economics">Token calculator <span>03</span></a>
+        <a class="nav-link" href="#tco-simulator">TCO simulator <span>04</span></a>
+        <a class="nav-link" href="#pricing-reference">Pricing snapshots <span>05</span></a>
+        <a class="nav-link" href="#metering">Metering &amp; telemetry <span>06</span></a>
+        <a class="nav-link" href="#optimization">Cost optimization <span>07</span></a>
+        <a class="nav-link" href="#routing">Routing &amp; hosting <span>08</span></a>
+        <a class="nav-link" href="#governance">Budgets &amp; guardrails <span>09</span></a>
+        <a class="nav-link" href="#benchmarks">Benchmarks <span>10</span></a>
+        <a class="nav-link" href="#blueprints">Code blueprints <span>11</span></a>
+        <a class="nav-link" href="#glossary">Glossary <span>12</span></a>
+        <a class="nav-link" href="#sources">Evidence register <span>13</span></a>
       </div>
     </aside>
 
@@ -163,43 +181,86 @@
         <div>
           <div class="eyebrow">AI FinOps / TokenOps / Unit Economics</div>
           <h1>Make every token answer for itself.</h1>
-          <p>A rigorous, evidence-led field guide for engineering leaders, FinOps teams, architects, and developers. Connect metered token consumption to business outcomes, implement prompt-caching economics, and establish trustworthy usage attribution.</p>
+          <p>The definitive Body of Knowledge and living information register for AI FinOps, TokenOps, and LLM inference economics. Built for engineering leaders, platform teams, cloud architects, and financial analysts navigating generative AI at scale.</p>
         </div>
         <div class="stamp">
-          <strong>Autonomous Knowledge Ledger</strong>
-          <span>Cut-off date: 2026-11-02<br>Reconciled against official provider specifications and FinOps standards.</span>
+          <strong>Continuous Research Ledger</strong>
+          <span>Cut-off date: 2026-11-02 • Automated Weekly Audit<br>Reconciled against official provider specifications and FinOps standards.</span>
         </div>
       </section>
 
       <section class="section" aria-labelledby="operating-picture-title">
         <div class="section-head">
           <div><div class="eyebrow">01 / Operating picture</div><h2 id="operating-picture-title">The Three Pillars of AI Financial Discipline</h2></div>
-          <p>Sustainable AI cost management balances accurate telemetry, clear organizational attribution, and outcome-based unit economics.</p>
+          <p>Transforming AI from an untracked variable operational expense into an explainable, value-accretive growth driver.</p>
         </div>
         <div class="snapshot">
           <article>
             <span class="eyebrow">01 / Measure</span>
             <strong class="number">Telemetry</strong>
-            <p>Capture provider, model, prompt tokens, completion tokens, cache hits/misses, and latency via OpenTelemetry GenAI semantic conventions.</p>
+            <p>Instrument request inputs, completion outputs, KV cache reads, reasoning tokens, and latencies via OpenTelemetry GenAI semantic conventions.</p>
           </article>
           <article>
             <span class="eyebrow">02 / Attribute</span>
             <strong class="number">Ownership</strong>
-            <p>Implement Showback and Chargeback by mapping usage directly to business unit, product feature, team, and customer tenant.</p>
+            <p>Map consumption to cost centers and features using FinOps FOCUS™ normalized billing ledgers, enabling defensible Showback and Chargeback.</p>
           </article>
           <article>
             <span class="eyebrow">03 / Optimize</span>
             <strong class="number">Value</strong>
-            <p>Maximize delivered quality per dollar by applying prompt caching (50-90% discount), model routing, and batch processing.</p>
+            <p>Harness prompt caching (50–90% discounts), dynamic cascading model routing, batch processing, and context compaction.</p>
           </article>
         </div>
       </section>
 
-      <!-- SECTION 02: UNIT ECONOMICS & CALCULATOR -->
+      <!-- SECTION 02: MATURITY MODEL -->
+      <section class="section" id="maturity-model">
+        <div class="section-head">
+          <div><div class="eyebrow">02 / Strategic Roadmap</div><h2>AI FinOps Maturity Model: Crawl, Walk, Run</h2></div>
+          <p>A progression framework helping platform and engineering teams systematically eliminate runaway spend.</p>
+        </div>
+        <div class="maturity-grid">
+          <div class="maturity-card crawl">
+            <span class="tag">Stage 1</span>
+            <h3>Crawl: Visibility</h3>
+            <ul>
+              <li>Centralized API key management with baseline billing alerts.</li>
+              <li>Aggregate monthly provider invoice reviews.</li>
+              <li>Manual, static model selection per service.</li>
+              <li>Basic anomaly detection on total monthly token consumption.</li>
+              <li>Tag-less monthly Showback reports to leadership.</li>
+            </ul>
+          </div>
+          <div class="maturity-card walk">
+            <span class="tag" style="background:#d7e7f0;color:#184257">Stage 2</span>
+            <h3>Walk: Control &amp; Attribution</h3>
+            <ul>
+              <li>Centralized AI Gateway reverse proxy enforcing quotas.</li>
+              <li>OpenTelemetry GenAI standard instrumentation (<code style="font-family:var(--mono)">gen_ai.*</code>).</li>
+              <li>Tenant- and feature-level Chargeback attribution.</li>
+              <li>Automated Prompt Caching enabled on repeated context prefixes.</li>
+              <li>50% discounted Batch API for offline evaluation and embeddings.</li>
+            </ul>
+          </div>
+          <div class="maturity-card run">
+            <span class="tag" style="background:#daf0c7;color:#1d420f">Stage 3</span>
+            <h3>Run: Continuous Optimization</h3>
+            <ul>
+              <li>Dynamic cascading model routing (escalating hard queries only).</li>
+              <li>Unit economics tied to business value (Cost per Active Task).</li>
+              <li>Provisioned Throughput (PTU) vs. On-Demand arbitrage.</li>
+              <li>Autonomous Agent circuit breakers (loop and token limits).</li>
+              <li>Automated FinOps FOCUS™ multi-cloud cost reconciliation.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 03: UNIT ECONOMICS & CALCULATOR -->
       <section class="section" id="unit-economics">
         <div class="section-head">
-          <div><div class="eyebrow">02 / Unit economics</div><h2>Interactive Token Cost &amp; Cache Calculator</h2></div>
-          <p>Select a verified provider snapshot or enter custom contractual rates. Accurately calculates input, output, prompt caching discounts, and batch execution savings.</p>
+          <div><div class="eyebrow">03 / Unit economics</div><h2>Interactive Token Cost &amp; Cache Calculator</h2></div>
+          <p>Select verified provider snapshots or enter custom contractual rates. Accurately calculates input, output, prompt caching discounts, and batch execution savings.</p>
         </div>
 
         <form class="calculator" id="cost-form">
@@ -282,10 +343,63 @@
         </p>
       </section>
 
-      <!-- SECTION 03: PRICING SNAPSHOTS -->
+      <!-- SECTION 04: TCO SIMULATOR -->
+      <section class="section" id="tco-simulator">
+        <div class="section-head">
+          <div><div class="eyebrow">04 / Decision Engine</div><h2>Hosted API vs. Self-Hosted GPU Cluster TCO</h2></div>
+          <p>Compute true total cost of ownership including idle off-peak hardware waste, cluster management, and engineering overhead.</p>
+        </div>
+
+        <form class="calculator" id="tco-form">
+          <div class="fields">
+            <div class="field">
+              <label for="tco-tokens">Monthly Tokens (Millions)</label>
+              <input id="tco-tokens" type="number" min="1" step="1" value="250" inputmode="numeric">
+            </div>
+
+            <div class="field">
+              <label for="tco-api-rate">Hosted API Blended Rate ($/1M)</label>
+              <input id="tco-api-rate" type="number" min="0" step="any" value="3.50" inputmode="decimal">
+            </div>
+
+            <div class="field">
+              <label for="tco-gpu-hourly">GPU Cluster Cost ($/hour)</label>
+              <input id="tco-gpu-hourly" type="number" min="0" step="any" value="24.00" inputmode="decimal">
+            </div>
+
+            <div class="field">
+              <label for="tco-utilization">Average GPU Utilization (%)</label>
+              <input id="tco-utilization" type="number" min="5" max="100" step="any" value="45" inputmode="decimal">
+            </div>
+
+            <div class="field field-full">
+              <label for="tco-overhead">Monthly MLOps &amp; Egress Overhead ($)</label>
+              <input id="tco-overhead" type="number" min="0" step="100" value="3500" inputmode="numeric">
+            </div>
+          </div>
+
+          <div class="result result-blue" aria-live="polite">
+            <div>
+              <span class="result-head">TCO Comparison Outcome</span>
+              <output id="tco-verdict">Hosted API is $19,904 cheaper</output>
+              <p class="result-details" id="tco-hosted-cost">Hosted API: $875.00 / mo</p>
+              <p class="result-details" id="tco-gpu-cost">Self-Hosted GPU Cluster: $20,780.00 / mo</p>
+            </div>
+            <div class="savings-badge" id="tco-breakeven">
+              Break-even threshold: 5.94B tokens/month
+            </div>
+          </div>
+        </form>
+
+        <p class="note">
+          <strong>Hardware Reality:</strong> Dedicated 8x H100 GPU clusters running continuously cost ~$17,280/mo in raw compute alone. If workloads drop to 20-30% load at night or on weekends, paying for idle GPUs drastically inflates effective cost per token relative to serverless hosted APIs.
+        </p>
+      </section>
+
+      <!-- SECTION 05: PRICING SNAPSHOTS -->
       <section class="section" id="pricing-reference">
         <div class="section-head">
-          <div><div class="eyebrow">03 / Verified Snapshots</div><h2>Model Pricing &amp; Prompt Cache Discounter</h2></div>
+          <div><div class="eyebrow">05 / Verified Snapshots</div><h2>Model Pricing &amp; Prompt Cache Discounter</h2></div>
           <p>Verified provider rates per million tokens as of 2026-11-02. Click any model to load its exact rates directly into the estimator.</p>
         </div>
 
@@ -389,10 +503,10 @@
         </div>
       </section>
 
-      <!-- SECTION 04: METERING & TELEMETRY -->
+      <!-- SECTION 06: METERING & TELEMETRY -->
       <section class="section" id="metering">
         <div class="section-head">
-          <div><div class="eyebrow">04 / Metering</div><h2>Instrumentation &amp; Usage Attribution</h2></div>
+          <div><div class="eyebrow">06 / Metering</div><h2>Instrumentation &amp; FOCUS™ Attribution</h2></div>
           <p>Reconcile raw application telemetry with provider billing records using standardized semantic conventions.</p>
         </div>
         <div class="guide-grid">
@@ -408,32 +522,33 @@
             </ul>
           </article>
           <article class="guide">
-            <span class="tag">Architecture</span>
-            <h3>The AI Gateway Pattern</h3>
-            <p>Position a centralized reverse proxy between client applications and model vendors. Enforce rate limits, authentication, dynamic retry backoffs, semantic prompt caching, and cost attribution in a single auditable tier.</p>
+            <span class="tag">Attribution</span>
+            <h3>FinOps Foundation FOCUS™ Normalization</h3>
+            <p>Normalize multi-cloud model bills into the standard FOCUS schema. Map heterogeneous provider exports into uniform columns:</p>
             <ul>
-              <li>Consistent client header propagation (<code style="font-family:var(--mono)">x-tenant-id</code>, <code style="font-family:var(--mono)">x-feature-id</code>)</li>
-              <li>Transparent multi-provider failover and latency-based routing</li>
-              <li>Centralized prompt cache layer to intercept duplicate calls</li>
+              <li><code style="font-family:var(--mono)">ProviderName</code>: AWS, Azure, Google Cloud, OpenAI</li>
+              <li><code style="font-family:var(--mono)">ServiceName</code>: Amazon Bedrock, Azure OpenAI, Gemini API</li>
+              <li><code style="font-family:var(--mono)">ChargeType</code>: Usage, CommittedCapacity (PTU), Adjustment</li>
+              <li><code style="font-family:var(--mono)">ConsumedQuantity</code> &amp; <code style="font-family:var(--mono)">ConsumedUnit: "Tokens"</code></li>
             </ul>
+          </article>
+          <article class="guide">
+            <span class="tag">Architecture</span>
+            <h3>The AI Gateway Pattern (LiteLLM / Envoy)</h3>
+            <p>Position a centralized reverse proxy between client applications and model vendors. Enforce rate limits, authentication, dynamic retry backoffs, semantic prompt caching, and cost attribution in a single auditable tier.</p>
           </article>
           <article class="guide">
             <span class="tag">Accounting</span>
             <h3>Showback vs. Chargeback Maturity</h3>
             <p>Phase 1 (Showback): Provide engineering teams with monthly visibility into token consumption and estimated dollar costs. Phase 2 (Chargeback): Deduct actual cloud model invoices directly from consuming cost center budgets.</p>
           </article>
-          <article class="guide">
-            <span class="tag">Governance</span>
-            <h3>Invoice Reconciliation &amp; Unattributed Spend</h3>
-            <p>Application tokens will never match invoice totals exactly due to tiered volume discounts, reserved commitments, minimum billing increments, and multimodal images. Maintain a reconciled "unattributed cost" bucket.</p>
-          </article>
         </div>
       </section>
 
-      <!-- SECTION 05: COST OPTIMIZATION -->
+      <!-- SECTION 07: COST OPTIMIZATION -->
       <section class="section" id="optimization">
         <div class="section-head">
-          <div><div class="eyebrow">05 / Optimization</div><h2>Context Hygiene &amp; TokenOps Levers</h2></div>
+          <div><div class="eyebrow">07 / Optimization</div><h2>Context Hygiene &amp; TokenOps Levers</h2></div>
           <p>Proven architectural strategies for lowering aggregate token spend without sacrificing task accuracy.</p>
         </div>
         <div class="guide-grid">
@@ -460,10 +575,10 @@
         </div>
       </section>
 
-      <!-- SECTION 06: ROUTING & HOSTING -->
+      <!-- SECTION 08: ROUTING & HOSTING -->
       <section class="section" id="routing">
         <div class="section-head">
-          <div><div class="eyebrow">06 / Routing &amp; Hosting</div><h2>Hosted APIs vs. Provisioned vs. Self-Hosting</h2></div>
+          <div><div class="eyebrow">08 / Routing &amp; Hosting</div><h2>Hosted APIs vs. Provisioned vs. Self-Hosting</h2></div>
           <p>Analyze total cost of ownership across hosted pay-as-you-go APIs, dedicated provisioned throughput, and self-hosted open weights.</p>
         </div>
         <div class="guide-grid">
@@ -490,10 +605,10 @@
         </div>
       </section>
 
-      <!-- SECTION 07: GOVERNANCE & GUARDRAILS -->
+      <!-- SECTION 09: GOVERNANCE & GUARDRAILS -->
       <section class="section" id="governance">
         <div class="section-head">
-          <div><div class="eyebrow">07 / Governance</div><h2>Rate Limits, Quotas &amp; Agent Guardrails</h2></div>
+          <div><div class="eyebrow">09 / Governance</div><h2>Rate Limits, Quotas &amp; Agent Guardrails</h2></div>
           <p>Protect organizational budgets against runaway autonomous agent loops and unexpected usage surges.</p>
         </div>
         <div class="guide-grid">
@@ -520,10 +635,10 @@
         </div>
       </section>
 
-      <!-- SECTION 08: BENCHMARKS -->
+      <!-- SECTION 10: BENCHMARKS -->
       <section class="section" id="benchmarks">
         <div class="section-head">
-          <div><div class="eyebrow">08 / Benchmarks</div><h2>Empirical Evaluation &amp; Decision Framework</h2></div>
+          <div><div class="eyebrow">10 / Benchmarks</div><h2>Empirical Evaluation &amp; Decision Framework</h2></div>
           <p>Comparing task quality, median Time to First Token (TTFT), throughput, and true cost per 1,000 completed tasks.</p>
         </div>
 
@@ -618,10 +733,98 @@
         </div>
       </section>
 
-      <!-- SECTION 09: GLOSSARY -->
+      <!-- SECTION 11: BLUEPRINTS -->
+      <section class="section" id="blueprints">
+        <div class="section-head">
+          <div><div class="eyebrow">11 / Blueprints</div><h2>Production Code Recipes &amp; Configs</h2></div>
+          <p>Copy-pasteable reference implementations for OpenTelemetry instrumentation, AI Gateway proxying, and FOCUS cost mapping.</p>
+        </div>
+
+        <div class="code-tabs">
+          <button class="code-tab-btn active" onclick="switchBlueprintTab('tab-otel-py')">Python OTel GenAI</button>
+          <button class="code-tab-btn" onclick="switchBlueprintTab('tab-gateway')">LiteLLM Gateway YAML</button>
+          <button class="code-tab-btn" onclick="switchBlueprintTab('tab-focus')">FOCUS 1.0 SQL Transform</button>
+        </div>
+
+        <div id="tab-otel-py" class="blueprint-pane">
+          <div class="code-block"><pre><code>from opentelemetry import trace
+from opentelemetry.trace import Status, StatusCode
+
+tracer = trace.get_tracer("ai.tokenops.client")
+
+def instrumented_llm_call(prompt: str, tenant_id: str, feature_id: str):
+    with tracer.start_as_current_span("gen_ai.chat") as span:
+        # Standard OpenTelemetry GenAI Semantic Conventions
+        span.set_attribute("gen_ai.system", "openai")
+        span.set_attribute("gen_ai.request.model", "gpt-4o")
+        span.set_attribute("gen_ai.request.max_tokens", 1000)
+        
+        # Attribution tags for FinOps Showback & Chargeback
+        span.set_attribute("app.tenant_id", tenant_id)
+        span.set_attribute("app.feature_id", feature_id)
+        
+        response = call_llm(prompt) # invoking vendor
+        
+        # Metered token counts
+        span.set_attribute("gen_ai.usage.input_tokens", response.usage.prompt_tokens)
+        span.set_attribute("gen_ai.usage.output_tokens", response.usage.completion_tokens)
+        span.set_attribute("gen_ai.usage.cached_tokens", getattr(response.usage, "cached_tokens", 0))
+        span.set_status(Status(StatusCode.OK))
+        return response</code></pre></div>
+        </div>
+
+        <div id="tab-gateway" class="blueprint-pane" style="display:none;">
+          <div class="code-block"><pre><code># litellm_config.yaml - Enterprise Gateway with Rate Limiting & Failovers
+model_list:
+  - model_name: primary-routing
+    litellm_params:
+      model: gpt-4o-mini
+      api_key: os.environ/OPENAI_API_KEY
+      rpm: 3000
+      tpm: 250000
+  - model_name: primary-routing
+    litellm_params:
+      model: gemini/gemini-1.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      rpm: 3000
+
+router_settings:
+  routing_strategy: latency-based-routing
+  enable_pre_call_checks: true
+
+general_settings:
+  master_key: sk-gateway-admin-key
+  database_url: postgresql://admin:secret@postgres:5432/tokenomics_db
+
+litellm_settings:
+  callbacks: ["otel"] # Emits gen_ai.* spans directly to collector
+  cache: true
+  cache_type: "redis" # Key-Value Prompt Cache Layer</code></pre></div>
+        </div>
+
+        <div id="tab-focus" class="blueprint-pane" style="display:none;">
+          <div class="code-block"><pre><code>-- FOCUS 1.0 Normalization SQL query for Unified AI Billing
+SELECT 
+  event_time AS ChargePeriodStart,
+  provider AS ProviderName,
+  'Generative AI' AS ServiceCategory,
+  model_name AS ServiceName,
+  tenant_id AS SubAccountId,
+  feature_id AS ChargeDescription,
+  'Usage' AS ChargeType,
+  (prompt_tokens + completion_tokens) AS ConsumedQuantity,
+  'Tokens' AS ConsumedUnit,
+  effective_cost_usd AS EffectiveCost,
+  'USD' AS BillingCurrency
+FROM raw_ai_gateway_telemetry
+WHERE event_time >= DATE_TRUNC('month', CURRENT_DATE);</code></pre></div>
+        </div>
+      </section>
+
+      <!-- SECTION 12: GLOSSARY -->
       <section class="section" id="glossary">
         <div class="section-head">
-          <div><div class="eyebrow">09 / Glossary</div><h2>TokenOps &amp; AI FinOps Lexicon</h2></div>
+          <div><div class="eyebrow">12 / Glossary</div><h2>TokenOps &amp; AI FinOps Lexicon</h2></div>
           <input class="search" type="search" id="glossary-search" placeholder="Search glossary terms" aria-label="Search glossary terms">
         </div>
 
@@ -642,6 +845,11 @@
             <div class="glossary-sources">Sources: Anthropic, OpenAI, Google AI</div>
           </div>
           <div class="glossary-card">
+            <dt>FOCUS™ Specification</dt>
+            <dd>FinOps Open Cost and Usage Specification; open standard normalizing ChargeType, ConsumedQuantity, and EffectiveCost across multi-cloud ledgers.</dd>
+            <div class="glossary-sources">Sources: FinOps Foundation</div>
+          </div>
+          <div class="glossary-card">
             <dt>Time to First Token (TTFT)</dt>
             <dd>Latency duration between submitting an inference request and receiving the first generated token, dominated by prompt prefill compute.</dd>
             <div class="glossary-sources">Sources: Artificial Analysis, vLLM</div>
@@ -650,6 +858,11 @@
             <dt>Tokens Per Second (TPS)</dt>
             <dd>Generation throughput speed at which an inference engine outputs completion tokens, bounded by memory bandwidth during autoregressive decoding.</dd>
             <div class="glossary-sources">Sources: Artificial Analysis, vLLM</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Reasoning Tokens</dt>
+            <dd>Internal chain-of-thought tokens produced during test-time compute by reasoning models (o1, DeepSeek-R1), metered as billable output tokens.</dd>
+            <div class="glossary-sources">Sources: OpenAI, Artificial Analysis</div>
           </div>
           <div class="glossary-card">
             <dt>Provisioned Throughput (PTU)</dt>
@@ -664,7 +877,7 @@
           <div class="glossary-card">
             <dt>AI Gateway</dt>
             <dd>Centralized reverse proxy enforcing authentication, rate limiting, token telemetry, semantic caching, and dynamic model routing across providers.</dd>
-            <div class="glossary-sources">Sources: OpenTelemetry, FinOps Foundation</div>
+            <div class="glossary-sources">Sources: OpenTelemetry, LiteLLM</div>
           </div>
           <div class="glossary-card">
             <dt>Semantic Conventions</dt>
@@ -672,17 +885,17 @@
             <div class="glossary-sources">Source: OpenTelemetry</div>
           </div>
           <div class="glossary-card">
-            <dt>Quantization</dt>
-            <dd>Compression of model weights (e.g. from FP16 to FP8 or INT4) to dramatically reduce GPU VRAM requirements and hosting infrastructure cost.</dd>
+            <dt>PagedAttention</dt>
+            <dd>A memory allocation algorithm inspired by OS virtual memory that partitions KV-cache tensors into non-contiguous physical memory blocks in vLLM.</dd>
             <div class="glossary-sources">Source: vLLM Project</div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 10: EVIDENCE REGISTER -->
+      <!-- SECTION 13: EVIDENCE REGISTER -->
       <section class="section" id="sources">
         <div class="section-head">
-          <div><div class="eyebrow">10 / Evidence register</div><h2>Primary Documentation &amp; Standards</h2></div>
+          <div><div class="eyebrow">13 / Evidence register</div><h2>Primary Documentation &amp; Standards</h2></div>
           <input class="search" type="search" id="source-search" placeholder="Filter sources by name or publisher" aria-label="Filter evidence sources">
         </div>
 
@@ -737,12 +950,22 @@
             <span class="source-meta">Publisher: vLLM Team • Checked: 2026-11-02</span>
             <span class="source-desc">Open-source serving architecture, PagedAttention KV-cache management, and self-hosted economics.</span>
           </li>
+          <li data-source-id="focus-finops-spec">
+            <a href="https://focus.finops.org/" target="_blank" rel="noreferrer">FinOps Foundation: FOCUS™ Specification</a>
+            <span class="source-meta">Publisher: FinOps Foundation • Checked: 2026-11-02</span>
+            <span class="source-desc">Open standard defining cloud and AI consumption billing columns for multi-cloud normalization.</span>
+          </li>
+          <li data-source-id="litellm-gateway">
+            <a href="https://docs.litellm.ai/" target="_blank" rel="noreferrer">LiteLLM: Enterprise AI Gateway Specification</a>
+            <span class="source-meta">Publisher: BerriAI • Checked: 2026-11-02</span>
+            <span class="source-desc">Production proxy architecture for centralized rate limits, fallbacks, OTel telemetry, and load balancing.</span>
+          </li>
         </ul>
       </section>
 
       <footer class="foot">
-        <span>Tokenomics Field Guide v1.1.0 • Research Cut-off: 2026-11-02</span>
-        <span>Reconciliation Run: Complete • Verified Primary Sources</span>
+        <span>Tokenomics Body of Knowledge v1.2.0 • Cut-off: 2026-11-02</span>
+        <span>Living Information Register • Reconciled Weekly via GitHub Actions</span>
       </footer>
     </main>
   </div>
@@ -788,7 +1011,6 @@
       const isBatch = document.getElementById('batch-discount').checked;
       const batchMultiplier = isBatch ? 0.5 : 1.0;
 
-      // Uncached input cost vs cached input cost
       const regularInputTokens = inTokens * (1 - cacheShare);
       const cachedInputTokens = inTokens * cacheShare;
 
@@ -799,7 +1021,6 @@
       const monthlyTotal = singleRequestTotal * requests;
       const per1kCost = singleRequestTotal * 1000;
 
-      // Baseline without cache
       const baselineSingleInputCost = (inTokens * inRate) / 1_000_000;
       const baselineMonthly = (baselineSingleInputCost + singleOutputCost) * batchMultiplier * requests;
       const monthlySavings = Math.max(0, baselineMonthly - monthlyTotal);
@@ -817,34 +1038,56 @@
       }
     }
 
-    const form = document.getElementById('cost-form');
-    form.addEventListener('input', (event) => {
-      if (event.target.id === 'model-preset') {
-        if (event.target.value !== 'custom') {
-          applyPreset(event.target.value);
-        }
+    function updateTco() {
+      const tokensMillions = Math.max(1, Number(document.getElementById('tco-tokens').value) || 1);
+      const apiRate = Math.max(0, Number(document.getElementById('tco-api-rate').value) || 0);
+      const gpuHourly = Math.max(0, Number(document.getElementById('tco-gpu-hourly').value) || 0);
+      const utilization = Math.min(100, Math.max(5, Number(document.getElementById('tco-utilization').value) || 5)) / 100;
+      const overhead = Math.max(0, Number(document.getElementById('tco-overhead').value) || 0);
+
+      const hostedMonthly = tokensMillions * apiRate;
+      const hoursPerMonth = 720;
+      const rawGpuMonthly = gpuHourly * hoursPerMonth;
+      const totalGpuMonthly = rawGpuMonthly + overhead;
+
+      document.getElementById('tco-hosted-cost').textContent = `Hosted API: ${money.format(hostedMonthly)} / mo`;
+      document.getElementById('tco-gpu-cost').textContent = `Self-Hosted GPU Cluster: ${money.format(totalGpuMonthly)} / mo`;
+
+      const diff = Math.abs(hostedMonthly - totalGpuMonthly);
+      const verdict = document.getElementById('tco-verdict');
+      const breakeven = document.getElementById('tco-breakeven');
+
+      if (hostedMonthly < totalGpuMonthly) {
+        verdict.textContent = `Hosted API is ${money.format(diff)} cheaper / mo`;
       } else {
-        if (event.target.id !== 'model-preset') {
-          // If user manually modifies fields, set preset to custom
-          const currentPreset = presets[document.getElementById('model-preset').value];
-          if (currentPreset) {
-            // Check if changed
-            const inRate = Number(document.getElementById('input-rate').value);
-            const outRate = Number(document.getElementById('output-rate').value);
-            if (inRate !== currentPreset.inRate || outRate !== currentPreset.outRate) {
-              document.getElementById('model-preset').value = 'custom';
-            }
-          }
-        }
+        verdict.textContent = `Self-Hosted is ${money.format(diff)} cheaper / mo`;
+      }
+
+      const breakevenMillions = apiRate > 0 ? (totalGpuMonthly / apiRate) : 0;
+      breakeven.textContent = `Break-even threshold: ${(breakevenMillions / 1000).toFixed(2)}B tokens/month at ${Math.round(utilization * 100)}% load`;
+    }
+
+    function switchBlueprintTab(tabId) {
+      document.querySelectorAll('.blueprint-pane').forEach((el) => el.style.display = 'none');
+      document.querySelectorAll('.code-tab-btn').forEach((btn) => btn.classList.remove('active'));
+      const activePane = document.getElementById(tabId);
+      if (activePane) activePane.style.display = 'block';
+      event.target.classList.add('active');
+    }
+
+    document.getElementById('cost-form').addEventListener('input', (event) => {
+      if (event.target.id === 'model-preset') {
+        if (event.target.value !== 'custom') applyPreset(event.target.value);
+      } else {
         updateEstimate();
       }
     });
 
     document.getElementById('model-preset').addEventListener('change', (e) => {
-      if (e.target.value !== 'custom') {
-        applyPreset(e.target.value);
-      }
+      if (e.target.value !== 'custom') applyPreset(e.target.value);
     });
+
+    document.getElementById('tco-form').addEventListener('input', updateTco);
 
     document.getElementById('source-search').addEventListener('input', (event) => {
       const q = event.target.value.toLowerCase().trim();
@@ -860,8 +1103,8 @@
       });
     });
 
-    // Initial calculation on load
     updateEstimate();
+    updateTco();
   </script>
 </body>
 </html>

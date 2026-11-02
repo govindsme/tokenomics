@@ -53,7 +53,7 @@
       "id": "model-routing-delivers-blended-savings",
       "statement": "Dynamic model routing sends routine tasks to fast lightweight models and escalates hard cases to frontier models, reducing average cost by 60-80%.",
       "claimType": "architecture-guidance",
-      "sourceIds": ["artificial-analysis", "finops-ai"],
+      "sourceIds": ["artificial-analysis", "finops-ai", "litellm-gateway"],
       "checkedAt": "2026-11-02",
       "scope": "Requires an intelligent classifier or evaluator gateway with explicit latency and quality SLAs."
     },
@@ -77,9 +77,25 @@
       "id": "guardrails-prevent-runaway-agent-spend",
       "statement": "Automated rate limits, token quotas, and recursion circuit breakers are required to protect against runaway autonomous agent loops.",
       "claimType": "operational-guidance",
-      "sourceIds": ["finops-ai", "otel-genai-semconv"],
+      "sourceIds": ["finops-ai", "otel-genai-semconv", "litellm-gateway"],
       "checkedAt": "2026-11-02",
       "scope": "Enforces max steps, per-session token budgets, and automated fallback when thresholds are breached."
+    },
+    {
+      "id": "focus-billing-schema-standardization",
+      "statement": "Normalizing AI consumption data to the FinOps Foundation FOCUS™ schema enables unified multi-cloud attribution across AWS, Azure, Google Cloud, and SaaS APIs.",
+      "claimType": "framework-guidance",
+      "sourceIds": ["focus-finops-spec", "finops-ai"],
+      "checkedAt": "2026-11-02",
+      "scope": "Maps provider-specific meters to standardized ProviderName, ServiceName, ChargeType, and ConsumedQuantity."
+    },
+    {
+      "id": "reasoning-tokens-inflate-output-multiplier",
+      "statement": "Reasoning models spend internal test-time compute tokens that are billed at premium output rates, requiring explicit token budgeting for complex chain-of-thought tasks.",
+      "claimType": "pricing-method",
+      "sourceIds": ["openai-api-pricing", "artificial-analysis"],
+      "checkedAt": "2026-11-02",
+      "scope": "Hidden reasoning tokens can expand total generated tokens by 3x to 10x relative to visible completion tokens."
     }
   ]
 }

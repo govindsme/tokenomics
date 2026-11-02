@@ -24,7 +24,7 @@ const glossary = JSON.parse(readFileSync(resolve(dataOutput, 'glossary.json'), '
 const benchmarks = JSON.parse(readFileSync(resolve(dataOutput, 'benchmarks.json'), 'utf8'));
 
 writeFileSync(resolve(output, 'research-summary.json'), `${JSON.stringify({
-  version: "1.1.0",
+  version: "1.2.0",
   researchCutoff: state.researchCutoff,
   sourceCount: sources.sources.length,
   claimCount: claims.claims.length,

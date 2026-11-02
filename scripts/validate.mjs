@@ -93,6 +93,7 @@ assert.equal(data.state.researchCutoff, data.history.runs.at(-1)?.researchCutoff
 
 // Verify required interactive DOM elements
 assert.ok(page.includes('id="cost-form"'), 'The cost estimator form is required');
+assert.ok(page.includes('id="tco-form"'), 'The TCO simulator form is required');
 assert.ok(page.includes('id="source-search"'), 'The evidence filter is required');
 assert.ok(page.includes('id="model-preset"'), 'The model preset selector is required');
 assert.ok(page.includes('id="glossary-search"'), 'The glossary search filter is required');
