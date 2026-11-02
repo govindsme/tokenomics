@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "topics": [
+    {"id":"operating-picture","title":"Operating picture","anchor":"overview","level":"introductory","sourceIds":["finops-ai"]},
+    {"id":"unit-economics","title":"Unit economics","anchor":"unit-economics","level":"practitioner","sourceIds":["openai-api-pricing","anthropic-pricing","google-ai-pricing"]},
+    {"id":"metering","title":"Metering and attribution","anchor":"metering","level":"practitioner","sourceIds":["otel-genai-semconv","finops-ai"]},
+    {"id":"optimization","title":"Cost optimization","anchor":"optimization","level":"practitioner","sourceIds":["finops-ai"]},
+    {"id":"routing","title":"Routing and hosting economics","anchor":"routing","level":"practitioner","sourceIds":["finops-ai"]},
+    {"id":"governance","title":"Budgets and controls","anchor":"governance","level":"practitioner","sourceIds":["finops-ai"]},
+    {"id":"evidence","title":"Evidence register","anchor":"sources","level":"reference","sourceIds":["finops-ai","otel-genai-semconv","openai-api-pricing","anthropic-pricing","google-ai-pricing","aws-bedrock-pricing","google-cloud-model-garden-pricing"]}
+  ]
+}

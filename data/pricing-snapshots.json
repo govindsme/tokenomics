@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "status": "links-only",
+  "asOf": "2026-11-02",
+  "snapshots": [],
+  "omissionReason": "No numeric rates are embedded in this first run. Pricing pages are model-, product-, region-, and contract-dependent; automated access was also blocked for one official page. The estimator requires users to enter rates checked against the current provider source and their agreement.",
+  "sources": ["openai-api-pricing", "anthropic-pricing", "google-ai-pricing", "aws-bedrock-pricing", "google-cloud-model-garden-pricing"]
+}

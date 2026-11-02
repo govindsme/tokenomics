@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "terms": [
+    {"term":"AI FinOps","definition":"The practice of bringing financial accountability and cross-functional cost management to AI workloads.","sourceIds":["finops-ai"]},
+    {"term":"TokenOps","definition":"Operational controls and practices for measuring, governing, and optimizing token-based AI consumption.","sourceIds":["finops-ai"]},
+    {"term":"Input token","definition":"A provider-metered text or other supported input unit sent to a model; exact counting and billing rules are provider-specific.","sourceIds":["openai-api-pricing","anthropic-pricing"]},
+    {"term":"Output token","definition":"A provider-metered generated unit; provider definitions and rates vary by model and product.","sourceIds":["openai-api-pricing","anthropic-pricing"]},
+    {"term":"Prompt caching","definition":"A provider or application mechanism for reusing eligible prompt content; behavior, eligibility, and pricing depend on implementation.","sourceIds":["openai-api-pricing","anthropic-pricing"]},
+    {"term":"Cost allocation","definition":"Assigning shared or direct costs to the teams, products, or workloads responsible for consumption.","sourceIds":["finops-ai"]},
+    {"term":"Unit economics","definition":"Cost and value measured against a consistent unit of workload or successful outcome.","sourceIds":["finops-ai"]},
+    {"term":"Semantic conventions","definition":"Shared names and meanings for telemetry attributes and metrics, maintained as part of a specification.","sourceIds":["otel-genai-semconv"]}
+  ]
+}

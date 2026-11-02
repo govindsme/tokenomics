@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "providers": [
+    {"id":"openai","name":"OpenAI API","pricingSourceId":"openai-api-pricing","pricingBasis":"Check current model, token, modality, and product-specific rates."},
+    {"id":"anthropic","name":"Anthropic API","pricingSourceId":"anthropic-pricing","pricingBasis":"Check current model and usage-specific rates and eligibility."},
+    {"id":"google-ai","name":"Gemini API","pricingSourceId":"google-ai-pricing","pricingBasis":"Check model, modality, usage tier, and current API terms."},
+    {"id":"aws-bedrock","name":"Amazon Bedrock","pricingSourceId":"aws-bedrock-pricing","pricingBasis":"Check model, deployment, region, and selected pricing option."},
+    {"id":"google-cloud","name":"Google Cloud Model Garden","pricingSourceId":"google-cloud-model-garden-pricing","pricingBasis":"Check the specific model, region, and serving product."}
+  ]
+}

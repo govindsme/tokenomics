@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "runs": [
+    {
+      "runDate": "2026-11-02",
+      "mode": "first-run",
+      "status": "complete",
+      "previousSuccessfulCutoff": null,
+      "researchCutoff": "2026-11-02",
+      "changes": [
+        {"type":"added","path":"index.html","reason":"Published introductory and practitioner field-guide sections, a rate-input estimator, and evidence links."},
+        {"type":"added","path":"data/","reason":"Established sources, claims, topics, providers, pricing snapshot status, glossary, and benchmark records."},
+        {"type":"added","path":"scripts/ and .github/workflows/","reason":"Added reproducible validation, static build, and GitHub Pages deployment."},
+        {"type":"updated","path":"README.md","reason":"Added site URL, local run instructions, and research approach."}
+      ],
+      "researchNotes": ["Verified official source URLs; updated redirected pricing links.", "No numeric pricing snapshot was published because rates are volatile and exact applicability was not verified.", "The repository had no prior research state or content to reconcile."],
+      "validation": ["npm run validate", "npm run build"]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "mode": "first-run",
+  "status": "complete",
+  "lastSuccessfulRun": "2026-11-02",
+  "previousSuccessfulCutoff": null,
+  "researchCutoff": "2026-11-02",
+  "nextRunInstructions": "Use researchCutoff as the since-date. Recheck pricing and changing technical claims, update only affected records and pages, run validation/build, and advance this state only after all checks pass.",
+  "unresolvedUncertainty": ["Provider-specific contract rates and discounts are not represented in the site.", "OpenTelemetry GenAI convention stability must be checked against the latest specification on each run."]
+}

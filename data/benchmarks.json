@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "status": "no-comparable-benchmarks-published",
+  "benchmarks": [],
+  "publicationRequirements": [
+    "Describe the task, dataset, sampling, and evaluation rubric.",
+    "Record provider, model/version, region, prompt/context, and generation settings.",
+    "Report quality or task-success results alongside latency and cost, including retries and human review where applicable.",
+    "State measurement dates, price source, currency, and omitted costs.",
+    "Do not compare results produced under materially different workloads as if they were equivalent."
+  ]
+}

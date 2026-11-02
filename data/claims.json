@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "claims": [
+    {"id":"ai-finops-needs-cross-functional-ownership","statement":"AI FinOps requires collaboration between the teams that build, operate, govern, and fund AI workloads.","claimType":"framework-guidance","sourceIds":["finops-ai"],"checkedAt":"2026-11-02","scope":"Organizational practice; implementation varies by organization."},
+    {"id":"genai-telemetry-conventions-evolve","statement":"GenAI telemetry conventions should be adopted with explicit version and status awareness.","claimType":"technical-guidance","sourceIds":["otel-genai-semconv"],"checkedAt":"2026-11-02","scope":"Consult the current specification before instrumenting; semantic conventions can change."},
+    {"id":"provider-prices-are-product-specific","statement":"A provider price estimate must use the applicable model and product rates, not a provider-wide assumed token price.","claimType":"pricing-method","sourceIds":["openai-api-pricing","anthropic-pricing","google-ai-pricing","aws-bedrock-pricing","google-cloud-model-garden-pricing"],"checkedAt":"2026-11-02","scope":"Rates may also depend on region, modality, usage tier, discounts, and contract terms."},
+    {"id":"usage-estimates-are-not-invoices","statement":"Application token estimates should be reconciled with provider billing records before they are presented as actual cost.","claimType":"operational-guidance","sourceIds":["finops-ai","openai-api-pricing","anthropic-pricing"],"checkedAt":"2026-11-02","scope":"The site estimator calculates a token-rate estimate only and omits other billable units and contract adjustments."},
+    {"id":"optimize-against-outcomes","statement":"Cost optimizations should be assessed against task quality and successful outcomes, not token reduction alone.","claimType":"operational-guidance","sourceIds":["finops-ai"],"checkedAt":"2026-11-02","scope":"Recommended evaluation practice; select outcome measures appropriate to the workload."}
+  ]
+}

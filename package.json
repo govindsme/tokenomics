@@ -1,0 +1,10 @@
+{
+  "name": "tokenomics-field-guide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Evidence-led AI FinOps and TokenOps field guide",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "build": "node scripts/build.mjs"
+  }
+}
