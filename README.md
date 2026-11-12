@@ -8,19 +8,19 @@
 
 The site deploys via GitHub Pages automatically on push to `main`, and runs automated weekly reconciliation audits via GitHub Actions.
 
-## Key Capabilities & Body of Knowledge (v1.2.0)
+## Key Capabilities & Body of Knowledge (v1.3.0)
 
 - **AI FinOps Maturity Model**: Structured roadmap across three stages (**Crawl** for baseline visibility, **Walk** for gateway control & attribution, **Run** for dynamic routing & unit economic optimization).
-- **Unit Economics & Token Calculator**: Interactive calculator with preset pricing snapshots across OpenAI, Anthropic, Google Gemini, and AWS Bedrock. Accurately calculates prompt cache discounts (50%–90%) and 50% Batch API savings with live per-request and per-month breakdowns.
+- **Unit Economics & Token Calculator**: Interactive calculator with preset pricing snapshots across OpenAI GPT-6, Anthropic Claude 5.5, and Google Gemini 4/3.x. Accurately calculates prompt cache discounts (90%–95%) and 50% Batch API savings with live per-request and per-month breakdowns.
 - **Hosted API vs. Self-Hosted GPU Cluster TCO Simulator**: Decision engine modeling total cost of ownership across hosted pay-as-you-go APIs and dedicated 8x H100 GPU clusters, factoring in idle off-peak hardware waste, utilization curves, and MLOps engineering overhead.
 - **Production Code Blueprints**:
   - Python & TypeScript OpenTelemetry GenAI instrumentation recipes (`gen_ai.system`, `gen_ai.request.model`, `gen_ai.usage.*`, and tenant attribution headers).
   - Production LiteLLM AI Gateway YAML with latency routing, Redis prompt caching, and RPM/TPM rate limits.
-  - FinOps Foundation FOCUS™ 1.0 SQL transformation queries for unified multi-cloud billing.
-- **Verified Pricing Snapshots**: Snapshot table covering 9 leading model configurations (GPT-4o, GPT-4o mini, o1, Claude 3.5 Sonnet, Claude 3.5 Haiku, Gemini 1.5 Flash, Gemini 1.5 Pro, Bedrock Claude, and Azure OpenAI) with one-click calculator loading.
-- **Empirical Benchmarks**: Task-based comparative evaluations across coding, enterprise RAG, and intent routing with quality scores, median TTFT, TPS, and cost per 1k completed tasks.
-- **Comprehensive Glossary**: 21 searchable practitioner definitions with direct source citations.
-- **Evidence Register**: 12 verified primary standards and documentation sources.
+  - FinOps Foundation FOCUS™ SQL transformation queries (including FOCUS 1.5 AI token meters and agent attribution) for unified multi-cloud billing.
+- **Verified Pricing Snapshots**: Snapshot table covering 9 leading current model configurations (GPT-6 Astra/Sol/Luna, Claude Opus Sonnet/Haiku 5.5, Gemini 4 Carbon, Gemini 3.8 Flash, Gemini 3.1 Flash-Lite) with one-click calculator loading, as of 2026-11-12.
+- **Empirical Benchmarks**: Task-based comparative evaluations across coding, enterprise RAG, and intent routing with quality scores, median TTFT, TPS, and cost per 1k completed tasks (current-generation models).
+- **Comprehensive Glossary**: 23 searchable practitioner definitions with direct source citations.
+- **Evidence Register**: 13 verified primary standards and documentation sources.
 
 ## Run locally
 
@@ -47,11 +47,11 @@ npm run build
 ## Machine-Readable Ledger (`data/`)
 
 All research claims, provider rates, and methodology are maintained as structured JSON in `data/`:
-- `sources.json`: 12 verified primary standards and provider documentation sources.
-- `claims.json`: 12 evidence-backed FinOps and TokenOps architectural guidance claims.
-- `pricing-snapshots.json`: Verified rates per million tokens, prompt caching discounts, and effective dates.
+- `sources.json`: 13 verified primary standards and provider documentation sources.
+- `claims.json`: 15 evidence-backed FinOps and TokenOps architectural guidance claims.
+- `pricing-snapshots.json`: Verified rates per million tokens (2026-11-12), prompt caching discounts, and effective dates.
 - `benchmarks.json`: Workload profiles, evaluation rubrics, quality scores, TTFT/TPS latency, and task costs.
-- `glossary.json`: 21 operational terms and formal definitions.
+- `glossary.json`: 23 operational terms and formal definitions.
 - `providers.json`: 7 model providers and inference platforms.
 - `topics.json`: 13 core topic areas with anchor mapping and source citations.
 - `update-history.json` & `research-state.json`: Autonomous audit ledger tracking runs, research cut-off dates, and SemVer increments.

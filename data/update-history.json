@@ -66,6 +66,35 @@
         "Added production OTel GenAI instrumentation recipes conforming to gen_ai.system, gen_ai.request.model, and gen_ai.usage.* standards."
       ],
       "validation": ["npm run validate", "npm run build"]
+    },
+    {
+      "runDate": "2026-11-12",
+      "mode": "subsequent-run",
+      "status": "complete",
+      "previousSuccessfulCutoff": "2026-11-02",
+      "researchCutoff": "2026-11-12",
+      "changes": [
+        {"type":"updated","path":"package.json","reason":"Bumped version to 1.3.0 per SemVer following a full pricing-generation reconciliation."},
+        {"type":"updated","path":"data/pricing-snapshots.json","reason":"Replaced the 2024-generation snapshot set (GPT-4o, Claude 3.5, Gemini 1.5, o1) with 9 current Nov 2026 verified snapshots spanning GPT-6 Astra/Sol/Luna, Claude Opus/Sonnet/Haiku 5.5, and Gemini 4 Carbon / 3.8 Flash / 3.1 Flash-Lite, with 90-95% cache-read discount rates."},
+        {"type":"updated","path":"data/sources.json","reason":"Refreshed checkedAt dates, added OpenAI GPT-6 release-notes source, updated OpenAI/Anthropic/Google/Azure/FOCUS titles and notes for the GPT-6 / Claude 5.5 / Gemini 4 generation and FOCUS 1.5; recorded OTel GenAI semconv move to its dedicated repository."},
+        {"type":"updated","path":"data/claims.json","reason":"Refreshed checkedAt dates, updated the prompt-caching claim to 50-95% discounts, and added claims for the OTel GenAI repo move, 2026 frontier price deflation (GPT-6/Claude 5.x/Gemini 4), and agentic-era unit economics with FOCUS 1.5."},
+        {"type":"updated","path":"data/glossary.json","reason":"Refreshed the prompt-caching definition to 50-95%, and added Agent Trajectory and Implicit Context Caching terms."},
+        {"type":"updated","path":"data/benchmarks.json","reason":"Reconciled benchmark evaluations to current-generation models (Claude Opus/Sonnet 5.5, GPT-6 Astra/Sol/Luna, Gemini 4 Carbon / 3.8 Flash / 3.1 Flash-Lite, self-hosted 70B-class) with updated asOf dates."},
+        {"type":"updated","path":"data/providers.json","reason":"Updated OpenAI, Anthropic, and Google Gemini pricing-basis notes for the GPT-6, Claude 5.5, and Gemini 4 generations."},
+        {"type":"updated","path":"data/topics.json","reason":"No structural change; existing sourceIds remain valid. Kept topics stable."},
+        {"type":"updated","path":"index.html","reason":"Refreshed model presets, pricing snapshot table, benchmark table, glossary, evidence register descriptions, stamp/footer dates, and OTel/FOCUS references to the GPT-6 / Claude 5.5 / Gemini 4 landscape."},
+        {"type":"updated","path":"scripts/build.mjs","reason":"Bumped emitted summary version to 1.3.0."}
+      ],
+      "researchNotes": [
+        "Reconciled model pricing against official Nov 2026 provider documentation and independent price trackers (benchlm.ai, Google AI Studio pricing).",
+        "GPT-6 Astra $10/$50 with $1 cached input (90%); GPT-6.1 Sol $2/$10 with $0.10 cached input (95%); GPT-6 Luna $0.10/$0.50 with $0.01 cached (90%).",
+        "Claude Opus 5.5 $4/$20 ($0.20 cached), Sonnet 5.5 $2/$10 ($0.10 cached), Haiku 5.5 $0.10/$0.50 ($0.01 cached); Anthropic halved Sonnet 5.5 cache reads (Sep 2026).",
+        "Gemini 4 Carbon/Argon $2/$10 ($0.10 implicit cached) through Nov 30 2026, stepping to $4/$20 on Dec 1; Gemini 3.8 Flash $0.75/$3.75 through Dec 31 2026 with Jan 1 2027 increases; list prices are introductory.",
+        "Confirmed OTel GenAI semantic conventions were deprecated out of the main repo (v1.42.0, June 2026) and moved to a dedicated OpenTelemetry GenAI repository, still in Development status.",
+        "FOCUS 1.5 (2026) adds AI token billing labels, SKU linkage, and person/service-account/agent attribution for cost rows.",
+        "GPT-6 Sol and Luna ship with improved default prompt caching and up to 90% cache-hit discounts, reinforcing routing economics."
+      ],
+      "validation": ["npm run validate", "npm run build"]
     }
   ]
 }

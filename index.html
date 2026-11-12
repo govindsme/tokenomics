@@ -142,7 +142,7 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#overview" aria-label="Tokenomics home"><span class="brand-mark">T/</span> TOKENOMICS <span class="version-tag">v1.2.0 • BoK</span></a>
+    <a class="brand" href="#overview" aria-label="Tokenomics home"><span class="brand-mark">T/</span> TOKENOMICS <span class="version-tag">v1.3.0 • BoK</span></a>
     <div class="top-meta">
       <span class="wide">AI FinOps &amp; TokenOps Body of Knowledge</span>
       <a href="#maturity-model">Roadmap</a>
@@ -185,7 +185,7 @@
         </div>
         <div class="stamp">
           <strong>Continuous Research Ledger</strong>
-          <span>Cut-off date: 2026-11-02 • Automated Weekly Audit<br>Reconciled against official provider specifications and FinOps standards.</span>
+          <span>Cut-off date: 2026-11-12 • Automated Weekly Audit<br>Reconciled against official provider specifications and FinOps standards.</span>
         </div>
       </section>
 
@@ -208,7 +208,7 @@
           <article>
             <span class="eyebrow">03 / Optimize</span>
             <strong class="number">Value</strong>
-            <p>Harness prompt caching (50–90% discounts), dynamic cascading model routing, batch processing, and context compaction.</p>
+            <p>Harness prompt caching (50–95% discounts), dynamic cascading model routing, batch processing, and context compaction.</p>
           </article>
         </div>
       </section>
@@ -269,15 +269,15 @@
               <label for="model-preset">Model Preset (Verified Snapshots)</label>
               <select id="model-preset">
                 <option value="custom">Custom Rates (Manual Entry)</option>
-                <option value="openai-gpt-4o" selected>OpenAI: GPT-4o ($2.50 in / $10.00 out, 50% cache hit)</option>
-                <option value="openai-gpt-4o-mini">OpenAI: GPT-4o mini ($0.15 in / $0.60 out, 50% cache hit)</option>
-                <option value="openai-o1">OpenAI: o1 Reasoning ($15.00 in / $60.00 out, 50% cache hit)</option>
-                <option value="anthropic-claude-3-5-sonnet">Anthropic: Claude 3.5 Sonnet ($3.00 in / $15.00 out, 90% cache read)</option>
-                <option value="anthropic-claude-3-5-haiku">Anthropic: Claude 3.5 Haiku ($0.80 in / $4.00 out, 90% cache read)</option>
-                <option value="google-gemini-1-5-flash">Google: Gemini 1.5 Flash ($0.075 in / $0.30 out, 75% cache)</option>
-                <option value="google-gemini-1-5-pro">Google: Gemini 1.5 Pro ($1.25 in / $5.00 out, 75% cache)</option>
-                <option value="aws-bedrock-claude-3-5-sonnet">AWS Bedrock: Claude 3.5 Sonnet ($3.00 in / $15.00 out, 90% cache)</option>
-                <option value="azure-gpt-4o">Azure OpenAI: GPT-4o ($2.50 in / $10.00 out, 50% cache)</option>
+                <option value="openai-gpt-6-astra" selected>OpenAI: GPT-6 Astra ($10.00 in / $50.00 out, 90% cache read)</option>
+                <option value="openai-gpt-6-1-sol">OpenAI: GPT-6.1 Sol ($2.00 in / $10.00 out, 95% cache read)</option>
+                <option value="openai-gpt-6-luna">OpenAI: GPT-6 Luna ($0.10 in / $0.50 out, 90% cache read)</option>
+                <option value="anthropic-claude-opus-5-5">Anthropic: Claude Opus 5.5 ($4.00 in / $20.00 out, 95% cache read)</option>
+                <option value="anthropic-claude-sonnet-5-5">Anthropic: Claude Sonnet 5.5 ($2.00 in / $10.00 out, 95% cache read)</option>
+                <option value="anthropic-claude-haiku-5-5">Anthropic: Claude Haiku 5.5 ($0.10 in / $0.50 out, 90% cache read)</option>
+                <option value="google-gemini-4-carbon">Google: Gemini 4 Carbon ($2.00 in / $10.00 out, 95% cache)</option>
+                <option value="google-gemini-3-8-flash">Google: Gemini 3.8 Flash ($0.75 in / $3.75 out, 90% cache)</option>
+                <option value="google-gemini-3-1-flash-lite">Google: Gemini 3.1 Flash-Lite ($0.25 in / $1.50 out, 90% cache)</option>
               </select>
             </div>
 
@@ -400,7 +400,7 @@
       <section class="section" id="pricing-reference">
         <div class="section-head">
           <div><div class="eyebrow">05 / Verified Snapshots</div><h2>Model Pricing &amp; Prompt Cache Discounter</h2></div>
-          <p>Verified provider rates per million tokens as of 2026-11-02. Click any model to load its exact rates directly into the estimator.</p>
+          <p>Verified provider rates per million tokens as of 2026-11-12. Click any model to load its exact rates directly into the estimator.</p>
         </div>
 
         <div class="table-container">
@@ -418,85 +418,85 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>GPT-4o</strong><br><small style="color:var(--muted)">Multimodal Frontier</small></td>
+                <td><strong>GPT-6 Astra</strong><br><small style="color:var(--muted)">Frontier multimodal</small></td>
                 <td>OpenAI</td>
-                <td>$2.50</td>
-                <td>$1.25</td>
                 <td>$10.00</td>
-                <td><span class="tag">50% off</span></td>
-                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-4o')">Load</button></td>
-              </tr>
-              <tr>
-                <td><strong>GPT-4o mini</strong><br><small style="color:var(--muted)">High efficiency</small></td>
-                <td>OpenAI</td>
-                <td>$0.15</td>
-                <td>$0.075</td>
-                <td>$0.60</td>
-                <td><span class="tag">50% off</span></td>
-                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-4o-mini')">Load</button></td>
-              </tr>
-              <tr>
-                <td><strong>o1 (Reasoning)</strong><br><small style="color:var(--muted)">Chain of thought</small></td>
-                <td>OpenAI</td>
-                <td>$15.00</td>
-                <td>$7.50</td>
-                <td>$60.00</td>
-                <td><span class="tag">50% off</span></td>
-                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-o1')">Load</button></td>
-              </tr>
-              <tr>
-                <td><strong>Claude 3.5 Sonnet</strong><br><small style="color:var(--muted)">Coding &amp; reasoning</small></td>
-                <td>Anthropic</td>
-                <td>$3.00</td>
-                <td>$0.30</td>
-                <td>$15.00</td>
+                <td>$1.00</td>
+                <td>$50.00</td>
                 <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
-                <td><button type="button" class="btn-apply" onclick="applyPreset('anthropic-claude-3-5-sonnet')">Load</button></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-6-astra')">Load</button></td>
               </tr>
               <tr>
-                <td><strong>Claude 3.5 Haiku</strong><br><small style="color:var(--muted)">Fast classification</small></td>
+                <td><strong>GPT-6.1 Sol</strong><br><small style="color:var(--muted)">High-capability reasoning</small></td>
+                <td>OpenAI</td>
+                <td>$2.00</td>
+                <td>$0.10</td>
+                <td>$10.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">95% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-6-1-sol')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>GPT-6 Luna</strong><br><small style="color:var(--muted)">Lowest-cost scale tier</small></td>
+                <td>OpenAI</td>
+                <td>$0.10</td>
+                <td>$0.01</td>
+                <td>$0.50</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-6-luna')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Claude Opus 5.5</strong><br><small style="color:var(--muted)">Coding &amp; reasoning</small></td>
                 <td>Anthropic</td>
-                <td>$0.80</td>
-                <td>$0.08</td>
                 <td>$4.00</td>
-                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
-                <td><button type="button" class="btn-apply" onclick="applyPreset('anthropic-claude-3-5-haiku')">Load</button></td>
+                <td>$0.20</td>
+                <td>$20.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">95% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('anthropic-claude-opus-5-5')">Load</button></td>
               </tr>
               <tr>
-                <td><strong>Gemini 1.5 Flash</strong><br><small style="color:var(--muted)">High throughput</small></td>
-                <td>Google AI</td>
-                <td>$0.075</td>
-                <td>$0.01875</td>
-                <td>$0.30</td>
-                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">75% off</span></td>
-                <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-1-5-flash')">Load</button></td>
-              </tr>
-              <tr>
-                <td><strong>Gemini 1.5 Pro</strong><br><small style="color:var(--muted)">2M Context Window</small></td>
-                <td>Google AI</td>
-                <td>$1.25</td>
-                <td>$0.3125</td>
-                <td>$5.00</td>
-                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">75% off</span></td>
-                <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-1-5-pro')">Load</button></td>
-              </tr>
-              <tr>
-                <td><strong>Claude 3.5 Sonnet (Bedrock)</strong><br><small style="color:var(--muted)">AWS Managed</small></td>
-                <td>AWS Bedrock</td>
-                <td>$3.00</td>
-                <td>$0.30</td>
-                <td>$15.00</td>
-                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
-                <td><button type="button" class="btn-apply" onclick="applyPreset('aws-bedrock-claude-3-5-sonnet')">Load</button></td>
-              </tr>
-              <tr>
-                <td><strong>GPT-4o (Azure OpenAI)</strong><br><small style="color:var(--muted)">Enterprise security</small></td>
-                <td>Azure OpenAI</td>
-                <td>$2.50</td>
-                <td>$1.25</td>
+                <td><strong>Claude Sonnet 5.5</strong><br><small style="color:var(--muted)">Balanced agentic workhorse</small></td>
+                <td>Anthropic</td>
+                <td>$2.00</td>
+                <td>$0.10</td>
                 <td>$10.00</td>
-                <td><span class="tag">50% off</span></td>
-                <td><button type="button" class="btn-apply" onclick="applyPreset('azure-gpt-4o')">Load</button></td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">95% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('anthropic-claude-sonnet-5-5')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Claude Haiku 5.5</strong><br><small style="color:var(--muted)">Ultra-low-cost agent loop</small></td>
+                <td>Anthropic</td>
+                <td>$0.10</td>
+                <td>$0.01</td>
+                <td>$0.50</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('anthropic-claude-haiku-5-5')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Gemini 4 Carbon</strong><br><small style="color:var(--muted)">Frontier reasoning</small></td>
+                <td>Google AI</td>
+                <td>$2.00</td>
+                <td>$0.10</td>
+                <td>$10.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">95% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-4-carbon')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Gemini 3.8 Flash</strong><br><small style="color:var(--muted)">Agentic high-throughput</small></td>
+                <td>Google AI</td>
+                <td>$0.75</td>
+                <td>$0.075</td>
+                <td>$3.75</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-3-8-flash')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Gemini 3.1 Flash-Lite</strong><br><small style="color:var(--muted)">Cost-efficient scale tier</small></td>
+                <td>Google AI</td>
+                <td>$0.25</td>
+                <td>$0.025</td>
+                <td>$1.50</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-3-1-flash-lite')">Load</button></td>
               </tr>
             </tbody>
           </table>
@@ -554,7 +554,7 @@
         <div class="guide-grid">
           <article class="guide">
             <span class="tag">Architecture</span>
-            <h3>Prompt Caching Economics (50% – 90% Savings)</h3>
+            <h3>Prompt Caching Economics (50% – 95% Savings)</h3>
             <p>Structure prompts to keep invariant context (system instructions, tool definitions, reference manuals) strictly at the beginning. Providers reuse the GPU KV cache for matching prefixes, drastically lowering TTFT and slashing input costs.</p>
           </article>
           <article class="guide">
@@ -585,7 +585,7 @@
           <article class="guide">
             <span class="tag">Strategy</span>
             <h3>Cascading Model Routing</h3>
-            <p>Direct 70% to 85% of standard user traffic to lightning-fast, ultra-cheap models (e.g. Gemini 1.5 Flash, GPT-4o mini, Claude 3.5 Haiku). Dynamically escalate to frontier models (Claude 3.5 Sonnet, GPT-4o) only when complexity heuristics trigger.</p>
+            <p>Direct 70% to 85% of standard user traffic to lightning-fast, ultra-cheap models (e.g. Gemini 3.8 Flash, GPT-6 Luna, Claude Haiku 5.5). Dynamically escalate to frontier models (Claude Opus 5.5, GPT-6 Astra) only when complexity heuristics trigger.</p>
           </article>
           <article class="guide">
             <span class="tag">Capacity</span>
@@ -595,7 +595,7 @@
           <article class="guide">
             <span class="tag">Self-Hosting</span>
             <h3>The Hidden TCO of Self-Hosted GPU Clusters</h3>
-            <p>Running open-weight models (e.g. Llama-3.1 on vLLM) requires factoring in GPU rental (e.g. 8x H100s), cluster standby idle time, MLOps engineering headcount, failover redundancy, and memory fragmentation. Evaluate throughput saturation before committing.</p>
+            <p>Running open-weight models (e.g. a Llama-4-class 70B model on vLLM) requires factoring in GPU rental (e.g. 8x H100s), cluster standby idle time, MLOps engineering headcount, failover redundancy, and memory fragmentation. Evaluate throughput saturation before committing.</p>
           </article>
           <article class="guide">
             <span class="tag">Optimization</span>
@@ -656,77 +656,98 @@
             </thead>
             <tbody>
               <tr>
-                <td rowspan="4"><strong>Code Synthesis &amp; Refactoring</strong><br><small style="color:var(--muted)">3.8k in / 950 out</small></td>
-                <td>Claude 3.5 Sonnet</td>
-                <td><strong>93.4% Pass@1</strong></td>
-                <td>0.85s</td>
-                <td>72.4 tps</td>
-                <td>$25.65 ($18.40 cached)</td>
+                <td rowspan="5"><strong>Code Synthesis &amp; Refactoring</strong><br><small style="color:var(--muted)">3.8k in / 950 out</small></td>
+                <td>Claude Opus 5.5</td>
+                <td><strong>95.1% Pass@1</strong></td>
+                <td>0.72s</td>
+                <td>78.0 tps</td>
+                <td>$34.20 ($26.90 cached)</td>
               </tr>
               <tr>
-                <td>GPT-4o</td>
-                <td>90.2% Pass@1</td>
-                <td>0.62s</td>
-                <td>84.1 tps</td>
-                <td>$19.00</td>
+                <td>GPT-6 Astra</td>
+                <td>94.3% Pass@1</td>
+                <td>0.55s</td>
+                <td>88.0 tps</td>
+                <td>$49.00</td>
               </tr>
               <tr>
-                <td>Gemini 1.5 Pro</td>
-                <td>87.6% Pass@1</td>
-                <td>1.15s</td>
-                <td>64.0 tps</td>
-                <td>$9.50</td>
+                <td>Gemini 4 Carbon</td>
+                <td>93.8% Pass@1</td>
+                <td>0.90s</td>
+                <td>70.0 tps</td>
+                <td>$25.85</td>
               </tr>
               <tr>
-                <td>GPT-4o mini</td>
-                <td>74.8% Pass@1</td>
-                <td>0.41s</td>
-                <td>105.0 tps</td>
-                <td>$1.14 (Retries adjust to ~$2.62)</td>
+                <td>GPT-6.1 Sol</td>
+                <td>91.4% Pass@1</td>
+                <td>0.48s</td>
+                <td>95.0 tps</td>
+                <td>$13.60</td>
               </tr>
               <tr>
-                <td rowspan="3"><strong>Enterprise RAG &amp; Synthesis</strong><br><small style="color:var(--muted)">14k in / 600 out</small></td>
-                <td>Claude 3.5 Sonnet</td>
-                <td><strong>96.1% Factual</strong></td>
-                <td>1.45s</td>
-                <td>74.0 tps</td>
-                <td>$51.00 ($13.20 with cache)</td>
-              </tr>
-              <tr>
-                <td>Gemini 1.5 Flash</td>
-                <td>91.8% Factual</td>
+                <td>Claude Sonnet 5.5</td>
+                <td>90.7% Pass@1</td>
                 <td>0.52s</td>
-                <td>112.0 tps</td>
-                <td>$1.23 (&lt;$0.50 with cache)</td>
+                <td>92.0 tps</td>
+                <td>$13.30</td>
               </tr>
               <tr>
-                <td>Llama-3.1-70B (vLLM self-hosted)</td>
-                <td>91.2% Factual</td>
-                <td>0.78s</td>
-                <td>82.0 tps</td>
-                <td>$3.85 (at 70% cluster load)</td>
+                <td rowspan="5"><strong>Enterprise RAG &amp; Synthesis</strong><br><small style="color:var(--muted)">14k in / 600 out</small></td>
+                <td>Claude Opus 5.5</td>
+                <td><strong>97.2% Factual</strong></td>
+                <td>1.20s</td>
+                <td>80.0 tps</td>
+                <td>$72.40 ($12.10 with cache)</td>
+              </tr>
+              <tr>
+                <td>GPT-6.1 Sol</td>
+                <td>96.4% Factual</td>
+                <td>0.90s</td>
+                <td>96.0 tps</td>
+                <td>$63.50</td>
+              </tr>
+              <tr>
+                <td>Gemini 3.8 Flash</td>
+                <td>93.5% Factual</td>
+                <td>0.42s</td>
+                <td>118.0 tps</td>
+                <td>$11.80 ($2.60 with cache)</td>
+              </tr>
+              <tr>
+                <td>GPT-6 Luna</td>
+                <td>92.1% Factual</td>
+                <td>0.38s</td>
+                <td>122.0 tps</td>
+                <td>$3.30</td>
+              </tr>
+              <tr>
+                <td>Llama-4-class 70B-class (vLLM self-hosted)</td>
+                <td>92.8% Factual</td>
+                <td>0.66s</td>
+                <td>88.0 tps</td>
+                <td>$3.60 (at 70% cluster load)</td>
               </tr>
               <tr>
                 <td rowspan="3"><strong>Intent Routing &amp; Tagging</strong><br><small style="color:var(--muted)">450 in / 60 out</small></td>
-                <td>Gemini 1.5 Flash</td>
-                <td>94.2% F1</td>
-                <td><strong>0.22s</strong></td>
-                <td>135.0 tps</td>
-                <td><strong>$0.052</strong></td>
+                <td>Gemini 3.1 Flash-Lite</td>
+                <td>94.1% F1</td>
+                <td><strong>0.18s</strong></td>
+                <td>140.0 tps</td>
+                <td><strong>$0.042</strong></td>
               </tr>
               <tr>
-                <td>GPT-4o mini</td>
-                <td>94.8% F1</td>
-                <td>0.25s</td>
-                <td>118.0 tps</td>
-                <td>$0.104</td>
+                <td>GPT-6 Luna</td>
+                <td>95.0% F1</td>
+                <td>0.20s</td>
+                <td>126.0 tps</td>
+                <td>$0.085</td>
               </tr>
               <tr>
-                <td>Claude 3.5 Haiku</td>
-                <td><strong>95.6% F1</strong></td>
-                <td>0.28s</td>
-                <td>95.0 tps</td>
-                <td>$0.600</td>
+                <td>Claude Haiku 5.5</td>
+                <td><strong>95.8% F1</strong></td>
+                <td>0.23s</td>
+                <td>102.0 tps</td>
+                <td>$0.460</td>
               </tr>
             </tbody>
           </table>
@@ -841,7 +862,7 @@ WHERE event_time >= DATE_TRUNC('month', CURRENT_DATE);</code></pre></div>
           </div>
           <div class="glossary-card">
             <dt>Prompt Caching</dt>
-            <dd>Inference optimization retaining prefix Key-Value (KV) cache states in GPU memory across requests, slashing latency and granting 50% to 90% input discounts.</dd>
+            <dd>Inference optimization retaining prefix Key-Value (KV) cache states in GPU memory across requests, slashing latency and granting 50% to 95% input discounts; modern frontier models apply 90-95% cache-read discounts, sometimes via implicit caching.</dd>
             <div class="glossary-sources">Sources: Anthropic, OpenAI, Google AI</div>
           </div>
           <div class="glossary-card">
@@ -863,6 +884,16 @@ WHERE event_time >= DATE_TRUNC('month', CURRENT_DATE);</code></pre></div>
             <dt>Reasoning Tokens</dt>
             <dd>Internal chain-of-thought tokens produced during test-time compute by reasoning models (o1, DeepSeek-R1), metered as billable output tokens.</dd>
             <div class="glossary-sources">Sources: OpenAI, Artificial Analysis</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Agent Trajectory</dt>
+            <dd>The full multi-step sequence of tool calls, context passes, and model invocations an autonomous agent executes to complete one task; cumulative token consumption across the trajectory is the true cost meter in the agentic era.</dd>
+            <div class="glossary-sources">Sources: FinOps Foundation, FOCUS</div>
+          </div>
+          <div class="glossary-card">
+            <dt>Implicit Context Caching</dt>
+            <dd>A provider pricing mechanism (e.g. Gemini 4 and GPT-6 families) where reused context is automatically detected and billed at a discounted cached-input rate without developers adding explicit cache-expiry markers.</dd>
+            <div class="glossary-sources">Sources: Google AI, OpenAI</div>
           </div>
           <div class="glossary-card">
             <dt>Provisioned Throughput (PTU)</dt>
@@ -902,69 +933,74 @@ WHERE event_time >= DATE_TRUNC('month', CURRENT_DATE);</code></pre></div>
         <ul class="source-list" id="source-list">
           <li data-source-id="finops-ai">
             <a href="https://www.finops.org/framework/capabilities/ai/" target="_blank" rel="noreferrer">FinOps Foundation: AI Cost Management Capability</a>
-            <span class="source-meta">Publisher: FinOps Foundation • Checked: 2026-11-02</span>
+            <span class="source-meta">Publisher: FinOps Foundation • Checked: 2026-11-12</span>
             <span class="source-desc">Authoritative industry framework for cross-functional AI cost ownership, showback/chargeback, and unit economics.</span>
           </li>
           <li data-source-id="otel-genai-semconv">
             <a href="https://opentelemetry.io/docs/specs/semconv/gen-ai/" target="_blank" rel="noreferrer">OpenTelemetry: GenAI Semantic Conventions</a>
-            <span class="source-meta">Publisher: OpenTelemetry • Checked: 2026-11-02</span>
-            <span class="source-desc">Standardized schemas for instrumentation attributes, token counts, and runtime errors.</span>
+            <span class="source-meta">Publisher: OpenTelemetry • Checked: 2026-11-12</span>
+            <span class="source-desc">Standardized schemas for instrumentation attributes and token counts; moved to the dedicated GenAI repository in June 2026 (still Development status).</span>
           </li>
           <li data-source-id="openai-api-pricing">
             <a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noreferrer">OpenAI API Pricing and Token Limits</a>
-            <span class="source-meta">Publisher: OpenAI • Checked: 2026-11-02</span>
-            <span class="source-desc">Official pricing for GPT-4o, GPT-4o mini, o1 reasoning models, and 50% prompt caching discounts.</span>
+            <span class="source-meta">Publisher: OpenAI • Checked: 2026-11-12</span>
+            <span class="source-desc">Official pricing for GPT-6 Astra, GPT-6 Sol/6.1 Sol, GPT-6 Luna, GPT-5.x models, and prompt caching discounts.</span>
+          </li>
+          <li data-source-id="openai-gpt6-announcements">
+            <a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/" target="_blank" rel="noreferrer">OpenAI: GPT-6 Sol &amp; Luna and GPT-6 Astra Release Notes</a>
+            <span class="source-meta">Publisher: OpenAI • Checked: 2026-11-12</span>
+            <span class="source-desc">Release notes for the GPT-6 generation including 50% price cuts and default prompt-cache hit discounts up to 90%.</span>
           </li>
           <li data-source-id="anthropic-pricing">
             <a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noreferrer">Anthropic Claude Pricing and Prompt Caching</a>
-            <span class="source-meta">Publisher: Anthropic • Checked: 2026-11-02</span>
-            <span class="source-desc">Official pricing documentation for Claude 3.5 Sonnet, 3.5 Haiku, and 90% prompt cache read discount terms.</span>
+            <span class="source-meta">Publisher: Anthropic • Checked: 2026-11-12</span>
+            <span class="source-desc">Official pricing for Claude Opus 5.5, Sonnet 5.5, Haiku 5.5, and their 90-95% prompt cache read discounts.</span>
           </li>
           <li data-source-id="google-ai-pricing">
             <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noreferrer">Google AI for Developers: Gemini API Pricing</a>
-            <span class="source-meta">Publisher: Google • Checked: 2026-11-02</span>
-            <span class="source-desc">Official pricing tiers for Gemini 1.5 Flash and Pro, including context caching and multimodal rates.</span>
+            <span class="source-meta">Publisher: Google • Checked: 2026-11-12</span>
+            <span class="source-desc">Official pricing tiers for Gemini 4 Carbon/Argon and Gemini 3.x Flash models, including implicit context caching and scheduled rate increases.</span>
           </li>
           <li data-source-id="aws-bedrock-pricing">
             <a href="https://aws.amazon.com/bedrock/pricing/" target="_blank" rel="noreferrer">Amazon Web Services: Amazon Bedrock Pricing</a>
-            <span class="source-meta">Publisher: Amazon Web Services • Checked: 2026-11-02</span>
+            <span class="source-meta">Publisher: Amazon Web Services • Checked: 2026-11-12</span>
             <span class="source-desc">Managed model invocations, prompt caching, and hourly Provisioned Throughput commitment options.</span>
           </li>
           <li data-source-id="google-cloud-model-garden-pricing">
             <a href="https://cloud.google.com/model-garden/pricing" target="_blank" rel="noreferrer">Google Cloud: Model Garden &amp; Vertex AI Pricing</a>
-            <span class="source-meta">Publisher: Google Cloud • Checked: 2026-11-02</span>
+            <span class="source-meta">Publisher: Google Cloud • Checked: 2026-11-12</span>
             <span class="source-desc">Enterprise model hosting, regional deployment tiers, and custom serving endpoint rates.</span>
           </li>
           <li data-source-id="azure-openai-pricing">
             <a href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noreferrer">Microsoft Azure: Azure OpenAI Service Pricing</a>
-            <span class="source-meta">Publisher: Microsoft • Checked: 2026-11-02</span>
+            <span class="source-meta">Publisher: Microsoft • Checked: 2026-11-12</span>
             <span class="source-desc">Standard pay-as-you-go rates and Provisioned Throughput Units (PTU) reserved capacity terms.</span>
           </li>
           <li data-source-id="artificial-analysis">
             <a href="https://artificialanalysis.ai/" target="_blank" rel="noreferrer">Artificial Analysis: Independent LLM Benchmarks</a>
-            <span class="source-meta">Publisher: Artificial Analysis • Checked: 2026-11-02</span>
+            <span class="source-meta">Publisher: Artificial Analysis • Checked: 2026-11-12</span>
             <span class="source-desc">Independent benchmarks comparing model quality index, median TTFT, generation TPS, and price efficiency.</span>
           </li>
           <li data-source-id="vllm-project">
             <a href="https://docs.vllm.ai/" target="_blank" rel="noreferrer">vLLM: High-Throughput Inference Engine</a>
-            <span class="source-meta">Publisher: vLLM Team • Checked: 2026-11-02</span>
+            <span class="source-meta">Publisher: vLLM Team • Checked: 2026-11-12</span>
             <span class="source-desc">Open-source serving architecture, PagedAttention KV-cache management, and self-hosted economics.</span>
           </li>
           <li data-source-id="focus-finops-spec">
             <a href="https://focus.finops.org/" target="_blank" rel="noreferrer">FinOps Foundation: FOCUS™ Specification</a>
-            <span class="source-meta">Publisher: FinOps Foundation • Checked: 2026-11-02</span>
-            <span class="source-desc">Open standard defining cloud and AI consumption billing columns for multi-cloud normalization.</span>
+            <span class="source-meta">Publisher: FinOps Foundation • Checked: 2026-11-12</span>
+            <span class="source-desc">Open standard for multi-cloud normalization; FOCUS 1.5 adds AI token meters, SKU linkage, and agent/service-account attribution.</span>
           </li>
           <li data-source-id="litellm-gateway">
             <a href="https://docs.litellm.ai/" target="_blank" rel="noreferrer">LiteLLM: Enterprise AI Gateway Specification</a>
-            <span class="source-meta">Publisher: BerriAI • Checked: 2026-11-02</span>
+            <span class="source-meta">Publisher: BerriAI • Checked: 2026-11-12</span>
             <span class="source-desc">Production proxy architecture for centralized rate limits, fallbacks, OTel telemetry, and load balancing.</span>
           </li>
         </ul>
       </section>
 
       <footer class="foot">
-        <span>Tokenomics Body of Knowledge v1.2.0 • Cut-off: 2026-11-02</span>
+        <span>Tokenomics Body of Knowledge v1.3.0 • Cut-off: 2026-11-12</span>
         <span>Living Information Register • Reconciled Weekly via GitHub Actions</span>
       </footer>
     </main>
@@ -972,15 +1008,15 @@ WHERE event_time >= DATE_TRUNC('month', CURRENT_DATE);</code></pre></div>
 
   <script>
     const presets = {
-      'openai-gpt-4o': { inRate: 2.50, outRate: 10.00, cachedRate: 1.25, inTokens: 8000, outTokens: 1200, cacheShare: 60 },
-      'openai-gpt-4o-mini': { inRate: 0.15, outRate: 0.60, cachedRate: 0.075, inTokens: 8000, outTokens: 1200, cacheShare: 60 },
-      'openai-o1': { inRate: 15.00, outRate: 60.00, cachedRate: 7.50, inTokens: 8000, outTokens: 3000, cacheShare: 50 },
-      'anthropic-claude-3-5-sonnet': { inRate: 3.00, outRate: 15.00, cachedRate: 0.30, inTokens: 8000, outTokens: 1200, cacheShare: 70 },
-      'anthropic-claude-3-5-haiku': { inRate: 0.80, outRate: 4.00, cachedRate: 0.08, inTokens: 4000, outTokens: 600, cacheShare: 60 },
-      'google-gemini-1-5-flash': { inRate: 0.075, outRate: 0.30, cachedRate: 0.01875, inTokens: 12000, outTokens: 1000, cacheShare: 60 },
-      'google-gemini-1-5-pro': { inRate: 1.25, outRate: 5.00, cachedRate: 0.3125, inTokens: 16000, outTokens: 1500, cacheShare: 60 },
-      'aws-bedrock-claude-3-5-sonnet': { inRate: 3.00, outRate: 15.00, cachedRate: 0.30, inTokens: 8000, outTokens: 1200, cacheShare: 70 },
-      'azure-gpt-4o': { inRate: 2.50, outRate: 10.00, cachedRate: 1.25, inTokens: 8000, outTokens: 1200, cacheShare: 60 }
+      'openai-gpt-6-astra': { inRate: 10.00, outRate: 50.00, cachedRate: 1.00, inTokens: 8000, outTokens: 1200, cacheShare: 75 },
+      'openai-gpt-6-1-sol': { inRate: 2.00, outRate: 10.00, cachedRate: 0.10, inTokens: 8000, outTokens: 1200, cacheShare: 75 },
+      'openai-gpt-6-luna': { inRate: 0.10, outRate: 0.50, cachedRate: 0.01, inTokens: 8000, outTokens: 600, cacheShare: 70 },
+      'anthropic-claude-opus-5-5': { inRate: 4.00, outRate: 20.00, cachedRate: 0.20, inTokens: 8000, outTokens: 1200, cacheShare: 75 },
+      'anthropic-claude-sonnet-5-5': { inRate: 2.00, outRate: 10.00, cachedRate: 0.10, inTokens: 8000, outTokens: 1200, cacheShare: 75 },
+      'anthropic-claude-haiku-5-5': { inRate: 0.10, outRate: 0.50, cachedRate: 0.01, inTokens: 4000, outTokens: 600, cacheShare: 70 },
+      'google-gemini-4-carbon': { inRate: 2.00, outRate: 10.00, cachedRate: 0.10, inTokens: 16000, outTokens: 1500, cacheShare: 70 },
+      'google-gemini-3-8-flash': { inRate: 0.75, outRate: 3.75, cachedRate: 0.075, inTokens: 12000, outTokens: 1000, cacheShare: 70 },
+      'google-gemini-3-1-flash-lite': { inRate: 0.25, outRate: 1.50, cachedRate: 0.025, inTokens: 12000, outTokens: 800, cacheShare: 70 }
     };
 
     const money = new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 4 });

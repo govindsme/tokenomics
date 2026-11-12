@@ -5,19 +5,19 @@
       "id": "openai",
       "name": "OpenAI API",
       "pricingSourceId": "openai-api-pricing",
-      "pricingBasis": "Per-model input, output, cached-input, and batch-job token rates; reasoning tokens billed as output."
+      "pricingBasis": "Per-model input, output, cached-input, and batch-job token rates spanning the GPT-6 family (Astra, Sol/6.1 Sol, Luna) and GPT-5.x series; reasoning tokens billed as output."
     },
     {
       "id": "anthropic",
       "name": "Anthropic API",
       "pricingSourceId": "anthropic-pricing",
-      "pricingBasis": "Model-specific input, output, prompt-cache write (5m TTL), and prompt-cache read (90% discount) token rates."
+      "pricingBasis": "Model-specific input, output, prompt-cache write (5m TTL), and prompt-cache read discount token rates across the Claude 5.5 family (Opus, Sonnet, Haiku) and earlier tiers."
     },
     {
       "id": "google-ai",
       "name": "Google Gemini API",
       "pricingSourceId": "google-ai-pricing",
-      "pricingBasis": "Prompt length tier (<=128k vs >128k), context caching hourly/read rates, and multimodal input dimensions."
+      "pricingBasis": "Preview vs stable tiers, prompt length tiers, implicit context caching rates, and multimodal input dimensions across Gemini 4 (Carbon/Argon) and Gemini 3.x Flash family."
     },
     {
       "id": "aws-bedrock",

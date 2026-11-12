@@ -2,12 +2,13 @@
   "schemaVersion": 1,
   "mode": "subsequent-run",
   "status": "complete",
-  "lastSuccessfulRun": "2026-11-02",
+  "lastSuccessfulRun": "2026-11-12",
   "previousSuccessfulCutoff": "2026-11-02",
-  "researchCutoff": "2026-11-02",
-  "nextRunInstructions": "Use researchCutoff as the since-date. Recheck pricing changes across providers, inspect benchmark rankings, validate changing OTel gen_ai semantic conventions, update affected records, run validation/build, and advance this state only after all checks pass.",
+  "researchCutoff": "2026-11-12",
+  "nextRunInstructions": "Use researchCutoff as the since-date. Recheck pricing changes across providers (watch Gemini 4 and 3.8 Flash rate increases effective Dec/Jan 2027), inspect benchmark rankings, validate changing OTel gen_ai semantic conventions (dedicated repo), update affected records, run validation/build, and advance this state only after all checks pass.",
   "unresolvedUncertainty": [
     "Enterprise private discount tiers, volume commitments, and negotiated custom rate cards are excluded from public snapshots.",
-    "OpenTelemetry GenAI convention attribute stability must be validated continuously against upstream specification releases."
+    "OpenTelemetry GenAI convention attribute stability must be validated continuously against the dedicated upstream repository, which remains in Development status.",
+    "Several 2026 list prices are introductory and scheduled for increases (Gemini 4 Carbon/Argon on Dec 1 2026; Gemini 3.x Flash on Jan 1 2027); snapshots reflect the current introductory rates."
   ]
 }

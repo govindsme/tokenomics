@@ -7,8 +7,8 @@
       "url": "https://www.finops.org/framework/capabilities/ai/",
       "publisher": "FinOps Foundation",
       "sourceType": "framework",
-      "checkedAt": "2026-11-02",
-      "notes": "Framework guidance for applying FinOps practices, showback/chargeback, and unit economics to AI workloads."
+      "checkedAt": "2026-11-12",
+      "notes": "Framework guidance for applying FinOps practices, showback/chargeback, and unit economics to AI workloads, now including agentic-era guidance (FinOps for AI working group)."
     },
     {
       "id": "otel-genai-semconv",
@@ -16,8 +16,8 @@
       "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/",
       "publisher": "OpenTelemetry",
       "sourceType": "technical-specification",
-      "checkedAt": "2026-11-02",
-      "notes": "Standardized attribute and metric definitions for AI instrumentation including gen_ai.system, model, usage tokens, and errors."
+      "checkedAt": "2026-11-12",
+      "notes": "Standardized attribute and metric definitions for AI instrumentation including gen_ai.system, model, usage tokens, and errors. As of June 2026 (semantic-conventions v1.42.0) the GenAI conventions were deprecated out of the main repo and moved to the dedicated OpenTelemetry GenAI Semantic Conventions repository; still in Development status."
     },
     {
       "id": "openai-api-pricing",
@@ -25,8 +25,17 @@
       "url": "https://developers.openai.com/api/docs/pricing",
       "publisher": "OpenAI",
       "sourceType": "pricing-documentation",
-      "checkedAt": "2026-11-02",
-      "notes": "Official model pricing including GPT-4o, GPT-4o mini, o1 reasoning models, and prompt caching discounts."
+      "checkedAt": "2026-11-12",
+      "notes": "Official model pricing including GPT-6 Astra, GPT-6 Sol / 6.1 Sol, GPT-6 Luna, GPT-5.x series, and prompt caching discounts."
+    },
+    {
+      "id": "openai-gpt6-announcements",
+      "title": "OpenAI: GPT-6 Sol & Luna and GPT-6 Astra Release Notes",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "publisher": "OpenAI",
+      "sourceType": "vendor-announcement",
+      "checkedAt": "2026-11-12",
+      "notes": "Announcements of the GPT-6 generation: Astra flagship, Sol, and Luna, including 50% price cuts on Sept 22 2026 and up to 90% prompt-cache hit discounts by default."
     },
     {
       "id": "anthropic-pricing",
@@ -34,8 +43,8 @@
       "url": "https://platform.claude.com/docs/en/about-claude/pricing",
       "publisher": "Anthropic",
       "sourceType": "pricing-documentation",
-      "checkedAt": "2026-11-02",
-      "notes": "Official Claude pricing including 3.5 Sonnet, 3.5 Haiku, and 90% prompt cache read discount terms."
+      "checkedAt": "2026-11-12",
+      "notes": "Official Claude pricing including Opus 5.5, Sonnet 5.5, Haiku 5.5, and their prompt-cache read discount terms (cache reads halved on Sonnet 5.5)."
     },
     {
       "id": "google-ai-pricing",
@@ -43,8 +52,8 @@
       "url": "https://ai.google.dev/gemini-api/docs/pricing",
       "publisher": "Google",
       "sourceType": "pricing-documentation",
-      "checkedAt": "2026-11-02",
-      "notes": "Official Gemini API pricing tiers for 1.5 Flash and 1.5 Pro, including context caching discounts and long-context rates."
+      "checkedAt": "2026-11-12",
+      "notes": "Official Gemini API pricing tiers including Gemini 4 Carbon/Argon, Gemini 3.8 Flash, and Gemini 3.1 Flash-Lite, with implicit context caching and scheduled rate increases for early 2027."
     },
     {
       "id": "aws-bedrock-pricing",
@@ -52,7 +61,7 @@
       "url": "https://aws.amazon.com/bedrock/pricing/",
       "publisher": "Amazon Web Services",
       "sourceType": "pricing-documentation",
-      "checkedAt": "2026-11-02",
+      "checkedAt": "2026-11-12",
       "notes": "Official managed-model pricing for Bedrock on-demand invocations and Provisioned Throughput hourly commitments."
     },
     {
@@ -61,8 +70,8 @@
       "url": "https://cloud.google.com/model-garden/pricing",
       "publisher": "Google Cloud",
       "sourceType": "pricing-documentation",
-      "checkedAt": "2026-11-02",
-      "notes": "Enterprise Vertex AI and Model Garden serving options, regional rates, and commitment options."
+      "checkedAt": "2026-11-12",
+      "notes": "Enterprise Agent Platform and Vertex AI serving options, regional rates, and commitment options (e.g. Agent Platform introductory $0.75/$3.75 per 1M in/out through Dec 31 2026)."
     },
     {
       "id": "azure-openai-pricing",
@@ -70,8 +79,8 @@
       "url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
       "publisher": "Microsoft",
       "sourceType": "pricing-documentation",
-      "checkedAt": "2026-11-02",
-      "notes": "Standard pay-as-you-go and Provisioned Throughput Units (PTU) reserved capacity for enterprise OpenAI models."
+      "checkedAt": "2026-11-12",
+      "notes": "Standard pay-as-you-go rates (e.g. GPT-6.1 series at $5.50 input / $0.55 cached / $33 output per 1M) and Provisioned Throughput Units (PTU) reserved capacity for enterprise OpenAI models."
     },
     {
       "id": "artificial-analysis",
@@ -79,7 +88,7 @@
       "url": "https://artificialanalysis.ai/",
       "publisher": "Artificial Analysis",
       "sourceType": "benchmark-repository",
-      "checkedAt": "2026-11-02",
+      "checkedAt": "2026-11-12",
       "notes": "Independent benchmarking of model quality indices, median Time To First Token (TTFT), generation tokens per second (TPS), and price efficiency."
     },
     {
@@ -88,7 +97,7 @@
       "url": "https://docs.vllm.ai/",
       "publisher": "vLLM Team",
       "sourceType": "technical-specification",
-      "checkedAt": "2026-11-02",
+      "checkedAt": "2026-11-12",
       "notes": "Open-source serving architecture, PagedAttention KV-cache management, continuous batching, and self-hosted inference economics."
     },
     {
@@ -97,8 +106,8 @@
       "url": "https://focus.finops.org/",
       "publisher": "FinOps Foundation",
       "sourceType": "open-standard",
-      "checkedAt": "2026-11-02",
-      "notes": "Open-standard cloud billing schema normalizing billing and usage across clouds and AI services."
+      "checkedAt": "2026-11-12",
+      "notes": "Open-standard cloud billing schema normalizing billing and usage across clouds and AI services. FOCUS 1.5 (2026) adds AI token-meter labels, a SKU/identity linkage, and the person/service-account/agent behind each cost row."
     },
     {
       "id": "litellm-gateway",
@@ -106,7 +115,7 @@
       "url": "https://docs.litellm.ai/",
       "publisher": "BerriAI",
       "sourceType": "technical-specification",
-      "checkedAt": "2026-11-02",
+      "checkedAt": "2026-11-12",
       "notes": "Production proxy architecture for centralized rate limits, fallbacks, OTel telemetry, and multi-provider load balancing."
     }
   ]

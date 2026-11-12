@@ -23,7 +23,7 @@
     },
     {
       "term": "Prompt Caching",
-      "definition": "An inference optimization where prefix Key-Value (KV) cache states are stored in accelerator memory across requests, reducing latency and discounting input token billing by 50% to 90%.",
+      "definition": "An inference optimization where prefix Key-Value (KV) cache states are stored in accelerator memory across requests, reducing latency and discounting input token billing by 50% to 95%. Modern frontier models (GPT-6, Claude 5.5, Gemini 4) apply 90-95% cache-read discounts and, in some cases, implicit caching that requires no explicit cache markers.",
       "sourceIds": ["anthropic-pricing", "openai-api-pricing", "google-ai-pricing"]
     },
     {
@@ -100,6 +100,16 @@
       "term": "Reasoning Tokens",
       "definition": "Internal chain-of-thought tokens produced during test-time compute by reasoning models (such as o1 or DeepSeek-R1) to plan and evaluate intermediate steps, billed as billable output tokens.",
       "sourceIds": ["openai-api-pricing", "artificial-analysis"]
+    },
+    {
+      "term": "Agent Trajectory",
+      "definition": "The full multi-step sequence of tool calls, context passes, and model invocations an autonomous agent executes to complete one task; cumulative token consumption across the trajectory is the true cost meter in the agentic era.",
+      "sourceIds": ["finops-ai", "focus-finops-spec"]
+    },
+    {
+      "term": "Implicit Context Caching",
+      "definition": "A provider pricing mechanism (e.g. Gemini 4 and GPT-6 families) where reused context is automatically detected and billed at a discounted cached-input rate without developers adding explicit cache-expiry markers.",
+      "sourceIds": ["google-ai-pricing", "openai-api-pricing"]
     },
     {
       "term": "PagedAttention",
