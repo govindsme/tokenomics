@@ -95,6 +95,33 @@
         "GPT-6 Sol and Luna ship with improved default prompt caching and up to 90% cache-hit discounts, reinforcing routing economics."
       ],
       "validation": ["npm run validate", "npm run build"]
+    },
+    {
+      "runDate": "2026-11-15",
+      "mode": "subsequent-run",
+      "status": "complete",
+      "previousSuccessfulCutoff": "2026-11-12",
+      "researchCutoff": "2026-11-15",
+      "changes": [
+        {"type":"updated","path":"package.json","reason":"Bumped version to 1.4.0 per SemVer following the Nov 2026 model-lifecycle reconciliation."},
+        {"type":"updated","path":"data/sources.json","reason":"Refreshed checkedAt dates to 2026-11-15 and updated OpenAI, Anthropic, and Google source notes to cover GPT-6.1 Terra, Claude Fable 5.2, and Gemini 4 Argon/Hydrogen."},
+        {"type":"updated","path":"data/claims.json","reason":"Refreshed checkedAt dates, broadened the frontier price-deflation claim to include GPT-6.1 Terra and Fable 5.2 cuts, and added claims for flagship mid-generation price cuts and the per-provider low-cost 'everyday' model tier."},
+        {"type":"updated","path":"data/providers.json","reason":"Updated OpenAI, Anthropic, and Google pricing-basis notes to include the GPT-6.1 Terra, Fable 5.2, and Gemini 4 Argon/Hydrogen additions."},
+        {"type":"updated","path":"data/pricing-snapshots.json","reason":"Expanded the verified snapshot set from 9 to 13 current models: added Claude Fable 5.2 ($8/$40, 97.5% cache read), GPT-6.1 Terra ($1/$0.05/$5), Gemini 4 Argon ($2/$10 intro, doubling Dec 1), and Gemini 4 Hydrogen ($1.50/$7.50); noted Gemini 4 Carbon's general availability since Nov 10 2026."},
+        {"type":"updated","path":"data/benchmarks.json","reason":"Refreshed asOf dates to 2026-11-15 and added GPT-6.1 Terra to the code evaluation and Gemini 4 Hydrogen to the enterprise RAG evaluation with internally consistent modeled costs."},
+        {"type":"updated","path":"data/topics.json","reason":"No structural change; existing sourceIds remain valid for the new model additions. Kept topics stable."},
+        {"type":"updated","path":"index.html","reason":"Refreshed version and cut-off stamps, added four verified model presets (Fable 5.2, GPT-6.1 Terra, Gemini 4 Argon, Gemini 4 Hydrogen) to the calculator and pricing table, added the two new benchmark rows, updated evidence-register descriptions, and updated routing-section model examples."},
+        {"type":"updated","path":"scripts/build.mjs","reason":"Bumped emitted summary version to 1.4.0."},
+        {"type":"updated","path":"README.md","reason":"Documented v1.4.0 capabilities, expanded snapshot count (13) and claim count (18)."}
+      ],
+      "researchNotes": [
+        "Verified four material model-lifecycle events since the 2026-11-12 cut-off: GPT-6.1 Terra (OpenAI, Oct 26, $1/$5), Claude Fable 5.2 (Anthropic, Nov 9, $8/$40, 20% below Fable 5.1), Gemini 4 Carbon general availability (Nov 10), and Gemini 4 Hydrogen (Google, Nov 12, $1.50/$7.50, lowest-cost Gemini 4).",
+        "Claude Fable 5.2 is now Anthropic's top generally-available model at $8/$40 with cache reads at $0.20/1M (97.5% off input); Fable 5.1 remains at legacy $10/$50 with $0.25 cache reads.",
+        "GPT-6.1 Terra at $1/$5 and Gemini 4 Hydrogen at $1.50/$7.50 complete a per-provider low-cost 'everyday' tier (with Claude Haiku 5.5) that lets cascading routers default ~70-85% of traffic to cheap implicit-caching models.",
+        "Re-confirmed scheduled rate increases remain as recorded: Gemini 4 Argon/Carbon double to $4/$20 on Dec 1 2026 and Gemini 3.8 Flash doubles on Jan 1 2027; GPT-5.6 Sol promotional pricing holds at least through Nov 21 2026.",
+        "OpenTelemetry GenAI semantic conventions remain in Development status in the dedicated repository, with every gen_ai.* surface still unstable; implementers should pin versions."
+      ],
+      "validation": ["npm run validate", "npm run build"]
     }
   ]
 }

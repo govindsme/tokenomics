@@ -6,7 +6,7 @@
       "statement": "AI FinOps requires structured collaboration between engineering, platform, product, finance, and security teams.",
       "claimType": "framework-guidance",
       "sourceIds": ["finops-ai"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Organizational practice; establishes clear showback, chargeback, and business value alignment for AI investments."
     },
     {
@@ -14,7 +14,7 @@
       "statement": "Standardizing telemetry attributes via OpenTelemetry GenAI semantic conventions prevents vendor lock-in and simplifies cross-model attribution.",
       "claimType": "technical-guidance",
       "sourceIds": ["otel-genai-semconv"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Implementation standard using gen_ai.* attributes for request, response, token usage, and error dimensions."
     },
     {
@@ -22,7 +22,7 @@
       "statement": "Model billing requires exact model, tier, modality, and contract rates, rather than a generic blended token price assumption.",
       "claimType": "pricing-method",
       "sourceIds": ["openai-api-pricing", "anthropic-pricing", "google-ai-pricing", "aws-bedrock-pricing", "google-cloud-model-garden-pricing", "azure-openai-pricing"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Prices vary by prompt length, cache eligibility, region, modality, and volume commitments."
     },
     {
@@ -30,7 +30,7 @@
       "statement": "Application token estimates must be routinely reconciled against provider billing exports to account for committed use discounts, minimums, credits, and taxes.",
       "claimType": "operational-guidance",
       "sourceIds": ["finops-ai", "openai-api-pricing", "anthropic-pricing"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Calculated token totals are operational proxies, while invoice ledgers represent true financial liability."
     },
     {
@@ -38,7 +38,7 @@
       "statement": "Cost reduction strategies must be bounded by rigorous quality evaluation; a cheaper model that increases retry rates or human review increases total cost.",
       "claimType": "operational-guidance",
       "sourceIds": ["finops-ai", "artificial-analysis"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Unit economics must measure cost per successful, accepted task rather than isolated token price."
     },
     {
@@ -46,7 +46,7 @@
       "statement": "Prompt caching provides 50% to 95% cost reduction on recurring context, system instructions, and RAG document prefixes, with today's frontier models applying 90-95% cache-read discounts.",
       "claimType": "technical-guidance",
       "sourceIds": ["anthropic-pricing", "openai-api-pricing", "google-ai-pricing"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Applicable when prompts share identical prefix tokens above provider-mandated minimum thresholds; implicitly cached input (e.g. GPT-6, Gemini 4) lowers effective input cost further."
     },
     {
@@ -54,7 +54,7 @@
       "statement": "Dynamic model routing sends routine tasks to fast lightweight models and escalates hard cases to frontier models, reducing average cost by 60-80%.",
       "claimType": "architecture-guidance",
       "sourceIds": ["artificial-analysis", "finops-ai", "litellm-gateway"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Requires an intelligent classifier or evaluator gateway with explicit latency and quality SLAs."
     },
     {
@@ -62,7 +62,7 @@
       "statement": "Provisioned Throughput (PTUs or Reserved Capacity) requires sustained baseline utilization above ~65% to achieve a lower unit cost than on-demand pay-as-you-go.",
       "claimType": "financial-guidance",
       "sourceIds": ["azure-openai-pricing", "aws-bedrock-pricing", "finops-ai"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Under low or bursty off-peak traffic, paying for idle reserved capacity dramatically increases effective cost per token."
     },
     {
@@ -70,7 +70,7 @@
       "statement": "Self-hosting open-weight models on dedicated GPU clusters incurs substantial fixed costs for idle capacity, engineering staff, driver management, and redundancy.",
       "claimType": "architecture-guidance",
       "sourceIds": ["vllm-project", "finops-ai"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Self-hosting break-even is achieved only at high steady-state request volumes with optimized serving stacks like vLLM."
     },
     {
@@ -78,7 +78,7 @@
       "statement": "Automated rate limits, token quotas, and recursion circuit breakers are required to protect against runaway autonomous agent loops.",
       "claimType": "operational-guidance",
       "sourceIds": ["finops-ai", "otel-genai-semconv", "litellm-gateway"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Enforces max steps, per-session token budgets, and automated fallback when thresholds are breached."
     },
     {
@@ -86,7 +86,7 @@
       "statement": "Normalizing AI consumption data to the FinOps Foundation FOCUS™ schema enables unified multi-cloud attribution across AWS, Azure, Google Cloud, and SaaS APIs.",
       "claimType": "framework-guidance",
       "sourceIds": ["focus-finops-spec", "finops-ai"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Maps provider-specific meters to standardized ProviderName, ServiceName, ChargeType, and ConsumedQuantity."
     },
     {
@@ -94,7 +94,7 @@
       "statement": "Reasoning models spend internal test-time compute tokens that are billed at premium output rates, requiring explicit token budgeting for complex chain-of-thought tasks.",
       "claimType": "pricing-method",
       "sourceIds": ["openai-api-pricing", "artificial-analysis"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Hidden reasoning tokens can expand total generated tokens by 3x to 10x relative to visible completion tokens."
     },
     {
@@ -102,24 +102,40 @@
       "statement": "The OpenTelemetry GenAI semantic conventions were formally deprecated from the main semantic-conventions repository (v1.42.0, June 2026) and now live in a dedicated OpenTelemetry GenAI repository, where they remain in Development status.",
       "claimType": "technical-guidance",
       "sourceIds": ["otel-genai-semconv"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "Implementers should pin attribute versions and monitor the dedicated repository for stabilization rather than relying on the main-repo namespace."
     },
     {
       "id": "frontier-price-deflation-gpt6-gen",
-      "statement": "The 2026 GPT-6 / Claude 5.x / Gemini 4 generation introduced aggressive list-price cuts (e.g. GPT-6 Sol & Luna at 50% off on Sep 22 2026) and higher default cache-hit discounts, accelerating effective cost-per-token deflation at the frontier.",
+      "statement": "The 2026 GPT-6 / Claude 5.x / Gemini 4 generation introduced aggressive list-price cuts (e.g. GPT-6 Sol & Luna at 50% off on Sep 22 2026, GPT-6.1 Terra at half Sol's price Oct 26, and Claude Fable 5.2 at 20% below Fable 5.1 on Nov 9) plus higher default cache-hit discounts, accelerating effective cost-per-token deflation at the frontier.",
       "claimType": "pricing-method",
       "sourceIds": ["openai-api-pricing", "openai-gpt6-announcements", "anthropic-pricing", "google-ai-pricing"],
-      "checkedAt": "2026-11-12",
-      "scope": "Blended routing costs fall as frontier and scale-tier models both drop in price; unit economics should be recomputed against current, dated snapshots rather than legacy rates."
+      "checkedAt": "2026-11-15",
+      "scope": "Blended routing costs fall as frontier, mid-tier, and scale-tier models all drop in price; unit economics should be recomputed against current, dated snapshots rather than legacy rates."
     },
     {
       "id": "agentic-unit-economics-shift",
       "statement": "In the agentic era the primary billing meter shifts from model invocation toward cumulative token consumption across multi-step agent trajectories, so governance must bound total tokens per task, not just per call.",
       "claimType": "operational-guidance",
       "sourceIds": ["finops-ai", "focus-finops-spec"],
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-15",
       "scope": "FOCUS 1.5 adds agent identity and AI token meters to billing so the person, service account, or agent behind a charge can be named and attributed."
+    },
+    {
+      "id": "flagship-cadence-and-price-cuts-2026",
+      "statement": "Anthropic shipped a mid-generation flagship price cut in Nov 2026 (Claude Fable 5.2 at $8/$40, 20% below Fable 5.1 and undercutting GPT-6 Astra's $10/$50), showing frontier flagship pricing is no longer monotonic and must be re-verified each release cycle.",
+      "claimType": "pricing-method",
+      "sourceIds": ["anthropic-pricing", "openai-api-pricing"],
+      "checkedAt": "2026-11-15",
+      "scope": "Fable 5.2 is Anthropic's most capable public model (released Nov 9 2026) with cache reads at 97.5% off input, recommended for long-horizon agent runs while Opus 5.5 remains the daily driver."
+    },
+    {
+      "id": "low-cost-model-tier-per-provider",
+      "statement": "Each major provider now fields an explicit low-cost 'everyday' tier alongside its frontier flagship — GPT-6.1 Terra (OpenAI), Claude Haiku 5.5 (Anthropic), Gemini 4 Hydrogen (Google) — enabling 70-85% of routine traffic to run on cheap models with implicit context caching.",
+      "claimType": "architecture-guidance",
+      "sourceIds": ["openai-api-pricing", "anthropic-pricing", "google-ai-pricing", "litellm-gateway"],
+      "checkedAt": "2026-11-15",
+      "scope": "Cascading routing should default to these low-cost tiers (Gemini 4 Hydrogen $1.50/$7.50, GPT-6.1 Terra $1/$5, Haiku 5.5 $0.10/$0.50) and escalate only on complexity or quality triggers."
     }
   ]
 }

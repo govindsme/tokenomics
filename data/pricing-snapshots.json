@@ -1,8 +1,21 @@
 {
   "schemaVersion": 1,
   "status": "verified-snapshots",
-  "asOf": "2026-11-12",
+  "asOf": "2026-11-15",
   "snapshots": [
+    {
+      "id": "anthropic-claude-fable-5-2",
+      "providerId": "anthropic",
+      "model": "Claude Fable 5.2",
+      "tier": "Frontier flagship",
+      "inputPerMillion": 8.00,
+      "cachedInputPerMillion": 0.20,
+      "outputPerMillion": 40.00,
+      "cacheDiscountPercent": 97.5,
+      "effectiveDate": "2026-11-15",
+      "sourceId": "anthropic-pricing",
+      "notes": "Anthropic's top generally-available model (released Nov 9 2026), listed at $8/$40 per 1M in/out, 20% below Fable 5.1, with cache reads at $2.50 (97.5% off input); up to 30% faster than Fable 5.1."
+    },
     {
       "id": "openai-gpt-6-astra",
       "providerId": "openai",
@@ -28,6 +41,19 @@
       "effectiveDate": "2026-11-12",
       "sourceId": "openai-api-pricing",
       "notes": "Cached input costs $0.10/1M, 95% below standard input and 50% below GPT-6 Sol's cached rate, driving very low effective cost for repeated agentic context."
+    },
+    {
+      "id": "openai-gpt-6-1-terra",
+      "providerId": "openai",
+      "model": "GPT-6.1 Terra",
+      "tier": "Fast visual reasoning & computer use",
+      "inputPerMillion": 1.00,
+      "cachedInputPerMillion": 0.05,
+      "outputPerMillion": 5.00,
+      "cacheDiscountPercent": 95,
+      "effectiveDate": "2026-11-15",
+      "sourceId": "openai-api-pricing",
+      "notes": "Released Oct 26 2026 at $1/$5 per 1M in/out (half of GPT-6.1 Sol); cached input at $0.05/1M (95% off); positioned for high-volume automation, screenshot reading, and computer-use tasks."
     },
     {
       "id": "openai-gpt-6-luna",
@@ -92,7 +118,33 @@
       "cacheDiscountPercent": 95,
       "effectiveDate": "2026-11-12",
       "sourceId": "google-ai-pricing",
-      "notes": "Most capable Gemini 4 reasoning model (1M-token long decode). Standard $2/$10 in/out through Nov 30 2026, stepping to $4/$20 Dec 1; implicit caching only."
+      "notes": "Google's hardest-problem Gemini 4 reasoning model (1M-token long decode), generally available to paying API users since Nov 10 2026. Standard $2/$10 in/out through Nov 30 2026, stepping to $4/$20 Dec 1; implicit caching only."
+    },
+    {
+      "id": "google-gemini-4-argon",
+      "providerId": "google-ai",
+      "model": "Gemini 4 Argon",
+      "tier": "Frontier reasoning (default Gemini 4)",
+      "inputPerMillion": 2.00,
+      "cachedInputPerMillion": 0.10,
+      "outputPerMillion": 10.00,
+      "cacheDiscountPercent": 95,
+      "effectiveDate": "2026-11-15",
+      "sourceId": "google-ai-pricing",
+      "notes": "Google's stable paid Gemini 4 model (endpoint gemini-4-argon), the recommendation for most software engineering and knowledge work. $2/$10 in/out through Nov 30 2026, stepping to $4/$20 Dec 1; cached input $0.10 (95% off)."
+    },
+    {
+      "id": "google-gemini-4-hydrogen",
+      "providerId": "google-ai",
+      "model": "Gemini 4 Hydrogen",
+      "tier": "Everyday agentic workhorse",
+      "inputPerMillion": 1.50,
+      "cachedInputPerMillion": 0.075,
+      "outputPerMillion": 7.50,
+      "cacheDiscountPercent": 95,
+      "effectiveDate": "2026-11-15",
+      "sourceId": "google-ai-pricing",
+      "notes": "Launched Nov 12 2026: the lowest-cost Gemini 4 model, flat $1.50/$7.50 in/out across 1M context, ~2.5x faster than Gemini 3.8 Flash, with cached input at $0.075/1M and a free tier."
     },
     {
       "id": "google-gemini-3-8-flash",

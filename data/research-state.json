@@ -2,13 +2,14 @@
   "schemaVersion": 1,
   "mode": "subsequent-run",
   "status": "complete",
-  "lastSuccessfulRun": "2026-11-12",
-  "previousSuccessfulCutoff": "2026-11-02",
-  "researchCutoff": "2026-11-12",
-  "nextRunInstructions": "Use researchCutoff as the since-date. Recheck pricing changes across providers (watch Gemini 4 and 3.8 Flash rate increases effective Dec/Jan 2027), inspect benchmark rankings, validate changing OTel gen_ai semantic conventions (dedicated repo), update affected records, run validation/build, and advance this state only after all checks pass.",
+  "lastSuccessfulRun": "2026-11-15",
+  "previousSuccessfulCutoff": "2026-11-12",
+  "researchCutoff": "2026-11-15",
+  "nextRunInstructions": "Use researchCutoff as the since-date. Before the next run, recheck whether the scheduled Gemini 4 Argon/Carbon increases to $4/$20 (Dec 1 2026) and the Gemini 3.8 Flash / 3.1 Flash-Lite increases (Jan 1 2027) have taken effect, verify ongoing Anthropic Fable tier pricing and OpenAI 6.1-series line-up, and re-validate OTel GenAI semantic-convention stability in the dedicated repository.",
   "unresolvedUncertainty": [
     "Enterprise private discount tiers, volume commitments, and negotiated custom rate cards are excluded from public snapshots.",
+    "Gemini 4 Carbon has no general public model identifier and remains harder to access than Argon/Hydrogen; its exact scheduled rate path after Dec 1 2026 requires continued verification.",
     "OpenTelemetry GenAI convention attribute stability must be validated continuously against the dedicated upstream repository, which remains in Development status.",
-    "Several 2026 list prices are introductory and scheduled for increases (Gemini 4 Carbon/Argon on Dec 1 2026; Gemini 3.x Flash on Jan 1 2027); snapshots reflect the current introductory rates."
+    "Several 2026 list prices are introductory and scheduled for increases (Gemini 4 Argon/Carbon on Dec 1 2026; Gemini 3.8 Flash on Jan 1 2027); snapshots reflect the current introductory rates."
   ]
 }

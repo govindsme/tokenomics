@@ -142,7 +142,7 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#overview" aria-label="Tokenomics home"><span class="brand-mark">T/</span> TOKENOMICS <span class="version-tag">v1.3.0 • BoK</span></a>
+    <a class="brand" href="#overview" aria-label="Tokenomics home"><span class="brand-mark">T/</span> TOKENOMICS <span class="version-tag">v1.4.0 • BoK</span></a>
     <div class="top-meta">
       <span class="wide">AI FinOps &amp; TokenOps Body of Knowledge</span>
       <a href="#maturity-model">Roadmap</a>
@@ -185,7 +185,7 @@
         </div>
         <div class="stamp">
           <strong>Continuous Research Ledger</strong>
-          <span>Cut-off date: 2026-11-12 • Automated Weekly Audit<br>Reconciled against official provider specifications and FinOps standards.</span>
+          <span>Cut-off date: 2026-11-15 • Automated Weekly Audit<br>Reconciled against official provider specifications and FinOps standards.</span>
         </div>
       </section>
 
@@ -271,11 +271,15 @@
                 <option value="custom">Custom Rates (Manual Entry)</option>
                 <option value="openai-gpt-6-astra" selected>OpenAI: GPT-6 Astra ($10.00 in / $50.00 out, 90% cache read)</option>
                 <option value="openai-gpt-6-1-sol">OpenAI: GPT-6.1 Sol ($2.00 in / $10.00 out, 95% cache read)</option>
+                <option value="openai-gpt-6-1-terra">OpenAI: GPT-6.1 Terra ($1.00 in / $5.00 out, 95% cache read)</option>
                 <option value="openai-gpt-6-luna">OpenAI: GPT-6 Luna ($0.10 in / $0.50 out, 90% cache read)</option>
+                <option value="anthropic-claude-fable-5-2">Anthropic: Claude Fable 5.2 ($8.00 in / $40.00 out, 97.5% cache read)</option>
                 <option value="anthropic-claude-opus-5-5">Anthropic: Claude Opus 5.5 ($4.00 in / $20.00 out, 95% cache read)</option>
                 <option value="anthropic-claude-sonnet-5-5">Anthropic: Claude Sonnet 5.5 ($2.00 in / $10.00 out, 95% cache read)</option>
                 <option value="anthropic-claude-haiku-5-5">Anthropic: Claude Haiku 5.5 ($0.10 in / $0.50 out, 90% cache read)</option>
                 <option value="google-gemini-4-carbon">Google: Gemini 4 Carbon ($2.00 in / $10.00 out, 95% cache)</option>
+                <option value="google-gemini-4-argon">Google: Gemini 4 Argon ($2.00 in / $10.00 out, 95% cache)</option>
+                <option value="google-gemini-4-hydrogen">Google: Gemini 4 Hydrogen ($1.50 in / $7.50 out, 95% cache)</option>
                 <option value="google-gemini-3-8-flash">Google: Gemini 3.8 Flash ($0.75 in / $3.75 out, 90% cache)</option>
                 <option value="google-gemini-3-1-flash-lite">Google: Gemini 3.1 Flash-Lite ($0.25 in / $1.50 out, 90% cache)</option>
               </select>
@@ -436,6 +440,15 @@
                 <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-6-1-sol')">Load</button></td>
               </tr>
               <tr>
+                <td><strong>GPT-6.1 Terra</strong><br><small style="color:var(--muted)">Fast visual reasoning &amp; computer use</small></td>
+                <td>OpenAI</td>
+                <td>$1.00</td>
+                <td>$0.05</td>
+                <td>$5.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">95% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-6-1-terra')">Load</button></td>
+              </tr>
+              <tr>
                 <td><strong>GPT-6 Luna</strong><br><small style="color:var(--muted)">Lowest-cost scale tier</small></td>
                 <td>OpenAI</td>
                 <td>$0.10</td>
@@ -443,6 +456,15 @@
                 <td>$0.50</td>
                 <td><span class="tag" style="background:#d9f1c7;color:#1d420f">90% off</span></td>
                 <td><button type="button" class="btn-apply" onclick="applyPreset('openai-gpt-6-luna')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Claude Fable 5.2</strong><br><small style="color:var(--muted)">Frontier flagship</small></td>
+                <td>Anthropic</td>
+                <td>$8.00</td>
+                <td>$0.20</td>
+                <td>$40.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">97.5% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('anthropic-claude-fable-5-2')">Load</button></td>
               </tr>
               <tr>
                 <td><strong>Claude Opus 5.5</strong><br><small style="color:var(--muted)">Coding &amp; reasoning</small></td>
@@ -472,13 +494,31 @@
                 <td><button type="button" class="btn-apply" onclick="applyPreset('anthropic-claude-haiku-5-5')">Load</button></td>
               </tr>
               <tr>
-                <td><strong>Gemini 4 Carbon</strong><br><small style="color:var(--muted)">Frontier reasoning</small></td>
+                <td><strong>Gemini 4 Carbon</strong><br><small style="color:var(--muted)">Hardest-problem reasoning</small></td>
                 <td>Google AI</td>
                 <td>$2.00</td>
                 <td>$0.10</td>
                 <td>$10.00</td>
                 <td><span class="tag" style="background:#d9f1c7;color:#1d420f">95% off</span></td>
                 <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-4-carbon')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Gemini 4 Argon</strong><br><small style="color:var(--muted)">Frontier reasoning (default)</small></td>
+                <td>Google AI</td>
+                <td>$2.00</td>
+                <td>$0.10</td>
+                <td>$10.00</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">95% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-4-argon')">Load</button></td>
+              </tr>
+              <tr>
+                <td><strong>Gemini 4 Hydrogen</strong><br><small style="color:var(--muted)">Everyday agentic workhorse</small></td>
+                <td>Google AI</td>
+                <td>$1.50</td>
+                <td>$0.075</td>
+                <td>$7.50</td>
+                <td><span class="tag" style="background:#d9f1c7;color:#1d420f">95% off</span></td>
+                <td><button type="button" class="btn-apply" onclick="applyPreset('google-gemini-4-hydrogen')">Load</button></td>
               </tr>
               <tr>
                 <td><strong>Gemini 3.8 Flash</strong><br><small style="color:var(--muted)">Agentic high-throughput</small></td>
@@ -585,7 +625,7 @@
           <article class="guide">
             <span class="tag">Strategy</span>
             <h3>Cascading Model Routing</h3>
-            <p>Direct 70% to 85% of standard user traffic to lightning-fast, ultra-cheap models (e.g. Gemini 3.8 Flash, GPT-6 Luna, Claude Haiku 5.5). Dynamically escalate to frontier models (Claude Opus 5.5, GPT-6 Astra) only when complexity heuristics trigger.</p>
+            <p>Direct 70% to 85% of standard user traffic to lightning-fast, ultra-cheap models (e.g. Gemini 4 Hydrogen, GPT-6.1 Terra, GPT-6 Luna, Claude Haiku 5.5). Dynamically escalate to frontier models (Claude Fable 5.2, Claude Opus 5.5, GPT-6 Astra, Gemini 4 Argon/Carbon) only when complexity heuristics trigger.</p>
           </article>
           <article class="guide">
             <span class="tag">Capacity</span>
@@ -656,7 +696,7 @@
             </thead>
             <tbody>
               <tr>
-                <td rowspan="5"><strong>Code Synthesis &amp; Refactoring</strong><br><small style="color:var(--muted)">3.8k in / 950 out</small></td>
+                <td rowspan="6"><strong>Code Synthesis &amp; Refactoring</strong><br><small style="color:var(--muted)">3.8k in / 950 out</small></td>
                 <td>Claude Opus 5.5</td>
                 <td><strong>95.1% Pass@1</strong></td>
                 <td>0.72s</td>
@@ -692,7 +732,14 @@
                 <td>$13.30</td>
               </tr>
               <tr>
-                <td rowspan="5"><strong>Enterprise RAG &amp; Synthesis</strong><br><small style="color:var(--muted)">14k in / 600 out</small></td>
+                <td>GPT-6.1 Terra</td>
+                <td>88.9% Pass@1</td>
+                <td>0.40s</td>
+                <td>108.0 tps</td>
+                <td>$6.80</td>
+              </tr>
+              <tr>
+                <td rowspan="6"><strong>Enterprise RAG &amp; Synthesis</strong><br><small style="color:var(--muted)">14k in / 600 out</small></td>
                 <td>Claude Opus 5.5</td>
                 <td><strong>97.2% Factual</strong></td>
                 <td>1.20s</td>
@@ -712,6 +759,13 @@
                 <td>0.42s</td>
                 <td>118.0 tps</td>
                 <td>$11.80 ($2.60 with cache)</td>
+              </tr>
+              <tr>
+                <td>Gemini 4 Hydrogen</td>
+                <td>94.4% Factual</td>
+                <td>0.30s</td>
+                <td>142.0 tps</td>
+                <td>$25.50 ($5.80 with cache)</td>
               </tr>
               <tr>
                 <td>GPT-6 Luna</td>
@@ -944,7 +998,7 @@ WHERE event_time >= DATE_TRUNC('month', CURRENT_DATE);</code></pre></div>
           <li data-source-id="openai-api-pricing">
             <a href="https://developers.openai.com/api/docs/pricing" target="_blank" rel="noreferrer">OpenAI API Pricing and Token Limits</a>
             <span class="source-meta">Publisher: OpenAI • Checked: 2026-11-12</span>
-            <span class="source-desc">Official pricing for GPT-6 Astra, GPT-6 Sol/6.1 Sol, GPT-6 Luna, GPT-5.x models, and prompt caching discounts.</span>
+            <span class="source-desc">Official pricing for GPT-6 Astra, GPT-6 Sol/6.1 Sol/6.1 Terra, GPT-6 Luna, GPT-5.x models, and prompt caching discounts.</span>
           </li>
           <li data-source-id="openai-gpt6-announcements">
             <a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/" target="_blank" rel="noreferrer">OpenAI: GPT-6 Sol &amp; Luna and GPT-6 Astra Release Notes</a>
@@ -954,12 +1008,12 @@ WHERE event_time >= DATE_TRUNC('month', CURRENT_DATE);</code></pre></div>
           <li data-source-id="anthropic-pricing">
             <a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noreferrer">Anthropic Claude Pricing and Prompt Caching</a>
             <span class="source-meta">Publisher: Anthropic • Checked: 2026-11-12</span>
-            <span class="source-desc">Official pricing for Claude Opus 5.5, Sonnet 5.5, Haiku 5.5, and their 90-95% prompt cache read discounts.</span>
+            <span class="source-desc">Official pricing for Claude Fable 5.2/5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5, and their 90-97.5% prompt cache read discounts.</span>
           </li>
           <li data-source-id="google-ai-pricing">
             <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noreferrer">Google AI for Developers: Gemini API Pricing</a>
             <span class="source-meta">Publisher: Google • Checked: 2026-11-12</span>
-            <span class="source-desc">Official pricing tiers for Gemini 4 Carbon/Argon and Gemini 3.x Flash models, including implicit context caching and scheduled rate increases.</span>
+            <span class="source-desc">Official pricing tiers for Gemini 4 Hydrogen/Argon/Carbon and Gemini 3.x Flash models, including implicit context caching and scheduled rate increases.</span>
           </li>
           <li data-source-id="aws-bedrock-pricing">
             <a href="https://aws.amazon.com/bedrock/pricing/" target="_blank" rel="noreferrer">Amazon Web Services: Amazon Bedrock Pricing</a>
@@ -1000,7 +1054,7 @@ WHERE event_time >= DATE_TRUNC('month', CURRENT_DATE);</code></pre></div>
       </section>
 
       <footer class="foot">
-        <span>Tokenomics Body of Knowledge v1.3.0 • Cut-off: 2026-11-12</span>
+        <span>Tokenomics Body of Knowledge v1.4.0 • Cut-off: 2026-11-15</span>
         <span>Living Information Register • Reconciled Weekly via GitHub Actions</span>
       </footer>
     </main>
@@ -1010,11 +1064,15 @@ WHERE event_time >= DATE_TRUNC('month', CURRENT_DATE);</code></pre></div>
     const presets = {
       'openai-gpt-6-astra': { inRate: 10.00, outRate: 50.00, cachedRate: 1.00, inTokens: 8000, outTokens: 1200, cacheShare: 75 },
       'openai-gpt-6-1-sol': { inRate: 2.00, outRate: 10.00, cachedRate: 0.10, inTokens: 8000, outTokens: 1200, cacheShare: 75 },
+      'openai-gpt-6-1-terra': { inRate: 1.00, outRate: 5.00, cachedRate: 0.05, inTokens: 8000, outTokens: 1200, cacheShare: 75 },
       'openai-gpt-6-luna': { inRate: 0.10, outRate: 0.50, cachedRate: 0.01, inTokens: 8000, outTokens: 600, cacheShare: 70 },
+      'anthropic-claude-fable-5-2': { inRate: 8.00, outRate: 40.00, cachedRate: 0.20, inTokens: 8000, outTokens: 1200, cacheShare: 70 },
       'anthropic-claude-opus-5-5': { inRate: 4.00, outRate: 20.00, cachedRate: 0.20, inTokens: 8000, outTokens: 1200, cacheShare: 75 },
       'anthropic-claude-sonnet-5-5': { inRate: 2.00, outRate: 10.00, cachedRate: 0.10, inTokens: 8000, outTokens: 1200, cacheShare: 75 },
       'anthropic-claude-haiku-5-5': { inRate: 0.10, outRate: 0.50, cachedRate: 0.01, inTokens: 4000, outTokens: 600, cacheShare: 70 },
       'google-gemini-4-carbon': { inRate: 2.00, outRate: 10.00, cachedRate: 0.10, inTokens: 16000, outTokens: 1500, cacheShare: 70 },
+      'google-gemini-4-argon': { inRate: 2.00, outRate: 10.00, cachedRate: 0.10, inTokens: 16000, outTokens: 1500, cacheShare: 70 },
+      'google-gemini-4-hydrogen': { inRate: 1.50, outRate: 7.50, cachedRate: 0.075, inTokens: 12000, outTokens: 1000, cacheShare: 70 },
       'google-gemini-3-8-flash': { inRate: 0.75, outRate: 3.75, cachedRate: 0.075, inTokens: 12000, outTokens: 1000, cacheShare: 70 },
       'google-gemini-3-1-flash-lite': { inRate: 0.25, outRate: 1.50, cachedRate: 0.025, inTokens: 12000, outTokens: 800, cacheShare: 70 }
     };
